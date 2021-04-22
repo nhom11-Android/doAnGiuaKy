@@ -1,2 +1,2 @@
 # doAnGiuaKy
-Đồ án giữa kỳ môn Android!
+Đồ án giữa kỳ môn Android!!
