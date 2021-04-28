@@ -7,6 +7,29 @@
     tools:context=".MainActivity"
     android:gravity="center"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Quản lý công trình"
+        android:textSize="50dp"
+        android:gravity="center"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/logo"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Thực hiện bởi nhóm 11\nCopyright @2021"
+        android:gravity="center|bottom"
+        android:paddingBottom="20dp"
+        android:textStyle="bold"
+        />
 
 
 </LinearLayout>
