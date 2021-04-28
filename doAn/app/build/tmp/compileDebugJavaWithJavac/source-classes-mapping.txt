@@ -1,4 +1,22 @@
 com/buoi2/quanlyvanchuyen/BuildConfig.java
  com.buoi2.quanlyvanchuyen.BuildConfig
+com/buoi2/quanlyvanchuyen/DAO/ChiTietPhieuVanChuyenDAO.java
+ com.buoi2.quanlyvanchuyen.DAO.ChiTietPhieuVanChuyenDAO
+com/buoi2/quanlyvanchuyen/DAO/PhieuVanChuyenDAO.java
+ com.buoi2.quanlyvanchuyen.DAO.PhieuVanChuyenDAO
+com/buoi2/quanlyvanchuyen/bean/PhieuVanChuyen.java
+ com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen
+com/buoi2/quanlyvanchuyen/DAO/VatTuDAO.java
+ com.buoi2.quanlyvanchuyen.DAO.VatTuDAO
+com/buoi2/quanlyvanchuyen/bean/ChiTietPhieuVanChuyen.java
+ com.buoi2.quanlyvanchuyen.bean.ChiTietPhieuVanChuyen
+com/buoi2/quanlyvanchuyen/DAO/CongTrinhDAO.java
+ com.buoi2.quanlyvanchuyen.DAO.CongTrinhDAO
+com/buoi2/quanlyvanchuyen/bean/CongTrinh.java
+ com.buoi2.quanlyvanchuyen.bean.CongTrinh
+com/buoi2/quanlyvanchuyen/bean/VatTu.java
+ com.buoi2.quanlyvanchuyen.bean.VatTu
+com/buoi2/quanlyvanchuyen/CSDLVanChuyen.java
+ com.buoi2.quanlyvanchuyen.CSDLVanChuyen
 com/buoi2/quanlyvanchuyen/MainActivity.java
  com.buoi2.quanlyvanchuyen.MainActivity
