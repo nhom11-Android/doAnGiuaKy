@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#D8D7D7"
     android:gravity="center|top"
+    android:orientation="vertical"
     tools:context=".InChiTietPhieu">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:gravity="center"
         android:text="Xem Trước"
-        android:gravity="center"/>
+        android:textSize="25dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="545dp"
-        android:paddingTop="10dp"
-        android:background="#FFFF">
+        android:background="#FFFF"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,8 +45,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:text="Mã công trình: " />
+                    android:text="Mã công trình: "
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/maCongTrinhTv_ICTP"
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên công trình: "
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/tenCongTrinhTv_ICTP"
@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Địa chỉ: "
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/diaChiTv_ICTP"
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phiếu vận chuyển: "
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/maPhieu_ICTP"
@@ -126,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ngày vận chuyển: "
-                    android:textSize="16dp"/>
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/ngayVanChuyenTv_ICTP"
@@ -219,27 +219,29 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đại diện công trình"
                 android:paddingLeft="40dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="70dp"/>
+                android:paddingBottom="70dp"
+                android:text="Đại diện công trình" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="right">
+                android:gravity="right"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/ngayInTv_ICTP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TpHCM, Ngày... Tháng... Năm...."
-                        android:paddingRight="20dp"/>
+                        android:paddingRight="20dp"
+                        android:text="TpHCM, Ngày... Tháng... Năm...." />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -249,32 +251,33 @@
             </LinearLayout>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="50dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="50dp" />
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/backBtn_ICTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thoát"
-            android:textSize="17dp"/>
+            android:textSize="17dp" />
+
         <Button
             android:id="@+id/inBtn_ICTP"
-            android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:text="In"
-            android:textSize="17dp"/>
+            android:textSize="17dp" />
     </LinearLayout>
 </LinearLayout>
