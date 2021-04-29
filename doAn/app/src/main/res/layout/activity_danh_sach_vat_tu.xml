@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnBack_DSVatTu"
+            android:id="@+id/btnBack_DSVT"
             android:layout_width="76dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -41,7 +41,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnThem_DSVatTu"
+            android:id="@+id/btnThem_DSVT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -54,7 +54,7 @@
     </LinearLayout>
 
     <SearchView
-        android:id="@+id/searchVatTu_DSVatTu"
+        android:id="@+id/searchVatTu_DSVT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -63,6 +63,7 @@
     </SearchView>
 
     <TableLayout
+        android:id="@+id/tablelayout_DSVT"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp">
