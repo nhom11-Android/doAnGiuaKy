@@ -1,3 +1,14 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">QuanLyVanChuyen</string>
+=======
+    <string name="app_name">GiuaKy</string>
+    <string-array name="donVi">
+        <item>Chọn đơn vị</item>
+        <item>Mét khối</item>
+        <item>Tấn</item>
+        <item>Bao</item>
+        <item>Viên</item>
+    </string-array>
+>>>>>>> main
 </resources>
