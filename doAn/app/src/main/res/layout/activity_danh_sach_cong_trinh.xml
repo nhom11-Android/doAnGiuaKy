@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnBack_DSCongTrinh"
+            android:id="@+id/btnBack_DSCT"
             android:layout_width="76dp"
             android:layout_height="wrap_content"
             android:text="Back"
@@ -37,7 +37,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnThem_DSCongTrinh"
+            android:id="@+id/btnThem_DSCT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thêm"
@@ -48,7 +48,7 @@
     </LinearLayout>
 
     <SearchView
-        android:id="@+id/searchCongTrinh_DSCongTrinh"
+        android:id="@+id/searchCongTrinh_DSCT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -57,7 +57,7 @@
     </SearchView>
 
     <ListView
-        android:id="@+id/lvDSCongTrinh_DSCongTrinh"
+        android:id="@+id/lvDSCongTrinh_DSCT"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp" />

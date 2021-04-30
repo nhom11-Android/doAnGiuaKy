@@ -39,7 +39,7 @@
                 android:text="Tên vật tư" />
 
             <EditText
-                android:id="@+id/edtTenVatTu_themVatTu"
+                android:id="@+id/edtTenVatTu_tVt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -60,7 +60,7 @@
                 android:text="Giá vật tư:" />
 
             <EditText
-                android:id="@+id/edtGiaVatTu_themVatTu"
+                android:id="@+id/edtGiaVatTu_tVT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -81,7 +81,7 @@
                 android:text="Đơn vị: " />
 
             <Spinner
-                android:id="@+id/spVatTu_themVatTu"
+                android:id="@+id/spVatTu_tVT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -100,7 +100,7 @@
         >
 
         <Button
-            android:id="@+id/btnThoat_themVatTu"
+            android:id="@+id/btnThoat_tVT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -111,7 +111,7 @@
             app:backgroundTint="#EAE2A2" />
 
         <Button
-            android:id="@+id/btnThem_themVatTu"
+            android:id="@+id/btnThem_tVT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
