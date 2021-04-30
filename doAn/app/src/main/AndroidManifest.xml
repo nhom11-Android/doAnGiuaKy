@@ -9,6 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyVanChuyen">
+<<<<<<< HEAD
+        <activity android:name=".ThongKePhieuVanChuyen"></activity>
+        <activity android:name=".ThongKeCongTrinh" />
+        <activity android:name=".ThongKeVatTuDungNhieu" />
+        <activity android:name=".ThongKe">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+=======
+>>>>>>> main
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
