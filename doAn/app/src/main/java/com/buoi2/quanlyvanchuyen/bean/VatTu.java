@@ -5,9 +5,19 @@ public class VatTu {
     public static final String cotMaVatTu = "maVatTu";
     public static final String cotTenVatTu = "tenVatTu";
     public static final String cotGia = "gia";
+    public static final String cotDonViTinh = "donViTinh";
     String maVatTu;
     String tenVatTu;
     int gia;
+    String donViTinh;
+
+    public String getDonViTinh() {
+        return donViTinh;
+    }
+
+    public void setDonViTinh(String donViTinh) {
+        this.donViTinh = donViTinh;
+    }
 
     public VatTu(String maVatTu, String tenVatTu, int gia) {
         this.maVatTu = maVatTu;
