@@ -41,10 +41,11 @@ public class CSDLVanChuyen extends SQLiteOpenHelper {
                 ChiTietPhieuVanChuyen.cotSoLuong,
                 ChiTietPhieuVanChuyen.cotMaVatTu,
                 ChiTietPhieuVanChuyen.cotCuLy);
-        String vatTu = String.format("CREATE TABLE %s(%s TEXT primary key,%s TEXT,%s INTEGER)",
+        String vatTu = String.format("CREATE TABLE %s(%s TEXT primary key,%s TEXT,%s TEXT,%s INTEGER)",
                 VatTu.tenBang,
                 VatTu.cotMaVatTu,
                 VatTu.cotTenVatTu,
+                VatTu.cotDonViTinh,
                 VatTu.cotGia);
         db.execSQL(congTrinh);
         db.execSQL(phieuVanChuyen);
