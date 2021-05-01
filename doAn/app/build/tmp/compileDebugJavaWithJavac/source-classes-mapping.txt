@@ -1,9 +1,29 @@
-com/buoi2/quanlyvanchuyen/BuildConfig.java
- com.buoi2.quanlyvanchuyen.BuildConfig
-com/buoi2/quanlyvanchuyen/DAO/ChiTietPhieuVanChuyenDAO.java
- com.buoi2.quanlyvanchuyen.DAO.ChiTietPhieuVanChuyenDAO
+com/buoi2/quanlyvanchuyen/XemCongTrinh.java
+ com.buoi2.quanlyvanchuyen.XemCongTrinh
+com/buoi2/quanlyvanchuyen/ThongKe.java
+ com.buoi2.quanlyvanchuyen.ThongKe
+com/buoi2/quanlyvanchuyen/DanhSachCongTrinh.java
+ com.buoi2.quanlyvanchuyen.DanhSachCongTrinh
 com/buoi2/quanlyvanchuyen/DAO/PhieuVanChuyenDAO.java
  com.buoi2.quanlyvanchuyen.DAO.PhieuVanChuyenDAO
+com/buoi2/quanlyvanchuyen/ThemCongTrinh.java
+ com.buoi2.quanlyvanchuyen.ThemCongTrinh
+com/buoi2/quanlyvanchuyen/ThongKeCongTrinh.java
+ com.buoi2.quanlyvanchuyen.ThongKeCongTrinh
+com/buoi2/quanlyvanchuyen/ThongKeVatTuDungNhieu.java
+ com.buoi2.quanlyvanchuyen.ThongKeVatTuDungNhieu
+com/buoi2/quanlyvanchuyen/ThemVatTu.java
+ com.buoi2.quanlyvanchuyen.ThemVatTu
+com/buoi2/quanlyvanchuyen/Menu.java
+ com.buoi2.quanlyvanchuyen.Menu
+com/buoi2/quanlyvanchuyen/bean/CongTrinh.java
+ com.buoi2.quanlyvanchuyen.bean.CongTrinh
+com/buoi2/quanlyvanchuyen/DanhSachVatTu.java
+ com.buoi2.quanlyvanchuyen.DanhSachVatTu
+com/buoi2/quanlyvanchuyen/ThemPhieuVanChuyen.java
+ com.buoi2.quanlyvanchuyen.ThemPhieuVanChuyen
+com/buoi2/quanlyvanchuyen/BuildConfig.java
+ com.buoi2.quanlyvanchuyen.BuildConfig
 com/buoi2/quanlyvanchuyen/bean/PhieuVanChuyen.java
  com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen
 com/buoi2/quanlyvanchuyen/DAO/VatTuDAO.java
@@ -12,11 +32,19 @@ com/buoi2/quanlyvanchuyen/bean/ChiTietPhieuVanChuyen.java
  com.buoi2.quanlyvanchuyen.bean.ChiTietPhieuVanChuyen
 com/buoi2/quanlyvanchuyen/DAO/CongTrinhDAO.java
  com.buoi2.quanlyvanchuyen.DAO.CongTrinhDAO
-com/buoi2/quanlyvanchuyen/bean/CongTrinh.java
- com.buoi2.quanlyvanchuyen.bean.CongTrinh
+com/buoi2/quanlyvanchuyen/ThongKePhieuVanChuyen.java
+ com.buoi2.quanlyvanchuyen.ThongKePhieuVanChuyen
+com/buoi2/quanlyvanchuyen/XemChiTietPhieu.java
+ com.buoi2.quanlyvanchuyen.XemChiTietPhieu
+com/buoi2/quanlyvanchuyen/InCongTrinh.java
+ com.buoi2.quanlyvanchuyen.InCongTrinh
+com/buoi2/quanlyvanchuyen/MainActivity.java
+ com.buoi2.quanlyvanchuyen.MainActivity
+com/buoi2/quanlyvanchuyen/DAO/ChiTietPhieuVanChuyenDAO.java
+ com.buoi2.quanlyvanchuyen.DAO.ChiTietPhieuVanChuyenDAO
+com/buoi2/quanlyvanchuyen/InChiTietPhieu.java
+ com.buoi2.quanlyvanchuyen.InChiTietPhieu
 com/buoi2/quanlyvanchuyen/bean/VatTu.java
  com.buoi2.quanlyvanchuyen.bean.VatTu
 com/buoi2/quanlyvanchuyen/CSDLVanChuyen.java
  com.buoi2.quanlyvanchuyen.CSDLVanChuyen
-com/buoi2/quanlyvanchuyen/MainActivity.java
- com.buoi2.quanlyvanchuyen.MainActivity

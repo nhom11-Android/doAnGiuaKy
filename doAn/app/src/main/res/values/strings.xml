@@ -1,8 +1,5 @@
 <resources>
-<<<<<<< HEAD
     <string name="app_name">QuanLyVanChuyen</string>
-=======
-    <string name="app_name">GiuaKy</string>
     <string-array name="donVi">
         <item>Chọn đơn vị</item>
         <item>Mét khối</item>
