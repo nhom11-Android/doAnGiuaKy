@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/timKiem_ATB"
+        app:showAsAction="always"
+        android:icon="@drawable/search_vector"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/them_ATB"
+        app:showAsAction="always"
+        android:icon="@drawable/add_vector"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/lamMoi_ATB"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/renew_vector"
+        android:tooltipText="Làm mới"
+        tools:ignore="MenuTitle" />
+</menu>
