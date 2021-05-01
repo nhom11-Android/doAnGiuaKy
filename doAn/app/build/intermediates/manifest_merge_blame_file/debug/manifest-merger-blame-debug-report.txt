@@ -11,7 +11,7 @@
 9-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:5:5-19:19
+11-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:5:5-28:19
 12        android:allowBackup="true"
 12-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -28,20 +28,30 @@
 19        android:testOnly="true"
 20        android:theme="@style/Theme.QuanLyVanChuyen" >
 20-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:11:9-53
-21        <activity android:name="com.buoi2.quanlyvanchuyen.MainActivity" >
-21-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:12:9-18:20
-21-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:12:19-47
-22            <intent-filter>
-22-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:13:13-17:29
-23                <action android:name="android.intent.action.MAIN" />
-23-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:14:17-69
-23-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:14:25-66
-24
-25                <category android:name="android.intent.category.LAUNCHER" />
-25-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:16:17-77
-25-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:16:27-74
-26            </intent-filter>
-27        </activity>
-28    </application>
-29
-30</manifest>
+21
+22        <!-- <activity android:name=".MainActivity"> -->
+23        <!-- <intent-filter> -->
+24        <!-- <action android:name="android.intent.action.MAIN" /> -->
+25
+26
+27        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+28        <!-- </intent-filter> -->
+29        <!-- </activity> -->
+30
+31        <activity android:name="com.buoi2.quanlyvanchuyen.DanhSachCongTrinh" >
+31-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:21:9-27:20
+31-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:21:19-52
+32            <intent-filter>
+32-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:22:13-26:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:23:17-69
+33-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:23:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:25:17-77
+35-->D:\1.School\noi_chua_project_cho_mon_android\doAnGiuaKy\doAn\app\src\main\AndroidManifest.xml:25:27-74
+36            </intent-filter>
+37        </activity>
+38    </application>
+39
+40</manifest>
