@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".DanhSachCongTrinh">
     <ListView
-        android:id="@+id/lvDSCongTrinh_DSCT"
+        android:id="@+id/danhSachCongTrinhLv_DSCT"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp" />

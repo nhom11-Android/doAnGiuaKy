@@ -1688,6 +1688,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable renew_vector
 drawable search_vector
 drawable test_custom_background
 drawable tooltip_frame_dark
@@ -1823,6 +1824,7 @@ id counterclockwise
 id custom
 id customPanel
 id cut
+id danhSachCongTrinhLv_DSCT
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -1835,6 +1837,7 @@ id design_menu_item_action_area
 id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
+id diaChiCongTrinhTv_CTLV
 id diaChiTv_ICTP
 id diaChiTv_XCT
 id diaChiTv_XCTP
@@ -1911,6 +1914,7 @@ id jumpToEnd
 id jumpToStart
 id labelGroup
 id labeled
+id lamMoi_ATB
 id largeLabel
 id layout
 id left
@@ -1920,7 +1924,6 @@ id line3
 id linear
 id listMode
 id list_item
-id lvDSCongTrinh_DSCT
 id maCongTrinhTv_ICTP
 id maCongTrinhTv_XCT
 id maCongTrinhTv_XCTP
@@ -2074,6 +2077,7 @@ id staticLayout
 id staticPostLayout
 id stop
 id stretch
+id suaBtn_CTLV
 id submenuarrow
 id submit_area
 id tabMode
@@ -2086,6 +2090,7 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id tenCongTrinhTv_CTLV
 id tenCongTrinhTv_ICTP
 id tenCongTrinhTv_XCT
 id tenCongTrinhTv_XCTP
@@ -2114,11 +2119,11 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
-id themCongTrinh_item
 id themPhieuBtn_TPVC
 id themPhieuBtn_XCT
 id themPhieuBtn_XCTP
-id timKiemCongTrinh_item
+id them_ATB
+id timKiem_ATB
 id time
 id title
 id titleDividerNoCustom
@@ -2153,6 +2158,7 @@ id withText
 id withinBounds
 id wrap
 id wrap_content
+id xoaBtn_CTLV
 id zero_corner_chip
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
@@ -2229,6 +2235,7 @@ layout activity_thong_ke_phieu_van_chuyen
 layout activity_thong_ke_vat_tu_dung_nhieu
 layout activity_xem_chi_tiet_phieu
 layout activity_xem_cong_trinh
+layout cong_trinh_custom_listview
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2311,7 +2318,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
-menu danh_sach_cong_trinh_menu
+menu them_capnhat_timkiem_bar
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
