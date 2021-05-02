@@ -105,17 +105,17 @@ public class DanhSachCongTrinh extends AppCompatActivity {
     private int themCongTrinh() {
         try {
             LayoutInflater layoutInflater = LayoutInflater.from(this);
-            View themCongTrinhDialog = layoutInflater.inflate(R.layout.them_cong_trinh_dialog, null);
-            MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this);
-            alertDialogBuilder.setView(themCongTrinhDialog);
-            EditText tenCongTrinhDialog = (EditText) themCongTrinhDialog.findViewById(R.id.tenCongTrinh_TCTdialog);
+            View themCongTrinhDialog = layoutInflater.inflate(R.layout.them_cong_trinh_dialog, null); // tìm dialog view layout từ inflater
+            MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
+            alertDialogBuilder.setView(themCongTrinhDialog); // set view tìm được cho dialog
+            EditText tenCongTrinhDialog = (EditText) themCongTrinhDialog.findViewById(R.id.tenCongTrinh_TCTdialog); // lấy control các trường đã tạo trên dialog
             EditText diaChiCongTrinhDialog = (EditText) themCongTrinhDialog.findViewById(R.id.diaChiCongTrinh_TCTdialog);
             EditText maCongTrinhDialog = (EditText) themCongTrinhDialog.findViewById(R.id.maCongTrinh_TCTdialog);
-            maCongTrinhDialog.setText("Tự động");
+            maCongTrinhDialog.setText("Tự động"); // tuỳ chỉnh dialog
             maCongTrinhDialog.setEnabled(false);
             alertDialogBuilder
                     .setCancelable(false)
-                    .setPositiveButton("Thêm",
+                    .setPositiveButton("Thêm", // cài đặt nút đồng ý hành động
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -130,7 +130,7 @@ public class DanhSachCongTrinh extends AppCompatActivity {
 
                                 }
                             })
-                    .setNegativeButton("Huỷ thêm",
+                    .setNegativeButton("Huỷ thêm", // cài đặt nút huỷ hành đọng
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -138,8 +138,8 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                 }
                             });
 
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+            AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
+            alertDialog.show();//show diaglo
             return 0;
         }catch (Exception e){
             return -1;
