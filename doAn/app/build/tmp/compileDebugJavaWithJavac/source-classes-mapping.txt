@@ -38,8 +38,8 @@ com/buoi2/quanlyvanchuyen/XemChiTietPhieu.java
  com.buoi2.quanlyvanchuyen.XemChiTietPhieu
 com/buoi2/quanlyvanchuyen/InCongTrinh.java
  com.buoi2.quanlyvanchuyen.InCongTrinh
-com/buoi2/quanlyvanchuyen/MainActivity.java
- com.buoi2.quanlyvanchuyen.MainActivity
+com/buoi2/quanlyvanchuyen/CSDLVanChuyen.java
+ com.buoi2.quanlyvanchuyen.CSDLVanChuyen
 com/buoi2/quanlyvanchuyen/CongTrinhAdapter.java
  com.buoi2.quanlyvanchuyen.CongTrinhAdapter
 com/buoi2/quanlyvanchuyen/DAO/ChiTietPhieuVanChuyenDAO.java
@@ -48,5 +48,7 @@ com/buoi2/quanlyvanchuyen/InChiTietPhieu.java
  com.buoi2.quanlyvanchuyen.InChiTietPhieu
 com/buoi2/quanlyvanchuyen/bean/VatTu.java
  com.buoi2.quanlyvanchuyen.bean.VatTu
-com/buoi2/quanlyvanchuyen/CSDLVanChuyen.java
- com.buoi2.quanlyvanchuyen.CSDLVanChuyen
+com/buoi2/quanlyvanchuyen/MainActivity.java
+ com.buoi2.quanlyvanchuyen.MainActivity
+ com.buoi2.quanlyvanchuyen.MainActivity$1
+ com.buoi2.quanlyvanchuyen.MainActivity$1$1

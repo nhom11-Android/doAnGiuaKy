@@ -30,6 +30,7 @@ anim design_snackbar_out
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
+anim xoay
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -1792,6 +1793,7 @@ id btnThoat_tVT
 id buttonPanel
 id cache_measures
 id cancel_button
+id capNhatBtn_CTLV
 id center
 id center_horizontal
 id center_vertical
@@ -1921,6 +1923,7 @@ id line3
 id linear
 id listMode
 id list_item
+id logoImgView
 id maCongTrinhTv_ICTP
 id maCongTrinhTv_XCT
 id maCongTrinhTv_XCTP
@@ -2075,7 +2078,6 @@ id staticLayout
 id staticPostLayout
 id stop
 id stretch
-id suaBtn_CTLV
 id submenuarrow
 id submit_area
 id tabMode
