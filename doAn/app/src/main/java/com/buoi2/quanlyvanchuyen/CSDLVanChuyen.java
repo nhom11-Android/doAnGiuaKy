@@ -24,7 +24,7 @@ public class CSDLVanChuyen extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String congTrinh = String.format("CREATE TABLE %s(%s TEXT primary key,%s TEXT,%s TEXT)",
+        String congTrinh = String.format("CREATE TABLE %s(%s integer primary key autoincrement,%s TEXT,%s TEXT)",
                 CongTrinh.tenBang,
                 CongTrinh.cotMaCongTrinh,
                 CongTrinh.cotTenCongTrinh,
