@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,9 @@ public class CongTrinhAdapter extends ArrayAdapter<CongTrinh> {
         CongTrinh congTrinh = data.get(position);
         tenCongTrinhTv.setText(congTrinh.getTenCongTrinh());
         diaChiCongTrinhTv.setText(congTrinh.getDiaChi());
+        Button capNhatCongTrinhBtn = convertView.findViewById(R.id.capNhatBtn_CTLV);
+        Button xoaCongTrinhBtn = convertView.findViewById(R.id.xoaBtn_CTLV);
+        
         return convertView;
     }
 }

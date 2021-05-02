@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_xem_cong_trinh.xml.flat",
-        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\layout\\activity_xem_cong_trinh.xml"
-    },
-    {
         "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_renew_vector.png.flat",
         "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\renew_vector.png"
+    },
+    {
+        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_xem_cong_trinh.xml.flat",
+        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\layout\\activity_xem_cong_trinh.xml"
     },
     {
         "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
@@ -52,6 +52,10 @@
         "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\search_vector.png"
     },
     {
+        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\layout_them_cong_trinh_dialog.xml.flat",
+        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\layout\\them_cong_trinh_dialog.xml"
+    },
+    {
         "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
         "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
     },
@@ -64,16 +68,16 @@
         "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\drawable\\logo.png"
     },
     {
-        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
         "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
         "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_renew_vector.png.flat",
@@ -142,10 +146,6 @@
     {
         "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
         "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_them_cong_trinh.xml.flat",
-        "source": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\src\\main\\res\\layout\\activity_them_cong_trinh.xml"
     },
     {
         "merged": "D:\\1.School\\noi_chua_project_cho_mon_android\\doAnGiuaKy\\doAn\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",

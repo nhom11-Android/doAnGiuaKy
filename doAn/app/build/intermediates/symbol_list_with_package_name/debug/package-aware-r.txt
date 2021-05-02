@@ -1787,9 +1787,7 @@ id bottom
 id bounce
 id btnBack_DSVT
 id btnThem_DSVT
-id btnThem_tCT
 id btnThem_tVT
-id btnThoat_tCT
 id btnThoat_tVT
 id buttonPanel
 id cache_measures
@@ -1838,6 +1836,7 @@ id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
 id diaChiCongTrinhTv_CTLV
+id diaChiCongTrinh_TCTdialog
 id diaChiTv_ICTP
 id diaChiTv_XCT
 id diaChiTv_XCTP
@@ -1859,9 +1858,7 @@ id easeIn
 id easeInOut
 id easeOut
 id edit_query
-id edtDiaChi_tCT
 id edtGiaVatTu_tVT
-id edtTenCongTrinh_tCT
 id edtTenVatTu_tVt
 id elastic
 id end
@@ -1927,6 +1924,7 @@ id list_item
 id maCongTrinhTv_ICTP
 id maCongTrinhTv_XCT
 id maCongTrinhTv_XCTP
+id maCongTrinh_TCTdialog
 id maPhieu_ICTP
 id masked
 id material_clock_display
@@ -2094,6 +2092,7 @@ id tenCongTrinhTv_CTLV
 id tenCongTrinhTv_ICTP
 id tenCongTrinhTv_XCT
 id tenCongTrinhTv_XCTP
+id tenCongTrinh_TCTdialog
 id tenPhieuTv_XCTP
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
@@ -2142,10 +2141,8 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tvDiaChi
 id tvDonVi
 id tvGiaVatTu
-id tvTenCongTrinh
 id tvTenVatTu
 id unchecked
 id uniform
@@ -2226,7 +2223,6 @@ layout activity_in_chi_tiet_phieu
 layout activity_in_cong_trinh
 layout activity_main
 layout activity_menu
-layout activity_them_cong_trinh
 layout activity_them_phieu_van_chuyen
 layout activity_them_vat_tu
 layout activity_thong_ke
@@ -2318,6 +2314,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout them_cong_trinh_dialog
 menu them_capnhat_timkiem_bar
 mipmap ic_launcher
 mipmap ic_launcher_round

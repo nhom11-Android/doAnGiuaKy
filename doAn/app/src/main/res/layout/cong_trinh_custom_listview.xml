@@ -36,9 +36,9 @@
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/suaBtn_CTLV"
+            android:id="@+id/capNhatBtn_CTLV"
             android:layout_column="1"
-            android:text="Sửa" />
+            android:text="Cập nhật" />
     </TableRow>
 
 </TableLayout>
