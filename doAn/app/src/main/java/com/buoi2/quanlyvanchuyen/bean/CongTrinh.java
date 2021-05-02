@@ -9,18 +9,17 @@ public class CongTrinh {
     String tenCongTrinh;
     String diaChi;
 
-    public CongTrinh(String maCongTrinh, String tenCongTrinh, String diaChi) {
-        this.maCongTrinh = maCongTrinh;
+    public CongTrinh(String tenCongTrinh, String diaChi) {
         this.tenCongTrinh = tenCongTrinh;
         this.diaChi = diaChi;
     }
 
-    public String getMaCongTrinh() {
-        return maCongTrinh;
+    public void setMaCongTrinh(String maCongTrinh) { // được sử dụng cho TH lấy dữ liệu xuống
+        this.maCongTrinh = maCongTrinh;
     }
 
-    public void setMaCongTrinh(String maCongTrinh) {
-        this.maCongTrinh = maCongTrinh;
+    public String getMaCongTrinh() {
+        return maCongTrinh;
     }
 
     public String getTenCongTrinh() {

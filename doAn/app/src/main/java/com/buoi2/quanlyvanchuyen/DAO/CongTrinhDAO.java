@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import com.buoi2.quanlyvanchuyen.bean.ChiTietPhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 
+import java.util.ArrayList;
+
 public class CongTrinhDAO {
 
     public static int themCongTrinh(CongTrinh congTrinh, SQLiteDatabase db){
@@ -89,5 +91,37 @@ public class CongTrinhDAO {
         db.close();
         if(truyVanCongTrinh.moveToNext()) return true;
         else return false;
+    }
+
+    /**
+     * @param db database helper readable
+     * @return danh sách công trình
+     */
+    public static ArrayList<CongTrinh> layDanhSachCongTrinh(SQLiteDatabase db){
+
+        String[] projection = { // những cột muốn lấy
+                CongTrinh.cotMaCongTrinh,
+                CongTrinh.cotTenCongTrinh,
+                CongTrinh.cotDiaChi
+        } ;
+        //selection = null
+        Cursor cursor = db.query(
+                CongTrinh.tenBang,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+                );
+        ArrayList<CongTrinh> danhSachCongTrinh = new ArrayList<>();
+        while (cursor.moveToNext()){
+            String mct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotMaCongTrinh));
+            String tct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotTenCongTrinh));
+            String dcct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotDiaChi));
+            CongTrinh temp = new CongTrinh(tct,dcct);temp.setMaCongTrinh(mct);
+            danhSachCongTrinh.add(temp);
+        }
+        return  danhSachCongTrinh;
     }
 }
