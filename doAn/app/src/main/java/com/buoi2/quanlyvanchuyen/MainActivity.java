@@ -1,5 +1,6 @@
 package com.buoi2.quanlyvanchuyen;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -51,5 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setControl() {
         logoImgView= findViewById(R.id.logoImgView);
+        // cài đặt tiêu đề cho action bar
+        ActionBar actionBar = (ActionBar) getSupportActionBar();
+        actionBar.hide();
+//        actionBar.setTitle("Thống Kê");
+//        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

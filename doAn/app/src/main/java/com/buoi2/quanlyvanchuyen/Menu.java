@@ -1,5 +1,6 @@
 package com.buoi2.quanlyvanchuyen;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -43,8 +44,8 @@ public class Menu extends AppCompatActivity {
         btnThoat_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Menu.this, MainActivity.class);
-                startActivity(intent);
+                finish();
+                System.exit(0);
             }
         });
     }
@@ -54,5 +55,10 @@ public class Menu extends AppCompatActivity {
         btnXem_VT= findViewById(R.id.btnXem_VT);
         btnXem_TK= findViewById(R.id.btnXem_TK);
         btnThoat_menu= findViewById(R.id.btnThoat_menu);
+
+        // cài đặt tiêu đề cho action bar
+        ActionBar actionBar = (ActionBar) getSupportActionBar();
+        actionBar.setTitle("Quản lý vận chuyển");
+//        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }
