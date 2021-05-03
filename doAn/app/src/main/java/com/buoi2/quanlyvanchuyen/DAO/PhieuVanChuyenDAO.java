@@ -87,7 +87,7 @@ public class PhieuVanChuyenDAO {
                 null,
                 null
         );
-        if (cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             //lấy dữ liệu từ cursor
             int mp = cursor.getInt(cursor.getColumnIndex(PhieuVanChuyen.cotMaPhieuVanChuyen));
             String nvc = cursor.getString(cursor.getColumnIndex(PhieuVanChuyen.cotNgayVanChuyen));

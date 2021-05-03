@@ -29,17 +29,17 @@ public class CSDLVanChuyen extends SQLiteOpenHelper {
                 CongTrinh.cotMaCongTrinh,
                 CongTrinh.cotTenCongTrinh,
                 CongTrinh.cotDiaChi);
-        String phieuVanChuyen = String.format("CREATE TABLE %s(%s integer primary key autoincrement,%s TEXT,%s TEXT)",
+        String phieuVanChuyen = String.format("CREATE TABLE %s(%s integer primary key autoincrement,%s integer,%s TEXT)",
                 PhieuVanChuyen.tenBang,
                 PhieuVanChuyen.cotMaPhieuVanChuyen,
                 PhieuVanChuyen.cotMaCongTrinh,
                 PhieuVanChuyen.cotNgayVanChuyen);
         //CTPVC có trường ID để dễ dàng xoá, cập nhật
-        String chiTietPhieuVanChuyen = String.format("CREATE TABLE %s(id integer primary key autoincrement not null,%s TEXT,%s TEXT,%s INTEGER,%s INTEGER)",
+        String chiTietPhieuVanChuyen = String.format("CREATE TABLE %s(id integer primary key autoincrement not null,%s Integer,%s TEXT,%s INTEGER,%s INTEGER)",
                 ChiTietPhieuVanChuyen.tenBang,
                 ChiTietPhieuVanChuyen.cotMaPhieuVanChuyen,
-                ChiTietPhieuVanChuyen.cotSoLuong,
                 ChiTietPhieuVanChuyen.cotMaVatTu,
+                ChiTietPhieuVanChuyen.cotSoLuong,
                 ChiTietPhieuVanChuyen.cotCuLy);
         String vatTu = String.format("CREATE TABLE %s(%s TEXT primary key,%s TEXT,%s TEXT,%s INTEGER)",
                 VatTu.tenBang,
