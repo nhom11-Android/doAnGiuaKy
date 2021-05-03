@@ -20,7 +20,6 @@ public class PhieuVanChuyenDAO {
          */
         try {
             ContentValues values = new ContentValues();
-            values.put("maPhieuVanChuyen", phieuVanChuyen.getMaPhieuVanChuyen());
             values.put("ngayVanChuyen", phieuVanChuyen.getNgayVanChuyen());
             values.put("maCongTrinh", phieuVanChuyen.getMaCongTrinh());
             db.insert(PhieuVanChuyen.tenBang, null, values);
@@ -90,11 +89,10 @@ public class PhieuVanChuyenDAO {
         );
         if (cursor.moveToNext()) {
             //lấy dữ liệu từ cursor
-            int mct = cursor.getInt(cursor.getColumnIndex(PhieuVanChuyen.cotMaCongTrinh));
             int mp = cursor.getInt(cursor.getColumnIndex(PhieuVanChuyen.cotMaPhieuVanChuyen));
             String nvc = cursor.getString(cursor.getColumnIndex(PhieuVanChuyen.cotNgayVanChuyen));
             // tạo 1 object của PhieuVC, sau đó gán maPhieuVC , vì không phải là tạo object mới trong database
-            PhieuVanChuyen temp = new PhieuVanChuyen(nvc,mct);
+            PhieuVanChuyen temp = new PhieuVanChuyen(nvc,maCongTrinh);
             temp.setMaPhieuVanChuyen(mp);
             phieuVanChuyens.add(temp);
         }

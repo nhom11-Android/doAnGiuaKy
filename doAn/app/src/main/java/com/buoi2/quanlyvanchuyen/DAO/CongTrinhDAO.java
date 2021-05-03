@@ -21,7 +21,6 @@ public class CongTrinhDAO {
          */
         try {
             ContentValues values = new ContentValues();
-            values.put(CongTrinh.cotMaCongTrinh, congTrinh.getMaCongTrinh());
             values.put(CongTrinh.cotTenCongTrinh, congTrinh.getTenCongTrinh());
             values.put(CongTrinh.cotDiaChi, congTrinh.getDiaChi());
             db.insert(CongTrinh.tenBang, null, values);

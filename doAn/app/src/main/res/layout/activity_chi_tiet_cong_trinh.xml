@@ -12,7 +12,7 @@
 
     <TextView
         android:text="Mã công trình: "
-        android:textSize="16dip"
+        android:textSize="16sp"
         android:layout_row="0"
         android:layout_column="0"
         android:layout_gravity="right"
@@ -62,22 +62,20 @@
         android:src="@drawable/edit_vector"
         android:tag="non-edit"
         />
-    <ScrollView
-        android:layout_row="4"
-        android:layout_column="0"
-        android:layout_columnSpan="4"
-        android:layout_gravity="fill"
-        android:layout_marginTop="20dp"
-        >
+
         <ListView
             android:id="@+id/danhSachPhieuVanChuyenLv_CTCT"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:divider="@color/black"
+            android:dividerHeight="1dp"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_columnSpan="4"
+            android:layout_gravity="fill"
+            android:layout_marginTop="20dp"
         >
         </ListView>
-    </ScrollView>
-
-
 
 
 </GridLayout>

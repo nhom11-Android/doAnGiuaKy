@@ -47,7 +47,7 @@ public class PhieuVanChuyenAdapter extends ArrayAdapter<PhieuVanChuyen> {
         ImageButton chiTietBtn = convertView.findViewById(R.id.chiTietPhieuVanChuyenBtn_CTLV);
         // gán dữ liệu
         PhieuVanChuyen phieuVanChuyen = data.get(position);
-        ngayVanChuyen.setText(phieuVanChuyen.getNgayVanChuyen());
+        ngayVanChuyen.setText("Mã phiếu: "+phieuVanChuyen.getMaPhieuVanChuyen() +"\nNgày: "+ phieuVanChuyen.getNgayVanChuyen());
 
         //
 
