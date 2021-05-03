@@ -1,6 +1,7 @@
 package com.buoi2.quanlyvanchuyen;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Layout;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -52,7 +54,18 @@ public class DanhSachCongTrinh extends AppCompatActivity {
         // set adapter lên listview
         CongTrinhAdapter adapter = new CongTrinhAdapter(this, R.layout.cong_trinh_custom_listview, data);
         this.adapter = adapter;
+        adapter.setDb(database); //set database cho adapter
         danhSachCongTrinhLv.setAdapter(adapter);
+        danhSachCongTrinhLv.setClickable(true);
+        //set onclick listener cho listview 
+        // TODO: 5/3/2021 kiểm tra lại có cần cái listener này hay không?  
+        danhSachCongTrinhLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CongTrinh congTrinh = data.get(position);
+                Toast.makeText(DanhSachCongTrinh.this, "Bạn chọn "+ congTrinh.getTenCongTrinh(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setControl() {
@@ -80,21 +93,13 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                 Toast.makeText(this, "quay trở lại", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.timKiem_ATB:
-                // TODO: xử lý tìm kiếm
-                if(timKiemCongTrinh()==-1)
-                Toast.makeText(this, "Tìm kiếm thất bại !", Toast.LENGTH_SHORT).show();
+                timKiemCongTrinh();
                 break;
             case R.id.them_ATB:
-                if (themCongTrinh() == 0) { // xử lý thêm công trình
-                    Toast.makeText(this, "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(this, "Thêm công trình không thành công, vui lòng thực hiện lại !", Toast.LENGTH_SHORT).show();
+                themCongTrinh() ;  // xử lý thêm công trình
                 break;
             case R.id.lamMoi_ATB:
-                if (lamMoiDanhSach() == 0) {
-                    Toast.makeText(this, "Làm mới thành công !", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(this, "Làm mới không thành công ! Hãy khởi đông lại chương trình !", Toast.LENGTH_SHORT).show();
+                lamMoiDanhSach();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -115,16 +120,19 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     SQLiteDatabase db = database.getWritableDatabase();
                                     String tenCongTrinhcantim = timKiemCongTrinhEdt.getText().toString().trim();
-                                    //todo: xử lý tìm kiếm, có cần chuẩn hoá input tên công trình hay không?
-                                    for (int i = 0; i < data.size(); i++) {
-                                        if (data.get(i).getTenCongTrinh().equals(tenCongTrinhcantim) == false) {
-                                            System.out.println(tenCongTrinhcantim);
-                                            System.out.println(data.get(i).getTenCongTrinh());
-                                            data.remove(i);//remove những đối tượng không thoả tìm kiếm
-                                            adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                    if(tenCongTrinhcantim.isEmpty()==false) {
+                                        //todo: xử lý tìm kiếm, có cần chuẩn hoá input tên công trình hay không?
+                                        for (int i = 0; i < data.size(); i++) {
+                                            if (data.get(i).getTenCongTrinh().equals(tenCongTrinhcantim) == false) {
+                                                System.out.println(tenCongTrinhcantim);
+                                                System.out.println(data.get(i).getTenCongTrinh());
+                                                data.remove(i);//remove những đối tượng không thoả tìm kiếm
+                                                adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                                Toast.makeText(DanhSachCongTrinh.this, "Tìm kiếm thành công !", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
+                                        System.out.println("data size: " + data.size());
                                     }
-                                    System.out.println("data size: " + data.size());
                                 }
                             })
                     .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
@@ -171,10 +179,18 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                     SQLiteDatabase db = database.getWritableDatabase();
                                     String ten = tenCongTrinhEdt.getText().toString().trim();
                                     String dc = diaChiCongTrinhEdt.getText().toString().trim();
-                                    CongTrinh temp = new CongTrinh(ten, dc);
-                                    CongTrinhDAO.themCongTrinh(temp, db);
-                                    data.add(temp); //thêm user mới vào listview
-                                    adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                    if(ten.isEmpty() || dc.isEmpty()){
+                                        Toast.makeText(DanhSachCongTrinh.this, "Nhập đầy đủ thông tin để tạo mới!", Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
+                                    else{
+                                        CongTrinh temp = new CongTrinh(ten, dc);
+                                        CongTrinhDAO.themCongTrinh(temp, db);
+                                        data.add(temp); //thêm user mới vào listview
+                                        adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                        Toast.makeText(getApplicationContext(), "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
+                                    }
+
                                 }
                             })
                     .setNegativeButton("Huỷ thêm", // cài đặt nút huỷ hành đọng
@@ -189,6 +205,7 @@ public class DanhSachCongTrinh extends AppCompatActivity {
             alertDialog.show();//show diaglo
             return 0;
         } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Thêm công trình không thành công !", Toast.LENGTH_SHORT).show();
             return -1;
         }
     }

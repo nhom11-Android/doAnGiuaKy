@@ -1,12 +1,15 @@
 package com.buoi2.quanlyvanchuyen.DAO;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
 
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
+
+import java.util.ArrayList;
 
 public class PhieuVanChuyenDAO {
     public static int themPhieuVanChuyen(PhieuVanChuyen phieuVanChuyen, SQLiteDatabase db){
@@ -56,7 +59,7 @@ public class PhieuVanChuyenDAO {
             values.put(PhieuVanChuyen.cotMaCongTrinh, phieuVanChuyen.getMaCongTrinh());
             values.put(PhieuVanChuyen.cotNgayVanChuyen, phieuVanChuyen.getNgayVanChuyen());
             String selection = PhieuVanChuyen.cotMaPhieuVanChuyen + " LIKE ?";
-            String[] selectionArgs = {phieuVanChuyen.getMaPhieuVanChuyen()};
+            String[] selectionArgs = {String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen())};
             int count = db.update(
                     PhieuVanChuyen.tenBang,
                     values,
@@ -68,4 +71,34 @@ public class PhieuVanChuyenDAO {
             return -1;
         }
     }
+    public static ArrayList<PhieuVanChuyen> danhSachPhieuVanChuyenTheoCongTrinh(SQLiteDatabase db,int maCongTrinh){
+        ArrayList<PhieuVanChuyen> phieuVanChuyens = new ArrayList<>();
+        String[] projection = { // những cột muốn lấy
+                PhieuVanChuyen.cotMaPhieuVanChuyen,
+                PhieuVanChuyen.cotNgayVanChuyen
+        } ;
+        String selection = PhieuVanChuyen.cotMaCongTrinh+" = ?";
+        String[] selectionArgs = {String.valueOf(maCongTrinh)};
+        Cursor cursor = db.query(
+                PhieuVanChuyen.tenBang,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        if (cursor.moveToNext()) {
+            //lấy dữ liệu từ cursor
+            int mct = cursor.getInt(cursor.getColumnIndex(PhieuVanChuyen.cotMaCongTrinh));
+            int mp = cursor.getInt(cursor.getColumnIndex(PhieuVanChuyen.cotMaPhieuVanChuyen));
+            String nvc = cursor.getString(cursor.getColumnIndex(PhieuVanChuyen.cotNgayVanChuyen));
+            // tạo 1 object của PhieuVC, sau đó gán maPhieuVC , vì không phải là tạo object mới trong database
+            PhieuVanChuyen temp = new PhieuVanChuyen(nvc,mct);
+            temp.setMaPhieuVanChuyen(mp);
+            phieuVanChuyens.add(temp);
+        }
+        return phieuVanChuyens;
+    };
+
 }

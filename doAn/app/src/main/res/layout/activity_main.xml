@@ -17,10 +17,12 @@
         android:gravity="center"
         />
     <ImageView
-        android:layout_width="match_parent"
+        android:id="@+id/logoImgView"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:src="@drawable/logo"
+        android:clickable="true"
         />
     <TextView
         android:layout_width="match_parent"
