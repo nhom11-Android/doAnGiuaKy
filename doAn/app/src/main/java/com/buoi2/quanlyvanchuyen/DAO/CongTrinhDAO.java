@@ -124,4 +124,8 @@ public class CongTrinhDAO {
         }
         return  danhSachCongTrinh;
     }
+
+//    public static ArrayList<CongTrinh> timKiemTheoTen(SQLiteDatabase db){
+//
+//    }
 }
