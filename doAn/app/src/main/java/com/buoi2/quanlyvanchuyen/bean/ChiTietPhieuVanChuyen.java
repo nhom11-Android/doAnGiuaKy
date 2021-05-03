@@ -7,13 +7,13 @@ public class ChiTietPhieuVanChuyen {
     public static final String cotSoLuong = "soLuong";
     public static final String cotCuLy = "cuLy";
     int id;
-    String maPhieuVanChuyen;
+    int maPhieuVanChuyen;
     String maVatTu;
     int soLuong;
     int cuLy;
 
     // TODO: check ma pvc, mavt
-    public ChiTietPhieuVanChuyen(String maPhieuVanChuyen, String maVatTu, int soLuong, int cuLy) {
+    public ChiTietPhieuVanChuyen(int maPhieuVanChuyen, String maVatTu, int soLuong, int cuLy) {
         this.maPhieuVanChuyen = maPhieuVanChuyen;
         this.maVatTu = maVatTu;
         this.soLuong = soLuong;
@@ -28,11 +28,11 @@ public class ChiTietPhieuVanChuyen {
         this.id = id;
     }
 
-    public String getMaPhieuVanChuyen() {
+    public int getMaPhieuVanChuyen() {
         return maPhieuVanChuyen;
     }
 
-    public void setMaPhieuVanChuyen(String maPhieuVanChuyen) {
+    public void setMaPhieuVanChuyen(int maPhieuVanChuyen) {
         this.maPhieuVanChuyen = maPhieuVanChuyen;
     }
 

@@ -135,6 +135,7 @@ public class ChiTietCongTrinh extends AppCompatActivity {
             MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
             alertDialogBuilder.setView(timPhieuVanChuyenDialog); // set view tìm được cho dialog
             EditText ngayCanTimEdt = (EditText) timPhieuVanChuyenDialog.findViewById(R.id.timKiemEdt_dialog); // lấy control các trường đã tạo trên dialog
+            ngayCanTimEdt.setText("Nhập ngày cần tìm: dd/mm/yyyy");
             alertDialogBuilder
                     .setCancelable(false)
                     .setPositiveButton("Tìm", // cài đặt nút đồng ý hành động
@@ -144,11 +145,17 @@ public class ChiTietCongTrinh extends AppCompatActivity {
                                     SQLiteDatabase db = database.getWritableDatabase();
                                     String ngayCanTim = ngayCanTimEdt.getText().toString().trim();
                                     if(ngayCanTim.isEmpty()==false) {
-
+                                        for(int i=0;i<data.size();i++){
+                                            if(data.get(i).getNgayVanChuyen().equals(ngayCanTim)==false){
+                                                // TODO: 5/3/2021 check lại
+                                                data.remove(i);
+                                                adapter.notifyDataSetChanged();
+                                            }
+                                        }
                                     }
                                 }
                             })
-                    .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
+                    .setNegativeButton("Huỷ", // cài đặt nút huỷ hành động
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -172,7 +179,7 @@ public class ChiTietCongTrinh extends AppCompatActivity {
         if(PhieuVanChuyenDAO.themPhieuVanChuyen(phieuVanChuyen,database.getWritableDatabase())==0){
             data.add(phieuVanChuyen);
             adapter.notifyDataSetChanged();
-            Toast.makeText(this, "Thêm phiếu thành công! Bấm làm mới nếu cần thiết!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Thêm phiếu thành công! Hãy bấm làm mới!", Toast.LENGTH_SHORT).show();
         };
     }
 
