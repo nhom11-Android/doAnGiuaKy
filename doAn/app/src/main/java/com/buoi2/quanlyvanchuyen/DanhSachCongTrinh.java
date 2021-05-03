@@ -81,25 +81,74 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                 break;
             case R.id.timKiem_ATB:
                 // TODO: xử lý tìm kiếm
-                Toast.makeText(this, "tìm kiếm", Toast.LENGTH_SHORT).show();
+                if(timKiemCongTrinh()==-1)
+                Toast.makeText(this, "Tìm kiếm thất bại !", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.them_ATB:
-                themCongTrinh(); // xử lý thêm công trình
-                Toast.makeText(this, "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
+                if (themCongTrinh() == 0) { // xử lý thêm công trình
+                    Toast.makeText(this, "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(this, "Thêm công trình không thành công, vui lòng thực hiện lại !", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.lamMoi_ATB:
-                lamMoiDanhSach();
-                Toast.makeText(this, "Làm mới thành công !", Toast.LENGTH_SHORT).show();
+                if (lamMoiDanhSach() == 0) {
+                    Toast.makeText(this, "Làm mới thành công !", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(this, "Làm mới không thành công ! Hãy khởi đông lại chương trình !", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private int timKiemCongTrinh() {
+        try {
+            LayoutInflater layoutInflater = LayoutInflater.from(this);
+            View timKiemCongTrinhDialog = layoutInflater.inflate(R.layout.tim_kiem_dialog, null); // tìm dialog view layout từ inflater
+            MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
+            alertDialogBuilder.setView(timKiemCongTrinhDialog); // set view tìm được cho dialog
+            EditText timKiemCongTrinhEdt = (EditText) timKiemCongTrinhDialog.findViewById(R.id.timKiemEdt_dialog); // lấy control các trường đã tạo trên dialog
+            alertDialogBuilder
+                    .setCancelable(false)
+                    .setPositiveButton("Tìm", // cài đặt nút đồng ý hành động
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SQLiteDatabase db = database.getWritableDatabase();
+                                    String tenCongTrinhcantim = timKiemCongTrinhEdt.getText().toString().trim();
+                                    //todo: xử lý tìm kiếm, có cần chuẩn hoá input tên công trình hay không?
+                                    for (int i = 0; i < data.size(); i++) {
+                                        if (data.get(i).getTenCongTrinh().equals(tenCongTrinhcantim) == false) {
+                                            System.out.println(tenCongTrinhcantim);
+                                            System.out.println(data.get(i).getTenCongTrinh());
+                                            data.remove(i);//remove những đối tượng không thoả tìm kiếm
+                                            adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                        }
+                                    }
+                                    System.out.println("data size: " + data.size());
+                                }
+                            })
+                    .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
+            alertDialog.show();//show diaglo
+            return 0;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
     /**
      * Xử lý thêm công trình
-     *  - gọi dialog nhập dữ liệu
-     *  - add dữ liệu vào database
-     *  - thông báo lên listview đã có thay đổi dữ liệu
+     * - gọi dialog nhập dữ liệu
+     * - add dữ liệu vào database
+     * - thông báo lên listview đã có thay đổi dữ liệu
+     *
      * @return -1 nếu không thành công, 0 nếu thành công
      */
     private int themCongTrinh() {
@@ -108,11 +157,11 @@ public class DanhSachCongTrinh extends AppCompatActivity {
             View themCongTrinhDialog = layoutInflater.inflate(R.layout.them_cong_trinh_dialog, null); // tìm dialog view layout từ inflater
             MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
             alertDialogBuilder.setView(themCongTrinhDialog); // set view tìm được cho dialog
-            EditText tenCongTrinhDialog = (EditText) themCongTrinhDialog.findViewById(R.id.tenCongTrinh_TCTdialog); // lấy control các trường đã tạo trên dialog
-            EditText diaChiCongTrinhDialog = (EditText) themCongTrinhDialog.findViewById(R.id.diaChiCongTrinh_TCTdialog);
-            EditText maCongTrinhDialog = (EditText) themCongTrinhDialog.findViewById(R.id.maCongTrinh_TCTdialog);
-            maCongTrinhDialog.setText("Tự động"); // tuỳ chỉnh dialog
-            maCongTrinhDialog.setEnabled(false);
+            EditText tenCongTrinhEdt = (EditText) themCongTrinhDialog.findViewById(R.id.tenCongTrinh_TCTdialog); // lấy control các trường đã tạo trên dialog
+            EditText diaChiCongTrinhEdt = (EditText) themCongTrinhDialog.findViewById(R.id.diaChiCongTrinh_TCTdialog);
+            EditText maCongTrinhEdt = (EditText) themCongTrinhDialog.findViewById(R.id.maCongTrinh_TCTdialog);
+            maCongTrinhEdt.setText("Tự động"); // tuỳ chỉnh dialog
+            maCongTrinhEdt.setEnabled(false);
             alertDialogBuilder
                     .setCancelable(false)
                     .setPositiveButton("Thêm", // cài đặt nút đồng ý hành động
@@ -120,14 +169,12 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     SQLiteDatabase db = database.getWritableDatabase();
-                                    String ten = tenCongTrinhDialog.getText().toString().trim();
-                                    String dc = diaChiCongTrinhDialog.getText().toString().trim();
+                                    String ten = tenCongTrinhEdt.getText().toString().trim();
+                                    String dc = diaChiCongTrinhEdt.getText().toString().trim();
                                     CongTrinh temp = new CongTrinh(ten, dc);
                                     CongTrinhDAO.themCongTrinh(temp, db);
                                     data.add(temp); //thêm user mới vào listview
                                     adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
-//                                Toast.makeText(DanhSachCongTrinh.this, "tên: "+tenCongTrinhDialog.getText() +"\bđịa chỉ: "+diaChiCongTrinhDialog.getText(), Toast.LENGTH_SHORT).show();
-
                                 }
                             })
                     .setNegativeButton("Huỷ thêm", // cài đặt nút huỷ hành đọng
@@ -141,17 +188,25 @@ public class DanhSachCongTrinh extends AppCompatActivity {
             AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
             alertDialog.show();//show diaglo
             return 0;
-        }catch (Exception e){
+        } catch (Exception e) {
             return -1;
         }
     }
 
     /**
      * làm mới danh sách
-     *  - load lại database từ csdl lên listview
+     * - load lại database từ csdl lên listview
+     *
+     * @return 0 nếu thành công, -1 nếu thất bại
      */
-    private void lamMoiDanhSach() {
-        data = loadData();
-        adapter.notifyDataSetChanged();
+    private int lamMoiDanhSach() {
+        try {
+            data = loadData();
+            adapter.data = data;
+            adapter.notifyDataSetChanged();
+            return 0;
+        } catch (Exception e) {
+            return -1;
+        }
     }
 }
