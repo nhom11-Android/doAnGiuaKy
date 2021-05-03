@@ -31,7 +31,7 @@ public class CongTrinhDAO {
             return -1;
         }
     }
-    public static int xoaCongTrinh(String maCongTrinh, SQLiteDatabase db){
+    public static int xoaCongTrinh(int maCongTrinh, SQLiteDatabase db){
         /**
         @param maCongTrinh: maCongTrinh cần xoá
         @param db: writeable database từ lớp helper
@@ -41,7 +41,7 @@ public class CongTrinhDAO {
             String xoaQuery = String.format("DELETE from %s where %s='%s'",
                     CongTrinh.tenBang,
                     CongTrinh.cotMaCongTrinh,
-                    maCongTrinh);
+                    String.valueOf(maCongTrinh));
             db.execSQL(xoaQuery);
             db.close();
             return 0;
@@ -71,7 +71,7 @@ public class CongTrinhDAO {
             return -1;
         }
     }
-
+    // không được sử dụng
     public static boolean kiemTraTonTaiCongTrinh(String maCongTrinh,SQLiteDatabase db){
 //        String kiemTraQuery = "SELECT * FROM "+ CongTrinh.tenBang + " where maCongTrinh= '" + maCongTrinh +"'";
         String[] projection = {
@@ -116,7 +116,7 @@ public class CongTrinhDAO {
                 );
         ArrayList<CongTrinh> danhSachCongTrinh = new ArrayList<>();
         while (cursor.moveToNext()){
-            String mct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotMaCongTrinh));
+            int mct = cursor.getInt(cursor.getColumnIndex(CongTrinh.cotMaCongTrinh));
             String tct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotTenCongTrinh));
             String dcct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotDiaChi));
             CongTrinh temp = new CongTrinh(tct,dcct);temp.setMaCongTrinh(mct);
@@ -125,7 +125,36 @@ public class CongTrinhDAO {
         return  danhSachCongTrinh;
     }
 
-//    public static ArrayList<CongTrinh> timKiemTheoTen(SQLiteDatabase db){
-//
-//    }
+    /**
+     * @param db write able database
+     * @param maCongTrinh : int
+     * @return CongTrinh <Object>
+     */
+    public static CongTrinh timKiemTheoMaCongTrinh(SQLiteDatabase db, int maCongTrinh){
+        CongTrinh temp=null;
+        String[] projection = { // những cột muốn lấy
+                CongTrinh.cotMaCongTrinh,
+                CongTrinh.cotTenCongTrinh,
+                CongTrinh.cotDiaChi
+        } ;
+        String selection = CongTrinh.cotMaCongTrinh+" = ?";
+        String[] selectionArgs = {String.valueOf(maCongTrinh)};
+        Cursor cursor = db.query(
+                CongTrinh.tenBang,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        if (cursor.moveToNext()) {
+            int mct = cursor.getInt(cursor.getColumnIndex(CongTrinh.cotMaCongTrinh));
+            String tct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotTenCongTrinh));
+            String dcct = cursor.getString(cursor.getColumnIndex(CongTrinh.cotDiaChi));
+            temp = new CongTrinh(tct, dcct);
+            temp.setMaCongTrinh(mct);
+        }
+        return temp;
+    }
 }
