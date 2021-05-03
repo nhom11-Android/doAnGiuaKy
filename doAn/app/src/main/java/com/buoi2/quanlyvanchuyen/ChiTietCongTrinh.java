@@ -2,11 +2,14 @@ package com.buoi2.quanlyvanchuyen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,8 +22,11 @@ import com.buoi2.quanlyvanchuyen.DAO.CongTrinhDAO;
 import com.buoi2.quanlyvanchuyen.DAO.PhieuVanChuyenDAO;
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ChiTietCongTrinh extends AppCompatActivity {
     EditText maCongTrinhEdt;
@@ -43,7 +49,7 @@ public class ChiTietCongTrinh extends AppCompatActivity {
         Intent homeIntent = getIntent();
         maCongTrinhIntent = homeIntent.getIntExtra("maCongTrinh",0);
         database = new CSDLVanChuyen(this);
-        data = PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(),maCongTrinhIntent);
+        data = loadDanhSachPhieuVanChuyen();
         congTrinh = getCongTrinhFromDatabase(database);
         // TODO: 5/3/2021 xử lý load danh sách các pvc 
         setControl();
@@ -57,6 +63,9 @@ public class ChiTietCongTrinh extends AppCompatActivity {
     private CongTrinh getCongTrinhFromDatabase(CSDLVanChuyen database) {
         return CongTrinhDAO.timKiemTheoMaCongTrinh(database.getReadableDatabase(),maCongTrinhIntent);
     }
+    private ArrayList<PhieuVanChuyen> loadDanhSachPhieuVanChuyen(){
+        return PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(),maCongTrinhIntent);
+    };
 
     private void setEvent() {
         // set data cho các editText hiển thị công trình đang chọn
@@ -100,19 +109,71 @@ public class ChiTietCongTrinh extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
-                Toast.makeText(this, "quay trở lại", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "quay trở lại 2", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.timKiem_ATB:
-                // TODO: 5/3/2021 xử lý tìm kiếm 
+                // TODO: 5/3/2021 xử lý tìm kiếm
+                timPhieuVanChuyen();
                 break;
             case R.id.them_ATB:
-                // TODO: 5/3/2021 xử lý thêm phiếu 
+                themPhieuVanChuyen();
                 break;
             case R.id.lamMoi_ATB:
-                // TODO: 5/3/2021 xử lý làm mới danh sách phiếu 
+                data = loadDanhSachPhieuVanChuyen();
+                adapter.data =data;
+                adapter.notifyDataSetChanged();
+                Toast.makeText(this, "Làm mới thành công!", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private int timPhieuVanChuyen() {
+        try {
+            LayoutInflater layoutInflater = LayoutInflater.from(this);
+            View timPhieuVanChuyenDialog = layoutInflater.inflate(R.layout.tim_kiem_dialog, null); // tìm dialog view layout từ inflater
+            MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
+            alertDialogBuilder.setView(timPhieuVanChuyenDialog); // set view tìm được cho dialog
+            EditText ngayCanTimEdt = (EditText) timPhieuVanChuyenDialog.findViewById(R.id.timKiemEdt_dialog); // lấy control các trường đã tạo trên dialog
+            alertDialogBuilder
+                    .setCancelable(false)
+                    .setPositiveButton("Tìm", // cài đặt nút đồng ý hành động
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SQLiteDatabase db = database.getWritableDatabase();
+                                    String ngayCanTim = ngayCanTimEdt.getText().toString().trim();
+                                    if(ngayCanTim.isEmpty()==false) {
+
+                                    }
+                                }
+                            })
+                    .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
+            alertDialog.show();//show diaglo
+            return 0;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    private void themPhieuVanChuyen() {
+        SimpleDateFormat simpleDate =  new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        String ngayVanChuyen = simpleDate.format(date);
+        PhieuVanChuyen phieuVanChuyen = new PhieuVanChuyen(ngayVanChuyen,maCongTrinhIntent);
+        if(PhieuVanChuyenDAO.themPhieuVanChuyen(phieuVanChuyen,database.getWritableDatabase())==0){
+            data.add(phieuVanChuyen);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(this, "Thêm phiếu thành công! Bấm làm mới nếu cần thiết!", Toast.LENGTH_SHORT).show();
+        };
     }
 
     private void setControl() {

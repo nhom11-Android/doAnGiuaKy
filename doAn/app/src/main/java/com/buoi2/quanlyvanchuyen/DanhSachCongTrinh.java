@@ -58,7 +58,7 @@ public class DanhSachCongTrinh extends AppCompatActivity {
         danhSachCongTrinhLv.setAdapter(adapter);
         danhSachCongTrinhLv.setClickable(true);
         //set onclick listener cho listview 
-        // TODO: 5/3/2021 kiểm tra lại có cần cái listener này hay không?  
+        // TODO: 5/3/2021 kiểm tra lại có cần cái listener này hay không?
         danhSachCongTrinhLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -185,10 +185,12 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                     }
                                     else{
                                         CongTrinh temp = new CongTrinh(ten, dc);
-                                        CongTrinhDAO.themCongTrinh(temp, db);
-                                        data.add(temp); //thêm user mới vào listview
-                                        adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
-                                        Toast.makeText(getApplicationContext(), "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
+                                        if(CongTrinhDAO.themCongTrinh(temp, db)==0) { // thêm vào csdl thành công
+                                            data.add(temp); //thêm user mới vào listview
+                                            adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                            Toast.makeText(getApplicationContext(), "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else Toast.makeText(getApplicationContext(), "Thêm công trình không thành công! Báo cáo lỗi cho nhà sản xuất để giải quyết!", Toast.LENGTH_SHORT).show();
                                     }
 
                                 }

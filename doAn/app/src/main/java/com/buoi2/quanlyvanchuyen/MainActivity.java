@@ -55,7 +55,5 @@ public class MainActivity extends AppCompatActivity {
         // cài đặt tiêu đề cho action bar
         ActionBar actionBar = (ActionBar) getSupportActionBar();
         actionBar.hide();
-//        actionBar.setTitle("Thống Kê");
-//        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }
