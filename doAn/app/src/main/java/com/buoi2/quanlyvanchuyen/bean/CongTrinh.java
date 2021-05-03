@@ -5,7 +5,7 @@ public class CongTrinh {
     public static final String cotMaCongTrinh = "maCongTrinh";
     public static final String cotTenCongTrinh = "tenCongTrinh";
     public static final String cotDiaChi = "diaChi";
-    String maCongTrinh;
+    int maCongTrinh;
     String tenCongTrinh;
     String diaChi;
 
@@ -14,11 +14,15 @@ public class CongTrinh {
         this.diaChi = diaChi;
     }
 
-    public void setMaCongTrinh(String maCongTrinh) { // được sử dụng cho TH lấy dữ liệu xuống
+    /**
+     * được sử dụng cho TH lấy dữ liệu xuống
+     * @param maCongTrinh
+     */
+    public void setMaCongTrinh(int maCongTrinh) {
         this.maCongTrinh = maCongTrinh;
     }
 
-    public String getMaCongTrinh() {
+    public int getMaCongTrinh() {
         return maCongTrinh;
     }
 

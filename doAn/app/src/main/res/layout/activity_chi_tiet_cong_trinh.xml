@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="4"
+    tools:context=".ChiTietCongTrinh"
+    android:padding="10dp"
+    >
+
+
+    <TextView
+        android:text="Mã công trình: "
+        android:textSize="16dip"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_gravity="right"
+        />
+    <EditText
+        android:id="@+id/maCongTrinhEdt_CTCT"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="fill_horizontal"
+        android:layout_columnSpan="3"
+        android:enabled="false"
+        />
+
+    <TextView
+        android:text="Tên công trình:"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_gravity="right"
+        />
+
+    <EditText
+        android:id="@+id/tenCongTrinhEdt_CTCT"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="fill_horizontal"
+        android:layout_columnSpan="3"
+        android:enabled="false"
+        />
+
+    <TextView
+        android:text="Địa chỉ:"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_gravity="right"
+        />
+
+    <EditText
+        android:id="@+id/diaChiCongTrinhEdt_CTCT"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="fill_horizontal"
+        android:layout_columnSpan="3"
+        android:enabled="false"
+        />
+
+    <ImageButton
+        android:id="@+id/suaChiTietCongTrinhBtn_CTCT"
+        android:layout_row="3"
+        android:layout_column="3"
+        android:src="@drawable/edit_vector"
+        android:tag="non-edit"
+        />
+    <ScrollView
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill"
+        android:layout_marginTop="20dp"
+        >
+        <ListView
+            android:id="@+id/danhSachPhieuVanChuyenLv_CTCT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        >
+        </ListView>
+    </ScrollView>
+
+
+
+
+</GridLayout>

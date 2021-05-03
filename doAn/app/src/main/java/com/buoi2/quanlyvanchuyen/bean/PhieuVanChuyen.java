@@ -6,22 +6,21 @@ public class PhieuVanChuyen {
     public static final String cotNgayVanChuyen = "ngayVanChuyen";
     public static final String cotMaCongTrinh = "maCongTrinh";
 
-    String maPhieuVanChuyen;
+    int maPhieuVanChuyen; // tạo tự động
     String ngayVanChuyen;
-    String maCongTrinh;
+    int maCongTrinh;
 
     // TODO: check ma pvc
-    public PhieuVanChuyen(String maPhieuVanChuyen, String ngayVanChuyen, String maCongTrinh) {
-        this.maPhieuVanChuyen = maPhieuVanChuyen;
+    public PhieuVanChuyen(String ngayVanChuyen, int maCongTrinh) {
         this.ngayVanChuyen = ngayVanChuyen;
         this.maCongTrinh = maCongTrinh;
     }
 
-    public String getMaPhieuVanChuyen() {
+    public int getMaPhieuVanChuyen() {
         return maPhieuVanChuyen;
     }
 
-    public void setMaPhieuVanChuyen(String maPhieuVanChuyen) {
+    public void setMaPhieuVanChuyen(int maPhieuVanChuyen) {
         this.maPhieuVanChuyen = maPhieuVanChuyen;
     }
 
@@ -33,11 +32,11 @@ public class PhieuVanChuyen {
         this.ngayVanChuyen = ngayVanChuyen;
     }
 
-    public String getMaCongTrinh() {
+    public int getMaCongTrinh() {
         return maCongTrinh;
     }
 
-    public void setMaCongTrinh(String maCongTrinh) {
+    public void setMaCongTrinh(int maCongTrinh) {
         this.maCongTrinh = maCongTrinh;
     }
 }

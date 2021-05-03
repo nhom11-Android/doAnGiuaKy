@@ -29,10 +29,10 @@ public class CSDLVanChuyen extends SQLiteOpenHelper {
                 CongTrinh.cotMaCongTrinh,
                 CongTrinh.cotTenCongTrinh,
                 CongTrinh.cotDiaChi);
-        String phieuVanChuyen = String.format("CREATE TABLE %s(%s TEXT primary key,%s TEXT,%s TEXT)",
+        String phieuVanChuyen = String.format("CREATE TABLE %s(%s integer primary key autoincrement,%s TEXT,%s TEXT)",
                 PhieuVanChuyen.tenBang,
-                PhieuVanChuyen.cotMaCongTrinh,
                 PhieuVanChuyen.cotMaPhieuVanChuyen,
+                PhieuVanChuyen.cotMaCongTrinh,
                 PhieuVanChuyen.cotNgayVanChuyen);
         //CTPVC có trường ID để dễ dàng xoá, cập nhật
         String chiTietPhieuVanChuyen = String.format("CREATE TABLE %s(id integer primary key autoincrement not null,%s TEXT,%s TEXT,%s INTEGER,%s INTEGER)",
@@ -47,10 +47,16 @@ public class CSDLVanChuyen extends SQLiteOpenHelper {
                 VatTu.cotTenVatTu,
                 VatTu.cotDonViTinh,
                 VatTu.cotGia);
+//        String loaiDonViTinh = String.format("CREATE LOAIDONVITINH %s(%s INTEGER primary key autoincrement,%s TEXT)",
+//                LoaiDonViTinh.tenBang,
+//                LoaiDonViTinh.cotMaDonViTinh,
+//                LoaiDonViTinh.cotTenDonViTinh,
+//                );
         db.execSQL(congTrinh);
         db.execSQL(phieuVanChuyen);
         db.execSQL(chiTietPhieuVanChuyen);
         db.execSQL(vatTu);
+//        db.execSQL(loaiDonViTinh);
         Log.d("1111", "onCreate: khoi tao csdl");
     }
 
