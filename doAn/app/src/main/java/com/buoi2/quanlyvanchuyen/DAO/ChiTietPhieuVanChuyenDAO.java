@@ -18,7 +18,7 @@ public class ChiTietPhieuVanChuyenDAO {
         */
         try {
             ContentValues values = new ContentValues();
-            values.put(ChiTietPhieuVanChuyen.cotMaPhieuVanChuyen, chiTietPhieuVanChuyen.getMaPhieuVanChuyen());
+//            values.put(ChiTietPhieuVanChuyen.cotMaPhieuVanChuyen, chiTietPhieuVanChuyen.getMaPhieuVanChuyen()); cot nay auto
             values.put(ChiTietPhieuVanChuyen.cotMaVatTu, chiTietPhieuVanChuyen.getMaVatTu());
             values.put(ChiTietPhieuVanChuyen.cotSoLuong, chiTietPhieuVanChuyen.getSoLuong());
             values.put(ChiTietPhieuVanChuyen.cotSoLuong, chiTietPhieuVanChuyen.getCuLy());
