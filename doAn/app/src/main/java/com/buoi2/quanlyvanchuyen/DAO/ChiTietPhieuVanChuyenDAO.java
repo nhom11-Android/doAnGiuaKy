@@ -34,14 +34,30 @@ public class ChiTietPhieuVanChuyenDAO {
         }
     }
     /**
-    @para id id đối tượng phiếu cần xoá
-    @para db writeable database từ lớp helper
+    @param  id id đối tượng phiếu cần xoá
+    @param db writeable database từ lớp helper
     @return 0 nếu thành công, -1 nếu thất bại
     */
     public static int xoaCTPVCById(int id, SQLiteDatabase db) {
 
         try {
             String xoaQuery = "DELETE from " + ChiTietPhieuVanChuyen.tenBang + " where id=" + id;
+            db.execSQL(xoaQuery);
+            return 0;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    /**
+     @param maPhieuVanChuyen mã phiếu vận chuyển của đối tượng phiếu cần xoá
+     @param db writeable database từ lớp helper
+     @return 0 nếu thành công, -1 nếu thất bại
+     */
+    public static int xoaCTPVCByMaPhieuVanChuyen(int maPhieuVanChuyen, SQLiteDatabase db) {
+
+        try {
+            String xoaQuery = "DELETE from " + ChiTietPhieuVanChuyen.tenBang + " where maPhieuVanChuyen=" + maPhieuVanChuyen;
             db.execSQL(xoaQuery);
             return 0;
         } catch (Exception e) {
