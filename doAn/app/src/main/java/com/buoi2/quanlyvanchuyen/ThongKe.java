@@ -22,7 +22,6 @@ public class ThongKe extends AppCompatActivity {
         getId();
     }
 
-//        return true;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
