@@ -29,15 +29,16 @@ public class PhieuVanChuyenDAO {
             return -1;
         }
     }
-    public static int xoaPhieuVanChuyen(String maPhieuVanChuyen,SQLiteDatabase db){
+    public static int xoaPhieuVanChuyen(int maPhieuVanChuyen,SQLiteDatabase db){
         /**
         @param maPhieuVanChuyen: mã phiếu cần xoá
         @param db: writeable database instance từ lớp sqlhelper
         @return: số dòng bị ảnh hưởng nếu thành công, -1 nếu thất bại
          */
         try {
+            ChiTietPhieuVanChuyenDAO.xoaCTPVCByMaPhieuVanChuyen(maPhieuVanChuyen,db);// xoá các chi tiết phiếu của mã phiếu này
             String selection = PhieuVanChuyen.cotMaPhieuVanChuyen + " LIKE ?";
-            String[] selectionArgs = {maPhieuVanChuyen};
+            String[] selectionArgs = {String.valueOf(maPhieuVanChuyen)};
             int delete = db.delete(PhieuVanChuyen.tenBang, selection, selectionArgs);
             db.close();
             return delete;
