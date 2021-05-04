@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+
+        android:layout_row="0"
+        android:text="Vật tư" />
+
+    <TextView
+
+        android:layout_row="1"
+        android:layout_column="0"
+        android:text="Số lượng" />
+
+    <TextView
+
+        android:layout_row="2"
+        android:layout_column="0"
+        android:text="Cự ly"
+
+        />
+
+    <TextView
+        android:id="@+id/tenVatTuTv_CTP_CTLV"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/soLuongTv_CTP_CTLV"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal"
+        />
+
+    <TextView
+
+        android:id="@+id/cuLyTv_CTP_CTLV"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:layout_gravity="fill_horizontal"
+        />
+
+    <ImageButton
+        android:contentDescription="xoá vật tư trong danh sách"
+        android:id="@+id/xoaVatTuBtn_CTP_CTLV"
+        android:layout_row="0"
+        android:layout_column="2"
+        android:layout_rowSpan="3"
+        android:src="@drawable/delete_vector"
+        />
+</GridLayout>

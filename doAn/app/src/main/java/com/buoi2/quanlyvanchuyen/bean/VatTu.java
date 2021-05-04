@@ -31,6 +31,7 @@ public class VatTu {
         this.tenVatTu = tenVatTu;
         this.donViTinh = donViTinh;
         this.gia = gia;
+        this.donViTinh = donViTinh;
     }
 
     public String getMaVatTu() {

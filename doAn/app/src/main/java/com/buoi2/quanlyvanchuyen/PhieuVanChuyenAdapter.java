@@ -1,6 +1,7 @@
 package com.buoi2.quanlyvanchuyen;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.buoi2.quanlyvanchuyen.bean.ChiTietPhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
 
@@ -49,7 +51,18 @@ public class PhieuVanChuyenAdapter extends ArrayAdapter<PhieuVanChuyen> {
         PhieuVanChuyen phieuVanChuyen = data.get(position);
         ngayVanChuyen.setText("Mã phiếu: "+phieuVanChuyen.getMaPhieuVanChuyen() +"\nNgày: "+ phieuVanChuyen.getNgayVanChuyen());
 
-        //
+        //set listenner
+        chiTietBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // gọi activity chiTietPhieuVanChuyen
+                Intent intent  = new Intent(parentContext,SuaPhieuVanChuyen.class);
+                intent.putExtra("maPhieuVanChuyen",String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen()));
+                intent.putExtra("maCongTrinh",String.valueOf(phieuVanChuyen.getMaCongTrinh()));
+                intent.putExtra("ngayVanChuyen",phieuVanChuyen.getNgayVanChuyen());
+                parentContext.startActivity(intent);
+            }
+        });
 
         return convertView;
     }
