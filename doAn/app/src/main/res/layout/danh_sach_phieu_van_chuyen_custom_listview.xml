@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:paddingBottom="10dp">
 
     <TextView
         android:id="@+id/ngayVanChuyenTv_CTLV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_gravity="fill_horizontal"
+        android:layout_row="0"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="" />
 
     <ImageButton
         android:id="@+id/chiTietPhieuVanChuyenBtn_CTLV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="7"
+        android:layout_row="0"
         android:src="@drawable/details_vector"
         android:backgroundTint="@color/black"
         android:contentDescription="chi tiết phiếu vận chuyển"/>
+    <ImageButton
+        android:id="@+id/xoaPhieuVanChuyenBtn_CTLV"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:src="@drawable/delete_vector"
+        android:backgroundTint="@color/black"
+        android:contentDescription="xoá phiếu vận chuyển"/>
 
-
-</LinearLayout>
+</GridLayout>

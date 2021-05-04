@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.buoi2.quanlyvanchuyen.DAO.PhieuVanChuyenDAO;
 import com.buoi2.quanlyvanchuyen.bean.ChiTietPhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
@@ -47,6 +49,7 @@ public class PhieuVanChuyenAdapter extends ArrayAdapter<PhieuVanChuyen> {
         //ánh xạ
         TextView ngayVanChuyen = convertView.findViewById(R.id.ngayVanChuyenTv_CTLV);
         ImageButton chiTietBtn = convertView.findViewById(R.id.chiTietPhieuVanChuyenBtn_CTLV);
+        ImageButton xoaPhieuBtn = convertView.findViewById(R.id.xoaPhieuVanChuyenBtn_CTLV);
         // gán dữ liệu
         PhieuVanChuyen phieuVanChuyen = data.get(position);
         ngayVanChuyen.setText("Mã phiếu: "+phieuVanChuyen.getMaPhieuVanChuyen() +"\nNgày: "+ phieuVanChuyen.getNgayVanChuyen());
@@ -61,6 +64,15 @@ public class PhieuVanChuyenAdapter extends ArrayAdapter<PhieuVanChuyen> {
                 intent.putExtra("maCongTrinh",String.valueOf(phieuVanChuyen.getMaCongTrinh()));
                 intent.putExtra("ngayVanChuyen",phieuVanChuyen.getNgayVanChuyen());
                 parentContext.startActivity(intent);
+            }
+        });
+        xoaPhieuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhieuVanChuyenDAO.xoaPhieuVanChuyen(phieuVanChuyen.getMaPhieuVanChuyen(),db.getWritableDatabase());
+                data.remove(position);
+                notifyDataSetChanged();
+                Toast.makeText(parentContext, "Xoá thành công !", Toast.LENGTH_SHORT).show();
             }
         });
 
