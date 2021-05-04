@@ -41,7 +41,7 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
     ImageButton themVatTuBtn;
     ArrayList<ChiTietPhieuVanChuyen> danhSachChiTiet;
     CSDLVanChuyen database = new CSDLVanChuyen(this);
-    ArrayList<VatTu> danhSachVatTu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,17 +73,16 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         maCongTrinhTv.setText(String.valueOf(phieuVanChuyen.getMaCongTrinh()));
         ngayVanChuyenTv.setText(phieuVanChuyen.getNgayVanChuyen());
 //        danhSachChiTiet
-        danhSachChiTiet = ChiTietPhieuVanChuyenDAO.danhSachVatTuTheoPhieuVanChuyen(phieuVanChuyen.getMaPhieuVanChuyen(), database.getReadableDatabase());
-        // danh sach vat tu
-        danhSachVatTu = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
-        // set listenner cho nút thêm vật tư
-        themVatTuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // xử lý thêm vật tư = dialog
-
-            }
-        });
+        danhSachChiTiet = ChiTietPhieuVanChuyenDAO.danhSachVatTuTheoPhieuVanChuyen(
+                phieuVanChuyen.getMaPhieuVanChuyen(),
+                database.getReadableDatabase());
+        ChiTietPhieuVanChuyenAdapter adapter =
+                new ChiTietPhieuVanChuyenAdapter(
+                        this,
+                        R.layout.danh_sach_chi_tiet_pvc_custom_listview,
+                        danhSachChiTiet);
+        adapter.setDb(database);
+        danhSachVatTuLv.setAdapter(adapter);
     }
 
 
@@ -103,62 +102,69 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void themVatTuVaoPhieu(int maPhieuVanChuyen) {
-        try {
-            LayoutInflater layoutInflater = LayoutInflater.from(this);
-            View themVatTuCTP = layoutInflater.inflate(R.layout.them_vat_tu_chi_tiet_phieu_dialog, null); // tìm dialog view layout từ inflater
-            MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
-            alertDialogBuilder.setView(themVatTuCTP); // set view tìm được cho dialog
-            // lấy control các trường đã tạo trên dialog
-            Spinner danhSachVatTuSpn = themVatTuCTP.findViewById(R.id.danhSachVatTuSpn_TVTCTPdialog);
-            // set data cho spinner
-            ArrayAdapter<VatTu> adapter = new ArrayAdapter<VatTu>(this, android.R.layout.simple_spinner_dropdown_item,danhSachVatTu);
-            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-            danhSachVatTuSpn.setAdapter(adapter);
-            //set event cho spinner
-            VatTu daChon;
-            danhSachVatTuSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    daChon = (VatTu) parent.getAdapter().getItem(position);
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-            EditText soLuongEdt = themVatTuCTP.findViewById(R.id.soLuongEdt_TVTCTPdialog);
-            EditText cuLyEdt = themVatTuCTP.findViewById(R.id.cuLyEdt_TVTCTPdialog);
-
-            alertDialogBuilder
-                    .setCancelable(false)
-                    .setPositiveButton("Tìm", // cài đặt nút đồng ý hành động
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    SQLiteDatabase db = database.getWritableDatabase();
-                                    String culy = cuLyEdt.getText().toString().trim();
-                                    String soluong = soLuongEdt.getText().toString().trim();
-                                    VatTu chon = danhSachVatTuSpn.get
-                                }
-                            })
-                    .setNegativeButton("Huỷ", // cài đặt nút huỷ hành động
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                }
-                            });
-
-            AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
-            alertDialog.show();//show diaglo
-            return 0;
-        } catch (Exception e) {
-            return -1;
-        }
+    public void themVatTuChiTietPhieu(View view) {
+        Intent intent = new Intent(this,ThemVatTuPhieuVanChuyen.class);
+        intent.putExtra("maPhieuVanChuyen",String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen()));
+        startActivity(intent);
+        // reload 
     }
 
-    ;
+
+
+//    public void themVatTuVaoPhieu(int maPhieuVanChuyen) {
+//        try {
+//            LayoutInflater layoutInflater = LayoutInflater.from(this);
+//            View themVatTuCTP = layoutInflater.inflate(R.layout.them_vat_tu_chi_tiet_phieu_dialog, null); // tìm dialog view layout từ inflater
+//            MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
+//            alertDialogBuilder.setView(themVatTuCTP); // set view tìm được cho dialog
+//            // lấy control các trường đã tạo trên dialog
+//            Spinner danhSachVatTuSpn = themVatTuCTP.findViewById(R.id.danhSachVatTuSpn_TVTCTPdialog);
+//            // set data cho spinner
+//            ArrayAdapter<VatTu> adapter = new ArrayAdapter<VatTu>(this, android.R.layout.simple_spinner_dropdown_item,danhSachVatTu);
+//            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+//            danhSachVatTuSpn.setAdapter(adapter);
+//            //set event cho spinner
+//            VatTu daChon=null;
+//            danhSachVatTuSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(daChon) {
+//                @Override
+//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                    daChon = (VatTu) parent.getAdapter().getItem(position);
+//
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> parent) {
+//
+//                }
+//            });
+//            EditText soLuongEdt = themVatTuCTP.findViewById(R.id.soLuongEdt_TVTCTPdialog);
+//            EditText cuLyEdt = themVatTuCTP.findViewById(R.id.cuLyEdt_TVTCTPdialog);
+//
+//            alertDialogBuilder
+//                    .setCancelable(false)
+//                    .setPositiveButton("Tìm", // cài đặt nút đồng ý hành động
+//                            new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    SQLiteDatabase db = database.getWritableDatabase();
+//                                    String culy = cuLyEdt.getText().toString().trim();
+//                                    String soluong = soLuongEdt.getText().toString().trim();
+//                                    VatTu chon = danhSachVatTuSpn.get
+//                                }
+//                            })
+//                    .setNegativeButton("Huỷ", // cài đặt nút huỷ hành động
+//                            new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.cancel();
+//                                }
+//                            });
+//
+//            AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
+//            alertDialog.show();//show diaglo
+//            return 0;
+//        } catch (Exception e) {
+//            return -1;
+//        }
+//    };
 }

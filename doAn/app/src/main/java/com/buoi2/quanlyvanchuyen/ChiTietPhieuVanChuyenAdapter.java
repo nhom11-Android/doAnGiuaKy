@@ -2,6 +2,7 @@ package com.buoi2.quanlyvanchuyen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class ChiTietPhieuVanChuyenAdapter extends ArrayAdapter<ChiTietPhieuVanCh
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parentContext).inflate(R.layout.danh_sach_phieu_van_chuyen_custom_listview, parent, false);
+        convertView = LayoutInflater.from(parentContext).inflate(R.layout.danh_sach_chi_tiet_pvc_custom_listview, parent, false);
 
         // ánh xạ
         TextView tenVatTuTv = convertView.findViewById(R.id.tenVatTuTv_CTP_CTLV);
@@ -56,9 +57,11 @@ public class ChiTietPhieuVanChuyenAdapter extends ArrayAdapter<ChiTietPhieuVanCh
         // gán data lên view
         ChiTietPhieuVanChuyen chiTietPhieuVanChuyen = data.get(position);
         String tenVT = VatTuDAO.layTenVatTuTheoMaVatTu(chiTietPhieuVanChuyen.getMaVatTu(), db.getReadableDatabase());
+        if(tenVatTuTv==null) Log.d("null", "getView: null textview");
         tenVatTuTv.setText(tenVT);
-        soLuongTv.setText(chiTietPhieuVanChuyen.getSoLuong());
-        cuLyTv.setText(chiTietPhieuVanChuyen.getCuLy());
+        if(soLuongTv==null) Log.d("null", "getView: null soLuong");
+        soLuongTv.setText(String.valueOf(chiTietPhieuVanChuyen.getSoLuong()));
+        cuLyTv.setText(String.valueOf(chiTietPhieuVanChuyen.getCuLy()));
 
 
         // cài đặt listener

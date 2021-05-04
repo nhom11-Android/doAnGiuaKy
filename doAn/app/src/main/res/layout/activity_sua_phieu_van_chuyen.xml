@@ -63,7 +63,7 @@
         android:layout_row="3"
         android:layout_column="3"
         android:src="@drawable/add_vector"
-        android:tag="non-edit"
+        android:onClick="themVatTuChiTietPhieu"
         />
 
     <ListView

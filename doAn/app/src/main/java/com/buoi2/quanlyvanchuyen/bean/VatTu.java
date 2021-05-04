@@ -1,5 +1,7 @@
 package com.buoi2.quanlyvanchuyen.bean;
 
+import androidx.annotation.NonNull;
+
 public class VatTu {
     public static final String tenBang = "VATTU";
     public static final String cotMaVatTu = "maVatTu";
@@ -56,5 +58,11 @@ public class VatTu {
 
     public void setGia(int gia) {
         this.gia = gia;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.maVatTu  + " " +this.getTenVatTu() ;
     }
 }
