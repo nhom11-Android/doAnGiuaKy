@@ -1,6 +1,7 @@
 package com.buoi2.quanlyvanchuyen.DAO;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -8,6 +9,8 @@ import androidx.annotation.NonNull;
 
 import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.VatTu;
+
+import java.util.ArrayList;
 
 public class VatTuDAO {
     /**
@@ -20,6 +23,7 @@ public class VatTuDAO {
             ContentValues values = new ContentValues();
             values.put("maVatTu", vatTu.getMaVatTu());
             values.put("tenVatTu", vatTu.getTenVatTu());
+            values.put("donViTinh", vatTu.getDonViTinh());
             values.put("gia", vatTu.getGia());
             db.insert(VatTu.tenBang, null, values);
             db.close();
@@ -70,4 +74,34 @@ public class VatTuDAO {
             return -1;
         }
     }
+
+    public static ArrayList layDanhSachVatTu(SQLiteDatabase db){
+        /**
+         *   @param list danh sách vật tư
+         *   @param db readable database instance từ lớp sqlhelper
+         *   @return list nếu thành công, null nếu thất bại
+         */
+        try {
+            ArrayList<VatTu> ds = new ArrayList<>();
+            System.out.println("Lấy Danh sách");
+            String query = "select * from VATTU";
+            Cursor cursor = db.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                do{
+                    VatTu vatTu = new VatTu();
+                    vatTu.setMaVatTu(cursor.getString(0));
+                    vatTu.setTenVatTu(cursor.getString(1));
+                    vatTu.setDonViTinh(cursor.getString(2));
+                    vatTu.setGia(cursor.getInt(3));
+                    ds.add(vatTu);
+                }while(cursor.moveToNext());
+            }
+            db.close();
+            return ds;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+
 }
