@@ -1,13 +1,17 @@
 package com.buoi2.quanlyvanchuyen.DAO;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.VatTu;
+
+import java.util.ArrayList;
 
 public class VatTuDAO {
     /**
@@ -70,4 +74,53 @@ public class VatTuDAO {
             return -1;
         }
     }
+    public static String layTenVatTuTheoMaVatTu(String maVatTu, SQLiteDatabase db){
+        String[] projection = { // những cột muốn lấy
+                VatTu.cotTenVatTu
+        } ;
+        String selection = VatTu.cotMaVatTu+" = ?";
+        String[] selectionArgs = {maVatTu};
+        Cursor cursor = db.query(
+                VatTu.tenBang,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        if (cursor.moveToNext()) {
+            return cursor.getString(cursor.getColumnIndex(VatTu.cotTenVatTu));
+        }
+        return null;
+    };
+    public static ArrayList<VatTu> danhSachVatTu(SQLiteDatabase db){
+        ArrayList<VatTu> ds = new ArrayList<>();
+        String[] projection = { // những cột muốn lấy
+                VatTu.cotTenVatTu,
+                VatTu.cotMaVatTu,
+                VatTu.cotGia,
+                VatTu.cotDonViTinh
+        } ;
+        Cursor cursor = db.query(
+                VatTu.tenBang,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        if(cursor.moveToFirst()){
+            do{
+                String mvt = cursor.getString(cursor.getColumnIndex(VatTu.cotMaVatTu));
+                int gia = cursor.getInt(cursor.getColumnIndex(VatTu.cotGia));
+                String tvt = cursor.getString(cursor.getColumnIndex(VatTu.cotTenVatTu));
+                String dvt = cursor.getString(cursor.getColumnIndex(VatTu.cotDonViTinh));
+                VatTu temp = new VatTu(mvt,tvt,gia,dvt);
+                ds.add(temp);
+            }while (cursor.moveToNext());
+        }
+        return ds;
+    };
 }

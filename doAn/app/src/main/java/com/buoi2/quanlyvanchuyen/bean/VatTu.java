@@ -19,10 +19,11 @@ public class VatTu {
         this.donViTinh = donViTinh;
     }
 
-    public VatTu(String maVatTu, String tenVatTu, int gia) {
+    public VatTu(String maVatTu, String tenVatTu, int gia,String donViTinh) {
         this.maVatTu = maVatTu;
         this.tenVatTu = tenVatTu;
         this.gia = gia;
+        this.donViTinh = donViTinh;
     }
 
     public String getMaVatTu() {

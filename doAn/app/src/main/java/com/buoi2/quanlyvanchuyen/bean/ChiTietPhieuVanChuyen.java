@@ -6,6 +6,7 @@ public class ChiTietPhieuVanChuyen {
     public static final String cotMaVatTu = "maVatTu";
     public static final String cotSoLuong = "soLuong";
     public static final String cotCuLy = "cuLy";
+    public static final String cotId = "id";
     int id;
     int maPhieuVanChuyen;
     String maVatTu;
