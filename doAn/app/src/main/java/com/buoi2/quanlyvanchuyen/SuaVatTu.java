@@ -98,8 +98,6 @@ public class SuaVatTu extends AppCompatActivity {
     }
 
     private void thoatActivity(){
-        Intent intent = new Intent(this, DanhSachVatTu.class);
-        startActivity(intent);
         finish();
     }
 }

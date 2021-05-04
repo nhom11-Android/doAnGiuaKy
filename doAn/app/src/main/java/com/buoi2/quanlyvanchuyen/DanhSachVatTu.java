@@ -75,7 +75,7 @@ public class DanhSachVatTu extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.timKiem_ATB:
-                Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Tìm kiếm", Toast.LENGTH_SHORT).show();
                 callTimKiemDialog();
                 break;
 
@@ -85,7 +85,7 @@ public class DanhSachVatTu extends AppCompatActivity {
                 break;
 
             case R.id.lamMoi_ATB:
-                Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Làm mới", Toast.LENGTH_SHORT).show();
                 getDanhSachVatTu();
                 break;
             default:break;
@@ -181,7 +181,7 @@ public class DanhSachVatTu extends AppCompatActivity {
         TextView maVatTuTv = (TextView) tr1.getChildAt(0);
         String maVatTu = maVatTuTv.getText().toString();
         TextView tenVatTuTv = (TextView) tr1.getChildAt(1);
-        String tenVatTu = maVatTuTv.getText().toString();
+        String tenVatTu = tenVatTuTv.getText().toString();
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View canhBaoDialog = layoutInflater.inflate(R.layout.canh_bao_dialog, null);
