@@ -90,10 +90,10 @@ public class VatTuDAO {
                 null,
                 null
         );
-        if (cursor.moveToNext()) {
-            return cursor.getString(cursor.getColumnIndex(VatTu.cotTenVatTu));
-        }
-        return null;
+        Log.d("name", String.format("layTenVatTuTheoMaVatTu: có %d",cursor.getCount() ));
+        Log.d("name", String.format("layTenVatTuTheoMaVatTu: tìm %s",maVatTu ));
+        cursor.moveToNext();
+        return cursor.getString(0);
     };
     public static ArrayList<VatTu> danhSachVatTu(SQLiteDatabase db){
         ArrayList<VatTu> ds = new ArrayList<>();
@@ -118,7 +118,7 @@ public class VatTuDAO {
                 int gia = cursor.getInt(cursor.getColumnIndex(VatTu.cotGia));
                 String tvt = cursor.getString(cursor.getColumnIndex(VatTu.cotTenVatTu));
                 String dvt = cursor.getString(cursor.getColumnIndex(VatTu.cotDonViTinh));
-                VatTu temp = new VatTu(mvt,tvt,gia,dvt);
+                VatTu temp = new VatTu(mvt,tvt,dvt,gia);
                 ds.add(temp);
             }while (cursor.moveToNext());
         }
