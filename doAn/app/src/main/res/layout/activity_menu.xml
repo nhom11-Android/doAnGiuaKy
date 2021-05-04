@@ -23,7 +23,7 @@
             android:textSize="17dp"
             android:text="Công trình"
             android:backgroundTint="@color/btn_background_color"
-            android:textColor="@color/btn_text_color"
+            android:textColor="@color/white"
             />
 
         <Button
@@ -34,7 +34,7 @@
             android:textSize="17dp"
             android:text="Vật tư"
             android:backgroundTint="@color/btn_background_color"
-            android:textColor="@color/btn_text_color"/>
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btnXem_TK"
@@ -44,7 +44,7 @@
             android:textSize="17dp"
             android:text="Thống kê"
             android:backgroundTint="@color/btn_background_color"
-            android:textColor="@color/btn_text_color"/>
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <Button
