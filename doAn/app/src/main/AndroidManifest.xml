@@ -28,6 +28,13 @@
         </activity>
         <activity android:name=".ChiTietCongTrinh" />
         <activity android:name=".SuaPhieuVanChuyen" />
+        <activity android:name=".SuaVatTu" />
+        <activity android:name=".ThemVatTu" />
+        <activity android:name=".ThongKeCongTrinh" />
+        <activity android:name=".ThongKePhieuVanChuyen" />
+        <activity android:name=".ThongKeVatTuDoanhThuCao" />
+        <activity android:name=".ThongKeVatTuDungNhieu" />
+
     </application>
 
 </manifest>

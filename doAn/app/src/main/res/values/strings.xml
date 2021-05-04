@@ -2,10 +2,10 @@
     <string name="app_name">QuanLyVanChuyen</string>
     <string-array name="donVi">
         <item>Chọn đơn vị</item>
-        <item>Mét khối</item>
+        <item>m3</item>
         <item>Tấn</item>
         <item>Bao</item>
         <item>Viên</item>
     </string-array>
-    >>>>>>> main
+
 </resources>

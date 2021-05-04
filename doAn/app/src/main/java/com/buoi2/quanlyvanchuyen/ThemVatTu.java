@@ -117,8 +117,6 @@ public class ThemVatTu extends AppCompatActivity {
     }
 
     private void thoatActivity(){
-        Intent intent = new Intent(this, DanhSachVatTu.class);
-        startActivity(intent);
         finish();
     }
 
