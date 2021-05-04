@@ -5,23 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ThongKeVatTuDungNhieu">
+    tools:context=".ThongKeVatTuDoanhThuCao">
 
     <TableLayout
-        android:id="@+id/tablelayout_ThongKeVTDN"
+        android:id="@+id/tablelayout_ThongKeVTDTC"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*">
         <TableRow
-            android:id="@+id/tableRow0_ThongKeVTDN"
+            android:id="@+id/tableRow0_ThongKeVTDTC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Mã vật tư"
+                android:text="MaVT"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:background="#C6C2C2"
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Tên vật tư"
+                android:text="TenVT"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:layout_weight="1"
@@ -41,7 +41,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Số công trình"
+                android:text="ĐVT"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:background="#C6C2C2"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Đơn giá"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:background="#C6C2C2"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="SL"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:background="#C6C2C2"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Thành tiền"
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:textSize="17dp"

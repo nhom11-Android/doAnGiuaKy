@@ -5,217 +5,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center|top"
     tools:context=".ThongKeCongTrinh">
-    <TextView
-        android:layout_width="match_parent"
+
+    <TableLayout
+        android:id="@+id/tableLayout1_ThongKeCT"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Thống kê vật tư dùng nhiều"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="@drawable/borderradius"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        >
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:id="@+id/tableRow1_ThongKeCT"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vật tư: "
-            android:background="@drawable/border"
-            android:textSize="16dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginRight="20dp"
-            android:padding="5dp"/>
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:backgroundTint="#FF9800"
-            android:text="Thêm"/>
-    </LinearLayout>
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vật tư: "
+                android:background="@drawable/border"
+                android:textSize="17dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginRight="20dp"
+                android:padding="5dp"/>
+            <Spinner
+                android:id="@+id/danhSachTenVatTuSp_ThongKeCT"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/border"
+                />
+
+        </TableRow>
+    </TableLayout>
     <Button
         android:layout_gravity="center"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:backgroundTint="#FF9800"
         android:layout_marginBottom="10dp"
-        android:text="Kết quả"/>
+        android:text="Kết quả"
+        android:onClick="thongKeCT"/>
     <TableLayout
+        android:id="@+id/tableLayout2_ThongKeCT"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableRow>
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+        <TableRow
+            android:id="@+id/tableRow2_ThongKeCT">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mã CT"
+                android:gravity="center"
+                android:text="MaCT"
                 android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#C6C2C2"
-                android:layout_weight="1"
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tên CT"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:layout_weight="1"
+                android:textSize="17dp"
                 android:background="#C6C2C2"
                 android:padding="5dp"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên VT"
-                android:layout_weight="1"
+                android:gravity="center"
+                android:text="TenCT"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="17dp"
                 android:background="#C6C2C2"
                 android:padding="5dp"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TenVT"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:background="#C6C2C2"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="DVT"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="17dp"
                 android:background="#C6C2C2"
-                android:layout_weight="1"
                 android:padding="5dp"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="SL"
                 android:textColor="@color/black"
-                android:textSize="16dp"
-                android:layout_weight="1"
+                android:textSize="17dp"
                 android:background="#C6C2C2"
                 android:padding="5dp"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="CL"
-                android:layout_weight="1"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="17dp"
+                android:background="#C6C2C2"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="NGAYVC"
+                android:textColor="@color/black"
+                android:textSize="17dp"
                 android:background="#C6C2C2"
                 android:padding="5dp"/>
         </TableRow>
-        <TableRow>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-        </TableRow>
+
     </TableLayout>
-    <Button
-        android:layout_marginTop="250dp"
-        android:layout_gravity="center"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:backgroundTint="#FF9800"
-        android:text="Thoát"/>
 </LinearLayout>

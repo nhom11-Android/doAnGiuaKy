@@ -71,6 +71,9 @@ public class DanhSachVatTu extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             case R.id.timKiem_ATB:
                 Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
                 callTimKiemDialog();
@@ -79,7 +82,6 @@ public class DanhSachVatTu extends AppCompatActivity {
             case R.id.them_ATB:
                 Intent intent = new Intent(this, ThemVatTu.class);
                 startActivity(intent);
-                finish();
                 break;
 
             case R.id.lamMoi_ATB:
@@ -275,7 +277,6 @@ public class DanhSachVatTu extends AppCompatActivity {
             intent.putExtra("donViTinh", donViTinh);
             intent.putExtra("giaVatTu", giaVatTu);
             startActivity(intent);
-            finish();
             return 0;
         }
         catch (Exception e) {

@@ -5,56 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center|top"
     tools:context=".ThongKePhieuVanChuyen">
-    <TextView
-        android:layout_width="match_parent"
+
+    <TableLayout
+        android:id="@+id/tableLayout1_ThongKePVC"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Thống kê vật tư dùng nhiều"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="@drawable/borderradius"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        >
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:stretchColumns="1">
+
+        <TableRow
+            android:id="@+id/tableRow1_ThongKePVC"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vật tư: "
-            android:background="@drawable/border"
-            android:textSize="16dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginRight="20dp"
-            android:padding="5dp"/>
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            />
-        <Button
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:backgroundTint="#FF9800"
-            android:text="Thêm"/>
-    </LinearLayout>
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vật tư: "
+                android:background="@drawable/border"
+                android:textSize="17dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginRight="20dp"
+                android:padding="5dp"/>
+            <Spinner
+                android:id="@+id/danhSachTenVatTuSp_ThongKePVC"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/border"
+                android:entries="@array/donVi"/>
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#FF9800"
+                android:text="Thêm"
+                android:onClick="themVatTuTimKiem"/>
+        </TableRow>
+    </TableLayout>
     <Button
         android:layout_gravity="center"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:backgroundTint="#FF9800"
         android:layout_marginBottom="10dp"
-        android:text="Kết quả"/>
+        android:text="Kết quả"
+        android:onClick="thongKePVC"/>
     <TableLayout
+        android:id="@+id/tableLayout2_ThongKePVC"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableRow>
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+        <TableRow
+            android:id="@+id/tableRow2_ThongKePVC">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +71,8 @@
                 android:textSize="16dp"
                 android:background="#C6C2C2"
                 android:layout_weight="1"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:gravity="center"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,7 +81,8 @@
                 android:textSize="16dp"
                 android:layout_weight="1"
                 android:background="#C6C2C2"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:gravity="center"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,67 +91,9 @@
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:background="#C6C2C2"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:gravity="center"/>
         </TableRow>
-        <TableRow>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-        </TableRow>
-        <TableRow>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:background="#ECE8E8"
-                android:padding="5dp"/>
-        </TableRow>
-    </TableLayout>
 
-    <Button
-        android:layout_width="116dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="250dp"
-        android:backgroundTint="#FF9800"
-        android:text="Thoát" />
+    </TableLayout>
 </LinearLayout>
