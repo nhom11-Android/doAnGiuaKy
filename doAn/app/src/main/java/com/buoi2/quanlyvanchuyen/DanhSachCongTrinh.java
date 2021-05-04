@@ -63,7 +63,7 @@ public class DanhSachCongTrinh extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CongTrinh congTrinh = data.get(position);
-                Toast.makeText(DanhSachCongTrinh.this, "Bạn chọn "+ congTrinh.getTenCongTrinh(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DanhSachCongTrinh.this, "Bạn chọn " + congTrinh.getTenCongTrinh(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -89,14 +89,14 @@ public class DanhSachCongTrinh extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                //todo: xử lý home
+                this.finish();
                 Toast.makeText(this, "quay trở lại", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.timKiem_ATB:
                 timKiemCongTrinh();
                 break;
             case R.id.them_ATB:
-                themCongTrinh() ;  // xử lý thêm công trình
+                themCongTrinh();  // xử lý thêm công trình
                 break;
             case R.id.lamMoi_ATB:
                 lamMoiDanhSach();
@@ -120,7 +120,7 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     SQLiteDatabase db = database.getWritableDatabase();
                                     String tenCongTrinhcantim = timKiemCongTrinhEdt.getText().toString().trim();
-                                    if(tenCongTrinhcantim.isEmpty()==false) {
+                                    if (tenCongTrinhcantim.isEmpty() == false) {
                                         //todo: xử lý tìm kiếm, có cần chuẩn hoá input tên công trình hay không?
                                         for (int i = 0; i < data.size(); i++) {
                                             if (data.get(i).getTenCongTrinh().equals(tenCongTrinhcantim) == false) {
@@ -179,18 +179,17 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                     SQLiteDatabase db = database.getWritableDatabase();
                                     String ten = tenCongTrinhEdt.getText().toString().trim();
                                     String dc = diaChiCongTrinhEdt.getText().toString().trim();
-                                    if(ten.isEmpty() || dc.isEmpty()){
+                                    if (ten.isEmpty() || dc.isEmpty()) {
                                         Toast.makeText(DanhSachCongTrinh.this, "Nhập đầy đủ thông tin để tạo mới!", Toast.LENGTH_SHORT).show();
                                         dialog.cancel();
-                                    }
-                                    else{
+                                    } else {
                                         CongTrinh temp = new CongTrinh(ten, dc);
-                                        if(CongTrinhDAO.themCongTrinh(temp, db)==0) { // thêm vào csdl thành công
+                                        if (CongTrinhDAO.themCongTrinh(temp, db) == 0) { // thêm vào csdl thành công
                                             data.add(temp); //thêm user mới vào listview
                                             adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
                                             Toast.makeText(getApplicationContext(), "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else Toast.makeText(getApplicationContext(), "Thêm công trình không thành công! Báo cáo lỗi cho nhà sản xuất để giải quyết!", Toast.LENGTH_SHORT).show();
+                                        } else
+                                            Toast.makeText(getApplicationContext(), "Thêm công trình không thành công! Báo cáo lỗi cho nhà sản xuất để giải quyết!", Toast.LENGTH_SHORT).show();
                                     }
 
                                 }

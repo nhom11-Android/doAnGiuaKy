@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyVanChuyen">
-        <activity android:name=".DanhSachVatTu"></activity>
+        <activity android:name=".DanhSachVatTu" />
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".Menu"></activity>
-        <activity android:name=".ThongKe"></activity>
+        <activity android:name=".Menu" />
+        <activity android:name=".ThongKe" />
         <activity android:name=".DanhSachCongTrinh">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChiTietCongTrinh" />
+        <activity android:name=".SuaPhieuVanChuyen" />
+
+
     </application>
 
 </manifest>

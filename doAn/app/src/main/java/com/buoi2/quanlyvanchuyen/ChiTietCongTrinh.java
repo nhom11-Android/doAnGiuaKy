@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,7 +52,6 @@ public class ChiTietCongTrinh extends AppCompatActivity {
         database = new CSDLVanChuyen(this);
         data = loadDanhSachPhieuVanChuyen();
         congTrinh = getCongTrinhFromDatabase(database);
-        // TODO: 5/3/2021 xử lý load danh sách các pvc 
         setControl();
         setEvent(); // load data trước khi gọi event
     }
@@ -112,7 +112,6 @@ public class ChiTietCongTrinh extends AppCompatActivity {
                 Toast.makeText(this, "quay trở lại 2", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.timKiem_ATB:
-                // TODO: 5/3/2021 xử lý tìm kiếm
                 timPhieuVanChuyen();
                 break;
             case R.id.them_ATB:
@@ -145,13 +144,22 @@ public class ChiTietCongTrinh extends AppCompatActivity {
                                     SQLiteDatabase db = database.getWritableDatabase();
                                     String ngayCanTim = ngayCanTimEdt.getText().toString().trim();
                                     if(ngayCanTim.isEmpty()==false) {
+                                        int tempSize = adapter.getCount();
+//                                        Log.d("find", "có "+String.valueOf(tempSize) + " phân từ");
+//                                        Log.d("find 1", ""+String.valueOf(data.get(0).getMaPhieuVanChuyen()) + " phân từ");
+//                                        data.remove(0);
+//                                        adapter.notifyDataSetChanged();
+//                                        Log.d("find 2", ""+String.valueOf(data.get(0).getMaPhieuVanChuyen()) + " phân từ");
+
                                         for(int i=0;i<data.size();i++){
                                             if(data.get(i).getNgayVanChuyen().equals(ngayCanTim)==false){
-                                                // TODO: 5/3/2021 check lại
+                                                System.out.println("mã bị xoá: " + data.get(i).getMaPhieuVanChuyen());
                                                 data.remove(i);
                                                 adapter.notifyDataSetChanged();
+                                                i--;
                                             }
                                         }
+
                                     }
                                 }
                             })

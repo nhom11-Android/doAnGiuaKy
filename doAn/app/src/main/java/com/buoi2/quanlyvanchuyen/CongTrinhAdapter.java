@@ -2,6 +2,7 @@ package com.buoi2.quanlyvanchuyen;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -9,15 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.buoi2.quanlyvanchuyen.DAO.CongTrinhDAO;
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
@@ -76,7 +80,18 @@ public class CongTrinhAdapter extends ArrayAdapter<CongTrinh> {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(parentContext, "xoá công trình", Toast.LENGTH_SHORT).show();
-                // TODO: 5/2/2021 xử lý xoá: Hỏi có đồng ý xoá hay không?
+//                if(xacNhanXoaDialog()==true) {
+//                    if (db == null) {
+//                        Toast.makeText(parentContext, "Mất kết nối đến cơ sở dữ liệu !", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        if (CongTrinhDAO.xoaCongTrinh(data.get(position).getMaCongTrinh(), db.getWritableDatabase()) == 0) {
+//                            Toast.makeText(parentContext, "Xoá thành công !", Toast.LENGTH_SHORT).show();
+//                            data.remove(position);
+//                            notifyDataSetChanged();
+//                        } else
+//                            Toast.makeText(parentContext, "Xoá thất bại !", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
                 if (db == null) {
                     Toast.makeText(parentContext, "Mất kết nối đến cơ sở dữ liệu !", Toast.LENGTH_SHORT).show();
                 } else {
@@ -91,4 +106,6 @@ public class CongTrinhAdapter extends ArrayAdapter<CongTrinh> {
         });
         return convertView;
     }
+
+
 }
