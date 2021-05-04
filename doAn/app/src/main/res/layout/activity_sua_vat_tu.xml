@@ -5,16 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ThemVatTu">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Vật tư mới"
-        android:background="#F8D15D"
-        android:textStyle="bold"
-        android:textSize="30sp" />
+    tools:context=".SuaVatTu">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,10 +13,25 @@
         android:layout_margin="20dp"
         android:background="#4B9A4E"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
+        android:paddingLeft="15dp"
         android:paddingTop="20dp"
         android:paddingRight="10dp">
 
+        <TextView
+            android:id="@+id/tenVatTuTv_SuaVatTu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Tên vật tư: " />
+
+        <TextView
+            android:id="@+id/donViTinhTv_SuaVatTu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="18dp"
+            android:text="Đơn vị tính: " />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,54 +41,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tên vật tư" />
-
-            <EditText
-                android:id="@+id/edtTenVatTu_themVatTu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:textSize="18dp"
                 android:text="Giá vật tư:" />
 
             <EditText
-                android:id="@+id/edtGiaVatTu_themVatTu"
+                android:id="@+id/giaVatTuEdt_SuaVatTu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="18dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Đơn vị: " />
-
-            <Spinner
-                android:id="@+id/spDonVi_themVatTu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/donVi" />
         </LinearLayout>
 
     </LinearLayout>
@@ -93,11 +62,10 @@
         android:orientation="horizontal"
         android:paddingLeft="50dp"
         android:paddingVertical="25dp"
-        android:paddingRight="50dp"
-        >
+        android:paddingRight="50dp">
 
         <Button
-            android:id="@+id/btnThoat_themVatTu"
+            android:id="@+id/btnThoat_SuaVatTu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -106,19 +74,19 @@
             android:text="Huỷ"
             android:textColor="@color/black"
             app:backgroundTint="#EAE2A2"
-            android:onClick="huyThemVatTu"/>
+            android:onClick="huyCapNhatVatTu"/>
 
         <Button
-            android:id="@+id/btnThem_themVatTu"
+            android:id="@+id/btnThem_SuaVatTu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:text="Thêm"
+            android:text="Lưu"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:backgroundTint="#EAE2A2"
-            android:onClick="xuLyThemVatTu"/>
+            android:onClick="xuLyCapNhatVatTu"/>
     </LinearLayout>
 </LinearLayout>
