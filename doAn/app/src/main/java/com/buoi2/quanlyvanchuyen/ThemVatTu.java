@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,7 +29,7 @@ public class ThemVatTu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_vat_tu);
         setActionBar();
-        setControl();
+        getId();
     }
 
     private void setActionBar() {
@@ -36,7 +38,19 @@ public class ThemVatTu extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setControl() {
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void getId() {
         themVatTuBtn = findViewById(R.id.btnThem_themVatTu);
         tenVatTuEdt = findViewById(R.id.edtTenVatTu_themVatTu);
         giaVatTuEdt = findViewById(R.id.edtGiaVatTu_themVatTu);

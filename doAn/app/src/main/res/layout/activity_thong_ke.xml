@@ -6,36 +6,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ThongKe">
-    <LinearLayout
-        android:layout_marginTop="20dp"
+    <TextView
+        android:id="@+id/vatTuDungNhieuTv_ThongKe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Vật tư vận chuyển nhiều nhất"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:background="@drawable/border"
-            android:padding="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Công trình theo loại vật tư"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:padding="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Phiếu vận chuyển theo vật tư"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:padding="10dp"/>
-    </LinearLayout>
+        android:text="Vật tư vận chuyển nhiều nhất"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:background="@drawable/border"
+        android:padding="5dp"
+        android:onClick="callThongKeVatTuDungNhieu"/>
+    <TextView
+        android:id="@+id/vatTuDoanhThuCaoTv_ThongKe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vật tư có doanh thu cao"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:background="@drawable/border"
+        android:padding="5dp"
+        android:onClick="callThongKeVatTuDoanhThuCao"/>
+    <TextView
+        android:id="@+id/congTrinhVatTuTv_ThongKe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Công trình theo loại vật tư"
+        android:background="@drawable/border"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:padding="5dp"
+        android:onClick="callThongKeCongTrinh"/>
+    <TextView
+        android:id="@+id/phieuVanChuyenVatTuTv_ThongKe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phiếu vận chuyển theo vật tư"
+        android:background="@drawable/border"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:padding="5dp"
+        android:onClick="callThongKePhieuVanChuyen"/>
+
 
 
 </LinearLayout>

@@ -1,10 +1,12 @@
 package com.buoi2.quanlyvanchuyen;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,6 +56,19 @@ public class SuaVatTu extends AppCompatActivity {
         actionBar.setTitle("Sửa Vật Tư");
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public void huyCapNhatVatTu(View view) {
         thoatActivity();

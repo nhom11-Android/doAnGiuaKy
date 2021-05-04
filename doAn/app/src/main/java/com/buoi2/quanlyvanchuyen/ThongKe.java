@@ -4,41 +4,67 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ThongKe extends AppCompatActivity {
-
+    TextView vatTuDungNhieuTv, vatTuDoanhThuCaoTv, congTrinhVatTuTv, phieuVanChuyenVatTuTv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_ke);
-        setControl();
+        setActionBar();
+        getId();
     }
 
-    private void setControl() {
-        // cài đặt tiêu đề cho action bar
-        ActionBar actionBar = (ActionBar) getSupportActionBar();
-        actionBar.setTitle("Thống Kê");
-        actionBar.setDisplayHomeAsUpEnabled(true);
-    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.them_capnhat_timkiem_bar, menu);
-//        return true;
-//    }
-//
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId())
+        {
             case android.R.id.home:
                 onBackPressed();
                 return true;
             default:break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Thống Kê");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void getId() {
+        /**
+         *   Ánh xạ các View
+         */
+        vatTuDungNhieuTv = findViewById(R.id.vatTuDungNhieuTv_ThongKe);
+        congTrinhVatTuTv = findViewById(R.id.congTrinhVatTuTv_ThongKe);
+        phieuVanChuyenVatTuTv = findViewById(R.id.phieuVanChuyenVatTuTv_ThongKe);
+    }
+
+    public void callThongKeVatTuDungNhieu(View view) {
+        Intent intent = new Intent(this, ThongKeVatTuDungNhieu.class);
+        startActivity(intent);
+    }
+
+    public void callThongKeCongTrinh(View view) {
+        Intent intent = new Intent(this, ThongKeCongTrinh.class);
+        startActivity(intent);
+    }
+
+    public void callThongKePhieuVanChuyen(View view) {
+        Intent intent = new Intent(this, ThongKePhieuVanChuyen.class);
+        startActivity(intent);
+    }
+
+    public void callThongKeVatTuDoanhThuCao(View view) {
+        Intent intent = new Intent(this, ThongKeVatTuDoanhThuCao.class);
+        startActivity(intent);
     }
 }
