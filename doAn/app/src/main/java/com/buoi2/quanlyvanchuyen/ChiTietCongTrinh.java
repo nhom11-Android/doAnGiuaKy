@@ -34,11 +34,12 @@ public class ChiTietCongTrinh extends AppCompatActivity {
     EditText tenCongTrinhEdt;
     EditText diaChiCongTrinhEdt;
     ImageButton suaChiTietBtn;
+    ImageButton inChiTietBtn;
     int maCongTrinhIntent;
     CSDLVanChuyen database;
-    CongTrinh congTrinh;
+    CongTrinh congTrinh; // cong trinh đang load
     ListView danhSachPhieuVanChuyenLv;
-    ArrayList<PhieuVanChuyen> data;
+    ArrayList<PhieuVanChuyen> data; // phiếu vận chuyển thuộc công trình
     PhieuVanChuyenAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,14 @@ public class ChiTietCongTrinh extends AppCompatActivity {
     private ArrayList<PhieuVanChuyen> loadDanhSachPhieuVanChuyen(){
         return PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(),maCongTrinhIntent);
     };
-
+    private void setControl() {
+        maCongTrinhEdt = findViewById(R.id.maCongTrinhEdt_CTCT);
+        tenCongTrinhEdt = findViewById(R.id.tenCongTrinhEdt_CTCT);
+        diaChiCongTrinhEdt = findViewById(R.id.diaChiCongTrinhEdt_CTCT);
+        suaChiTietBtn = findViewById(R.id.suaChiTietCongTrinhBtn_CTCT);
+        inChiTietBtn = findViewById(R.id.inChiTietCongTrinhBtn_CTCT);
+        danhSachPhieuVanChuyenLv = findViewById(R.id.danhSachPhieuVanChuyenLv_CTCT);
+    }
     private void setEvent() {
         // set data cho các editText hiển thị công trình đang chọn
         maCongTrinhEdt.setText(String.valueOf(congTrinh.getMaCongTrinh()));
@@ -191,12 +199,18 @@ public class ChiTietCongTrinh extends AppCompatActivity {
         };
     }
 
-    private void setControl() {
-        maCongTrinhEdt = findViewById(R.id.maCongTrinhEdt_CTCT);
-        tenCongTrinhEdt = findViewById(R.id.tenCongTrinhEdt_CTCT);
-        diaChiCongTrinhEdt = findViewById(R.id.diaChiCongTrinhEdt_CTCT);
-        suaChiTietBtn = findViewById(R.id.suaChiTietCongTrinhBtn_CTCT);
-        danhSachPhieuVanChuyenLv = findViewById(R.id.danhSachPhieuVanChuyenLv_CTCT);
-    }
 
+    public void inChiTietCongTrinh(View view) {
+        Intent  intent = new Intent(this,InCongTrinh.class);
+        intent.putExtra(CongTrinh.cotMaCongTrinh,String.valueOf(congTrinh.getMaCongTrinh()));
+        intent.putExtra(CongTrinh.cotTenCongTrinh,congTrinh.getTenCongTrinh());
+        intent.putExtra(CongTrinh.cotDiaChi,congTrinh.getDiaChi());
+        ArrayList<String> danhSachPheu = new ArrayList<>();
+        for(PhieuVanChuyen i:data){
+            danhSachPheu.add(String.valueOf(i.getMaPhieuVanChuyen()));
+            danhSachPheu.add(String.valueOf(i.getNgayVanChuyen()));
+        }
+        intent.putStringArrayListExtra("danhSachPhieuVanChuyen",danhSachPheu);
+        startActivity(intent);
+    }
 }
