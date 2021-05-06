@@ -6,17 +6,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center|top"
-    tools:context=".ThongKeCongTrinh">
+    tools:context=".ThongCongTrinh2VatTu">
 
     <TableLayout
-        android:id="@+id/tableLayout1_ThongKeCT"
+        android:id="@+id/tableLayout1_ThongKeCT2"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:stretchColumns="1">
 
         <TableRow
-            android:id="@+id/tableRow1_ThongKeCT"
+            android:id="@+id/tableRow0_ThongKeCT2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Vật tư 1: "
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+            <Spinner
+                android:id="@+id/danhSachTenVatTuSp1_ThongKeCT2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/border"
+                />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow1_ThongKeCT2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -26,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vật tư: "
+                android:text="Vật tư 2: "
                 android:background="@drawable/border"
                 android:textSize="17dp"
                 android:gravity="center"
@@ -34,7 +62,7 @@
                 android:layout_marginRight="20dp"
                 android:padding="5dp"/>
             <Spinner
-                android:id="@+id/danhSachTenVatTuSp_ThongKeCT"
+                android:id="@+id/danhSachTenVatTuSp2_ThongKeCT2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="20dp"
@@ -52,12 +80,12 @@
         android:text="Kết quả"
         android:onClick="thongKeCT"/>
     <TableLayout
-        android:id="@+id/tableLayout2_ThongKeCT"
+        android:id="@+id/tableLayout2_ThongKeCT2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*">
         <TableRow
-            android:id="@+id/tableRow2_ThongKeCT">
+            android:id="@+id/tableRow2_ThongKeCT2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +96,7 @@
                 android:background="#C6C2C2"
                 android:padding="5dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="TenCT"
@@ -80,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="TenVT"
+                android:text="TenVT1"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:background="#C6C2C2"
@@ -89,34 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="DVT"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:background="#C6C2C2"
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="SL"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:background="#C6C2C2"
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="CL"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:background="#C6C2C2"
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="NGAYVC"
+                android:text="TenVT2"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:background="#C6C2C2"

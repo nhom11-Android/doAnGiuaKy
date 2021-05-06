@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.buoi2.quanlyvanchuyen.bean.ChiTietPhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
+import com.buoi2.quanlyvanchuyen.bean.LoaiDonViTinh;
 import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.VatTu;
 
@@ -47,16 +48,15 @@ public class CSDLVanChuyen extends SQLiteOpenHelper {
                 VatTu.cotTenVatTu,
                 VatTu.cotDonViTinh,
                 VatTu.cotGia);
-//        String loaiDonViTinh = String.format("CREATE LOAIDONVITINH %s(%s INTEGER primary key autoincrement,%s TEXT)",
-//                LoaiDonViTinh.tenBang,
-//                LoaiDonViTinh.cotMaDonViTinh,
-//                LoaiDonViTinh.cotTenDonViTinh,
-//                );
+        String loaiDonViTinh = String.format("CREATE TABLE %s(%s INTEGER primary key autoincrement,%s TEXT)",
+                LoaiDonViTinh.tenBang,
+                LoaiDonViTinh.cotMaDonViTinh,
+                LoaiDonViTinh.cotTenDonViTinh);
         db.execSQL(congTrinh);
         db.execSQL(phieuVanChuyen);
         db.execSQL(chiTietPhieuVanChuyen);
         db.execSQL(vatTu);
-//        db.execSQL(loaiDonViTinh);
+        db.execSQL(loaiDonViTinh);
         Log.d("1111", "onCreate: khoi tao csdl");
     }
 

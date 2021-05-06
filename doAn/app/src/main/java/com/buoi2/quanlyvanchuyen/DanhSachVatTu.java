@@ -146,7 +146,7 @@ public class DanhSachVatTu extends AppCompatActivity {
         tableLayout.addView(tr0);
         System.out.println("DSVT");
         CSDLVanChuyen database = new CSDLVanChuyen(this);
-        ArrayList<VatTu> list = VatTuDAO.layDanhSachVatTu(database.getReadableDatabase());
+        ArrayList<VatTu> list = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
         System.out.println(list.size());
         if(list != null) {
             for (VatTu v : list) {
@@ -302,7 +302,6 @@ public class DanhSachVatTu extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 EditText timKiemDialogEdt = timKiemDialog.findViewById(R.id.timKiemEdt_dialog);
                                 String str = timKiemDialogEdt.getText().toString();
-                                System.out.println("Tìm kiếm: " + str);
                                 timKiemVatTu(str);
                             }
                         })
