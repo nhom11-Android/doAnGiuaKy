@@ -85,7 +85,7 @@ public class ThongKeCongTrinh extends AppCompatActivity {
 
     private void setDanhSachVatTu(){
         CSDLVanChuyen database = new CSDLVanChuyen(this);
-        this.danhSachVatTu = VatTuDAO.layDanhSachVatTu(database.getReadableDatabase());
+        this.danhSachVatTu = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
     }
 
     private ArrayAdapter taoArraySpinner(){
@@ -105,33 +105,6 @@ public class ThongKeCongTrinh extends AppCompatActivity {
         view.setTextSize(17);
         view.setTextColor(R.color.black);
         view.setBackgroundColor(0xECE8E8);
-        view.setPadding(5,5,5,5);
-        return 0;
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private int setTextView_tableLayout1(TextView view){
-        view.setText("Vật tư: ");
-        view.setTextSize(17);
-        view.setTextColor(R.color.black);
-        view.setBackgroundResource(R.drawable.border);
-        view.setPadding(5,5,5,5);
-        return 0;
-    }
-
-    private int setSpinner_tableLayout1(TextView view){
-        view.setHeight(TableRow.LayoutParams.MATCH_PARENT);
-        view.setWidth(TableRow.LayoutParams.WRAP_CONTENT);
-        view.setBackgroundResource(R.drawable.border);
-        view.setPadding(5,5,5,5);
-        return 0;
-    }
-
-    private int setButton_tableLayout1(TextView view){
-        view.setText("Thêm");
-        view.setHeight(40);
-        view.setWidth(80);
-        view.setBackgroundColor(0xFF9800);
         view.setPadding(5,5,5,5);
         return 0;
     }

@@ -154,7 +154,6 @@ public class VatTuDAO {
          */
         try {
             ArrayList<VatTu> ds = new ArrayList<>();
-            System.out.println("Lấy Danh sách");
             String query = "select * from VATTU";
             Cursor cursor = db.rawQuery(query, null);
             if(cursor.moveToFirst()){

@@ -47,50 +47,20 @@ public class ThongKeVatTuDungNhieu extends AppCompatActivity {
 //        CongTrinhDAO.themCongTrinh(new CongTrinh("CCCC", "3456"),database.getWritableDatabase());
 //        CongTrinhDAO.themCongTrinh(new CongTrinh("DDDD", "4567"),database.getWritableDatabase());
 
-//        ArrayList<CongTrinh> ds = CongTrinhDAO.layDanhSachCongTrinh(database.getReadableDatabase());
-//        for(CongTrinh c : ds){
-//            System.out.println("=========================================================");
-//            System.out.println("MACT: " + c.getMaCongTrinh());
-//            System.out.println("TENCT: " + c.getTenCongTrinh());
-//            System.out.println("DC: " + c.getDiaChi());
-//        }
-
 //        PhieuVanChuyenDAO.themPhieuVanChuyen(new PhieuVanChuyen("01/05/2021", 1), database.getWritableDatabase());
 //        PhieuVanChuyenDAO.themPhieuVanChuyen(new PhieuVanChuyen("02/05/2021", 3), database.getWritableDatabase());
 //        PhieuVanChuyenDAO.themPhieuVanChuyen(new PhieuVanChuyen("03/05/2021", 1), database.getWritableDatabase());
 //        PhieuVanChuyenDAO.themPhieuVanChuyen(new PhieuVanChuyen("03/05/2021", 2), database.getWritableDatabase());
 
-        ArrayList<PhieuVanChuyen> dsp1 = PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(), 1);
-        ArrayList<PhieuVanChuyen> dsp2 = PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(), 2);
-        ArrayList<PhieuVanChuyen> dsp3 = PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(), 3);
-//        for(PhieuVanChuyen p : dsp1){
-//            System.out.println("=========================================================");
-//            System.out.println("MAPVC: " + p.getMaPhieuVanChuyen());
-//            System.out.println("MACT: " + p.getMaCongTrinh());
-//            System.out.println("NGAY: " + p.getNgayVanChuyen());
-//        }
-//        for(PhieuVanChuyen p : dsp2){
-//            System.out.println("=========================================================");
-//            System.out.println("MAPVC: " + p.getMaPhieuVanChuyen());
-//            System.out.println("MACT: " + p.getMaCongTrinh());
-//            System.out.println("NGAY: " + p.getNgayVanChuyen());
-//        }
-//        for(PhieuVanChuyen p : dsp3){
-//            System.out.println("=========================================================");
-//            System.out.println("MAPVC: " + p.getMaPhieuVanChuyen());
-//            System.out.println("MACT: " + p.getMaCongTrinh());
-//            System.out.println("NGAY: " + p.getNgayVanChuyen());
-//        }
-
-//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(1,"0", 2, 5), database.getWritableDatabase());
 //        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(1,"1", 2, 5), database.getWritableDatabase());
 //        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(1,"2", 2, 5), database.getWritableDatabase());
-//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(2,"3", 2, 5), database.getWritableDatabase());
-//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(2,"0", 2, 5), database.getWritableDatabase());
-//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(3,"2", 2, 5), database.getWritableDatabase());
-//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(3,"0", 2, 5), database.getWritableDatabase());
-//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(4,"0", 2, 5), database.getWritableDatabase());
-//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(4,"3", 2, 5), database.getWritableDatabase());
+//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(1,"3", 2, 5), database.getWritableDatabase());
+//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(2,"4", 2, 5), database.getWritableDatabase());
+//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(2,"1", 2, 5), database.getWritableDatabase());
+//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(3,"3", 2, 5), database.getWritableDatabase());
+//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(3,"1", 2, 5), database.getWritableDatabase());
+//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(4,"1", 2, 5), database.getWritableDatabase());
+//        ChiTietPhieuVanChuyenDAO.themCTPVC(new ChiTietPhieuVanChuyen(4,"4", 2, 5), database.getWritableDatabase());
 
     }
 
@@ -202,7 +172,6 @@ public class ThongKeVatTuDungNhieu extends AppCompatActivity {
                 count = e.getValue();
                 maVatTu_max = e.getKey();
             }
-//            System.out.println(e.getKey() + " " + e.getValue());
         }
         setTableLayout(maVatTu_max, count);
         return 0;
