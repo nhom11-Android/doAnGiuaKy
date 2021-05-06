@@ -106,9 +106,16 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         Intent intent = new Intent(this,ThemVatTuPhieuVanChuyen.class);
         intent.putExtra("maPhieuVanChuyen",String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen()));
         startActivity(intent);
-        // reload 
+        // reload
     }
 
+    public void inChiTietPhieuVanChuyen(View view) {
+        Intent intent = new Intent(this,InChiTietPhieu.class);
+        intent.putExtra("maCongTrinh",String.valueOf(phieuVanChuyen.getMaCongTrinh()));
+        intent.putExtra("maPhieuVanChuyen",String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen()));
+        intent.putExtra("ngayVanChuyen",phieuVanChuyen.getNgayVanChuyen());
+        startActivity(intent);
+    }
 
 
 //    public void themVatTuVaoPhieu(int maPhieuVanChuyen) {

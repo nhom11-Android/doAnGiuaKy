@@ -95,6 +95,27 @@ public class VatTuDAO {
         cursor.moveToNext();
         return cursor.getString(0);
     };
+    public static VatTu layVatTuTheoMaVatTu(String maVatTu, SQLiteDatabase db){
+
+        String selection = VatTu.cotMaVatTu+" = ?";
+        String[] selectionArgs = {maVatTu};
+        Cursor cursor = db.query(
+                VatTu.tenBang,
+                null ,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        cursor.moveToNext();
+        String mvt = cursor.getString(cursor.getColumnIndex(VatTu.cotMaVatTu));
+        int gia = cursor.getInt(cursor.getColumnIndex(VatTu.cotGia));
+        String tvt = cursor.getString(cursor.getColumnIndex(VatTu.cotTenVatTu));
+        String dvt = cursor.getString(cursor.getColumnIndex(VatTu.cotDonViTinh));
+        VatTu temp = new VatTu(mvt,tvt,dvt,gia);
+        return temp;
+    };
     public static ArrayList<VatTu> danhSachVatTu(SQLiteDatabase db){
         ArrayList<VatTu> ds = new ArrayList<>();
         String[] projection = { // những cột muốn lấy
