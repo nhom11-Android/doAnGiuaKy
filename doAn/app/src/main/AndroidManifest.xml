@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyVanChuyen">
-        <activity android:name=".TestOnly">
-
-        </activity>
+        <activity android:name=".ThongCongTrinh2VatTu"></activity>
+        <activity android:name=".TestOnly"></activity>
         <activity android:name=".ThemVatTuPhieuVanChuyen" />
         <activity android:name=".DanhSachVatTu" />
         <activity android:name=".MainActivity">
@@ -23,9 +22,7 @@
         </activity>
         <activity android:name=".Menu" />
         <activity android:name=".ThongKe" />
-        <activity android:name=".DanhSachCongTrinh">
-
-        </activity>
+        <activity android:name=".DanhSachCongTrinh"></activity>
         <activity android:name=".ChiTietCongTrinh" />
         <activity android:name=".SuaPhieuVanChuyen" />
         <activity android:name=".SuaVatTu" />
@@ -34,7 +31,6 @@
         <activity android:name=".ThongKePhieuVanChuyen" />
         <activity android:name=".ThongKeVatTuDoanhThuCao" />
         <activity android:name=".ThongKeVatTuDungNhieu" />
-
     </application>
 
 </manifest>
