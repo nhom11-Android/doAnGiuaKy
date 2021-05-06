@@ -65,22 +65,22 @@ public class Menu extends AppCompatActivity {
                 Handler h = new Handler();
                 h.postDelayed(r, 1000);
 
-                if(btnXem_CT.isSelected()==true){
-                    btnXem_CT.setSelected(false);
-                }else if(btnXem_CT.isSelected()==false){
-                    btnXem_CT.setSelected(true);
-                }
+//                if(btnXem_CT.isSelected()==true){
+//                    btnXem_CT.setSelected(false);
+//                }else if(btnXem_CT.isSelected()==false){
+//                    btnXem_CT.setSelected(true);
+//                }
 
             }
         });
         btnXem_VT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnXem_VT.isSelected()==true){
-                    btnXem_VT.setSelected(false);
-                }else if(btnXem_VT.isSelected()==false){
-                    btnXem_VT.setSelected(true);
-                }
+//                if(btnXem_VT.isSelected()==true){
+//                    btnXem_VT.setSelected(false);
+//                }else if(btnXem_VT.isSelected()==false){
+//                    btnXem_VT.setSelected(true);
+//                }
                 Intent intent= new Intent(Menu.this, DanhSachVatTu.class);
                 startActivity(intent);
             }
@@ -88,11 +88,11 @@ public class Menu extends AppCompatActivity {
         btnXem_TK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnXem_TK.isSelected()==true){
-                    btnXem_TK.setSelected(false);
-                }else if(btnXem_TK.isSelected()==false){
-                    btnXem_TK.setSelected(true);
-                }
+//                if(btnXem_TK.isSelected()==true){
+//                    btnXem_TK.setSelected(false);
+//                }else if(btnXem_TK.isSelected()==false){
+//                    btnXem_TK.setSelected(true);
+//                }
                 Intent intent= new Intent(Menu.this, ThongKe.class);
                 startActivity(intent);
             }
