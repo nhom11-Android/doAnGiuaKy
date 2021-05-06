@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ThongKe extends AppCompatActivity {
-    TextView vatTuDungNhieuTv, vatTuDoanhThuCaoTv, congTrinhVatTuTv, phieuVanChuyenVatTuTv;
+    TextView vatTuDungNhieuTv, vatTuDoanhThuCaoTv, congTrinhVatTuTv, congTrinh2LoaiVatTuTv, phieuVanChuyenVatTuTv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +65,11 @@ public class ThongKe extends AppCompatActivity {
 
     public void callThongKeVatTuDoanhThuCao(View view) {
         Intent intent = new Intent(this, ThongKeVatTuDoanhThuCao.class);
+        startActivity(intent);
+    }
+
+    public void callThongKeCongTrinh2LoaiVT(View view) {
+        Intent intent = new Intent(this, ThongCongTrinh2VatTu.class);
         startActivity(intent);
     }
 }

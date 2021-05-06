@@ -66,15 +66,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Đơn vị: " />
+                android:text="Đơn vị tính:" />
 
             <Spinner
                 android:id="@+id/spDonVi_themVatTu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:entries="@array/donVi" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/add_circle_outline_vector"
+                android:backgroundTint="#00FFFFFF"
+                android:onClick="themLoaiDonViTinh"/>
+
         </LinearLayout>
 
     </LinearLayout>

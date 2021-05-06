@@ -87,7 +87,7 @@ public class ThongKePhieuVanChuyen extends AppCompatActivity {
 
     private void setDanhSachVatTu(){
         CSDLVanChuyen database = new CSDLVanChuyen(this);
-        this.danhSachVatTu = VatTuDAO.layDanhSachVatTu(database.getReadableDatabase());
+        this.danhSachVatTu = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
     }
 
     private ArrayAdapter taoArraySpinner(){
@@ -107,37 +107,6 @@ public class ThongKePhieuVanChuyen extends AppCompatActivity {
         view.setTextSize(17);
         view.setTextColor(R.color.black);
         view.setBackgroundColor(0xECE8E8);
-        view.setPadding(5,5,5,5);
-        return 0;
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private int setTextView_tableLayout1(TextView view){
-        view.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-        view.setText("Vật tư:");
-        view.setTextSize(17);
-        view.setTextColor(R.color.black);
-        view.setBackgroundResource(R.drawable.border);
-        view.setPadding(5,5,5,5);
-        return 0;
-    }
-
-    private int setSpinner_tableLayout1(Spinner view){
-        view.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.MATCH_PARENT));
-        view.setBackgroundResource(R.drawable.border);
-        view.setPadding(5,5,5,5);
-        ArrayAdapter<String> adapter = taoArraySpinner();
-        view.setAdapter(adapter);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            view.setId(View.generateViewId());
-        }
-        return 0;
-    }
-
-    private int setButton_tableLayout1(Button view){
-        view.setText("Thêm");
-        view.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setWidth(80);
         view.setPadding(5,5,5,5);
         return 0;
     }
@@ -173,25 +142,6 @@ public class ThongKePhieuVanChuyen extends AppCompatActivity {
 //        tableRow.setClickable(true);
         System.out.println(tableRow.getId());
         return tableRow;
-    }
-
-    public void themVatTuTimKiem(View view) {
-        TextView textView = new TextView(this);
-        Spinner spinner = new Spinner(this);
-        Button button = new Button(this);
-
-        setTextView_tableLayout1(textView);
-        setSpinner_tableLayout1(spinner);
-        setButton_tableLayout1(button);
-
-        TableRow tableRow = new TableRow(this);
-        tableRow.addView(textView);
-        tableRow.addView(spinner);
-        tableRow.addView(button);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            tableRow.setId(View.generateViewId());
-        }
-        tableLayout1.addView(tableRow);
     }
 
     public int thongKePVC(View view) {

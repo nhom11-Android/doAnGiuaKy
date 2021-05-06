@@ -37,6 +37,16 @@
         android:padding="5dp"
         android:onClick="callThongKeCongTrinh"/>
     <TextView
+        android:id="@+id/congTrinh2LoaiVatTu_ThongKe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Công trình theo 2 loại vật tư"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:background="@drawable/border"
+        android:padding="5dp"
+        android:onClick="callThongKeCongTrinh2LoaiVT"/>
+    <TextView
         android:id="@+id/phieuVanChuyenVatTuTv_ThongKe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
