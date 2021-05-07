@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyVanChuyen">
+        <activity android:name=".ThongCongTrinh2VatTu" />
         <activity android:name=".TestOnly">
 
         </activity>
