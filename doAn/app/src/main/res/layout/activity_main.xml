@@ -6,28 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F3F6A0">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Quản lý công trình"
-        android:textSize="50dp"
-        android:gravity="center"
-        />
     <ImageView
         android:id="@+id/logoImgView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:src="@drawable/logo"
         android:clickable="true"
-        />
+        android:src="@drawable/logo" />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="Thực hiện bởi nhóm 11\nCopyright @2021"
         android:gravity="center|bottom"
         android:paddingBottom="20dp"

@@ -6,23 +6,27 @@
 
     <TextView
         android:id="@+id/ngayVanChuyenTv_CTLV"
-        android:layout_gravity="fill_horizontal"
+        android:layout_height="wrap_content"
         android:layout_row="0"
+        android:layout_rowSpan="2"
+        android:layout_gravity="fill_horizontal|center"
         android:textSize="20sp"
-        android:textStyle="" />
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/chiTietPhieuVanChuyenBtn_CTLV"
         android:layout_row="0"
-        android:src="@drawable/details_vector"
-        android:backgroundTint="@color/black"
-        android:contentDescription="chi tiết phiếu vận chuyển"/>
+        android:layout_column="1"
+        android:backgroundTint="@color/white"
+        android:contentDescription="chi tiết phiếu vận chuyển"
+        android:src="@drawable/details_vector" />
+
     <ImageButton
         android:id="@+id/xoaPhieuVanChuyenBtn_CTLV"
         android:layout_row="1"
         android:layout_column="1"
-        android:src="@drawable/delete_vector"
-        android:backgroundTint="@color/black"
-        android:contentDescription="xoá phiếu vận chuyển"/>
+        android:backgroundTint="@color/white"
+        android:contentDescription="xoá phiếu vận chuyển"
+        android:src="@drawable/delete_vector" />
 
 </GridLayout>

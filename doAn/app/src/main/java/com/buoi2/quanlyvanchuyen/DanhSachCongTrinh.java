@@ -90,7 +90,6 @@ public class DanhSachCongTrinh extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
-                Toast.makeText(this, "quay trở lại", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.timKiem_ATB:
                 timKiemCongTrinh();
