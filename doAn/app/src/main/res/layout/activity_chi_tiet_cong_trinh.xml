@@ -54,6 +54,7 @@
         android:onClick="inChiTietCongTrinh"
         android:layout_row="3"
         android:layout_column="2"
+        android:backgroundTint="@color/white"
         android:src="@drawable/print_vector"/>
 
     <ImageButton
@@ -61,6 +62,7 @@
         android:layout_row="3"
         android:layout_column="3"
         android:src="@drawable/edit_vector"
+        android:backgroundTint="@color/white"
         android:tag="non-edit" />
 
 

@@ -24,11 +24,15 @@ import com.buoi2.quanlyvanchuyen.bean.PhieuVanChuyen;
 import com.buoi2.quanlyvanchuyen.bean.VatTu;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class InChiTietPhieu extends AppCompatActivity {
     TextView maCongTrinhTv,tenCongTrinhTv,
-    diachiTv,maPhieuVanChuyenTv,ngayVanChuyenTv,tongTienTv;
+    diachiTv,maPhieuVanChuyenTv,ngayVanChuyenTv,tongTienTv,ngayInTv;
     EditText daiDienEdt,nguoiLapEdt;
     TableLayout danhSachVatTuTbl;
     ImageButton kiemTraInBtn;
@@ -64,7 +68,7 @@ public class InChiTietPhieu extends AppCompatActivity {
         for(ChiTietPhieuVanChuyen i:danhSachVatTu){
             VatTu vattu = VatTuDAO.layVatTuTheoMaVatTu(i.getMaVatTu(),database.getReadableDatabase());
             TableRow tableRow = new TableRow(this);
-            TextView tenVt = new TextView(this);tenVt. 
+            TextView tenVt = new TextView(this);tenVt.setGravity(Gravity.CENTER);
             tenVt.setText(String.valueOf(vattu.getTenVatTu()));
             TextView donVi = new TextView(this);
             donVi.setText(vattu.getDonViTinh());
@@ -87,6 +91,8 @@ public class InChiTietPhieu extends AppCompatActivity {
             danhSachVatTuTbl.addView(tableRow);
         }
         tongTienTv.setText(String.valueOf(tongTien));
+        int[] ngay = myHelp.MySuperFunc.getDateInInteger();
+        ngayInTv.setText(String.format("TPHCM,ngày %d tháng %d năm %d",ngay[0],ngay[1],ngay[2]));
 
     }
 
@@ -101,6 +107,7 @@ public class InChiTietPhieu extends AppCompatActivity {
         nguoiLapEdt = findViewById(R.id.nguoiLapEdt_ICTP);
         danhSachVatTuTbl = findViewById(R.id.bangChiTietVatTuTb_ICTP);
         kiemTraInBtn = findViewById(R.id.kiemTraInBtn_ICTP);
+        ngayInTv = findViewById(R.id.ngayInTv_ICTP);
     }
 
     public void kiemTraChuKy(View view) {
