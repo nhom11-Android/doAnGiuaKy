@@ -55,24 +55,11 @@ public class Menu extends AppCompatActivity {
         btnXem_CT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Runnable r = new Runnable() {
-                    @Override
-                    public void run(){
-                        Intent intent= new Intent(Menu.this, DanhSachCongTrinh.class);
-                        startActivity(intent);
-                    }
-                };
-                Handler h = new Handler();
-                h.postDelayed(r, 1000);
-
-//                if(btnXem_CT.isSelected()==true){
-//                    btnXem_CT.setSelected(false);
-//                }else if(btnXem_CT.isSelected()==false){
-//                    btnXem_CT.setSelected(true);
-//                }
-
+                Intent intent= new Intent(Menu.this, DanhSachCongTrinh.class);
+                startActivity(intent);
             }
         });
+
         btnXem_VT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +102,7 @@ public class Menu extends AppCompatActivity {
 
         // cài đặt tiêu đề cho action bar
         ActionBar actionBar = (ActionBar) getSupportActionBar();
-        actionBar.setTitle("Quản lý vận chuyển");
+        actionBar.hide();
 //        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

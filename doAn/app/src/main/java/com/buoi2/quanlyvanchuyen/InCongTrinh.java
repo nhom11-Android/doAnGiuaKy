@@ -26,7 +26,7 @@ public class InCongTrinh extends AppCompatActivity {
     String maCongTrinh,tenCongTrinh, diaChiCongTrinh;
     ArrayList<String> danhSachPhieuVanChuyen;
     //view mapping
-    TextView maCongTrinhTv,tenCongTrinhTv,diaChiCongTrinhTv,tongSoPVCTv;
+    TextView maCongTrinhTv,tenCongTrinhTv,diaChiCongTrinhTv,tongSoPVCTv,ngayInTv;
     EditText nguoiLapEdt;
     TableLayout bangPvcTbL;
     @Override
@@ -73,6 +73,8 @@ public class InCongTrinh extends AppCompatActivity {
             bangPvcTbL.addView(tableRow);
 
         }
+        int[] ngay = myHelp.MySuperFunc.getDateInInteger();
+        ngayInTv.setText(String.format("TPHCM,ngày %d tháng %d năm %d",ngay[0],ngay[1],ngay[2]));
     }
 
     private void setControl() {
@@ -82,6 +84,7 @@ public class InCongTrinh extends AppCompatActivity {
         tongSoPVCTv = findViewById(R.id.tongSoPVC_ICT);
         nguoiLapEdt = findViewById(R.id.nguoiLapEdt_ICT);
         bangPvcTbL = findViewById(R.id.tableLayoyt_ICT);
+        ngayInTv = findViewById(R.id.ngayInTv_ICT);
     }
 
     public void kiemTraChuKy(View view) {

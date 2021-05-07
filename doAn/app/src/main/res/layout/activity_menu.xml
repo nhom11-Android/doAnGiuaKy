@@ -4,57 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#F4E17D"
     android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
     tools:context=".Menu">
 
-    <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="300dp"
-        android:orientation="vertical"
-        android:gravity="top|center"
-        android:background="#FFE0B2">
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+        android:background="@drawable/half_corner"
+        android:drawableBottom="@drawable/fork_lift_64px"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:text="Quản lý vận chuyển"
+        android:textColor="@color/black"
+        android:textSize="40dp" />
 
-        <Button
-            android:id="@+id/btnXem_CT"
-            android:layout_marginTop="50dp"
-            android:layout_width="150dp"
-            android:layout_height="55dp"
-            android:textSize="17dp"
-            android:text="Công trình"
-            android:backgroundTint="@color/btn_background_color"
-            android:textColor="@color/white"
-            />
+    <android.widget.Button
+        android:id="@+id/btnXem_CT"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/menu_custom_button_effect"
+        android:drawableRight="@drawable/building_48px"
+        android:paddingRight="30dp"
+        android:text="Công trình"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/btnXem_VT"
-            android:layout_marginTop="20dp"
-            android:layout_width="150dp"
-            android:layout_height="55dp"
-            android:textSize="17dp"
-            android:text="Vật tư"
-            android:backgroundTint="@color/btn_background_color"
-            android:textColor="@color/white"/>
+    <android.widget.Button
+        android:id="@+id/btnXem_VT"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/menu_custom_button_effect"
+        android:drawableRight="@drawable/brick_wall_48px"
+        android:paddingRight="30dp"
+        android:text="Vật tư"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/btnXem_TK"
-            android:layout_marginTop="20dp"
-            android:layout_width="150dp"
-            android:layout_height="55dp"
-            android:textSize="17dp"
-            android:text="Thống kê"
-            android:backgroundTint="@color/btn_background_color"
-            android:textColor="@color/white"/>
-    </LinearLayout>
+    <android.widget.Button
+        android:id="@+id/btnXem_TK"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/menu_custom_button_effect"
+        android:drawableRight="@drawable/statistics_48px"
+        android:paddingRight="30dp"
+        android:text="Thống kê"
+        android:textSize="25sp" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnThoat_menu"
-        android:layout_marginTop="80dp"
-        android:padding="5dp"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/custom_btn_thoat"
-        android:text="Thoát"/>
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/menu_custom_button_effect"
+        android:drawableRight="@drawable/shutdown_48px"
+        android:paddingRight="30dp"
+        android:text="Thoát"
+        android:textSize="25sp" />
 
 
 </LinearLayout>

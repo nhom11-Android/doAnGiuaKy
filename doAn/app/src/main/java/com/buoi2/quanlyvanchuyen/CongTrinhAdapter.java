@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.buoi2.quanlyvanchuyen.DAO.CongTrinhDAO;
+import com.buoi2.quanlyvanchuyen.DAO.PhieuVanChuyenDAO;
 import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -92,16 +93,41 @@ public class CongTrinhAdapter extends ArrayAdapter<CongTrinh> {
 //                            Toast.makeText(parentContext, "Xoá thất bại !", Toast.LENGTH_SHORT).show();
 //                    }
 //                }
-                if (db == null) {
-                    Toast.makeText(parentContext, "Mất kết nối đến cơ sở dữ liệu !", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (CongTrinhDAO.xoaCongTrinh(data.get(position).getMaCongTrinh(), db.getWritableDatabase()) == 0) {
-                        Toast.makeText(parentContext, "Xoá thành công !", Toast.LENGTH_SHORT).show();
-                        data.remove(position);
-                        notifyDataSetChanged();
-                    } else
-                        Toast.makeText(parentContext, "Xoá thất bại !", Toast.LENGTH_SHORT).show();
-                }
+                LayoutInflater layoutInflater = LayoutInflater.from(parentContext);
+                View canhBaoDialog = layoutInflater.inflate(R.layout.canh_bao_dialog, null);
+                MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(parentContext);
+                alertDialogBuilder.setView(canhBaoDialog);
+                TextView tenCanhBaoTv = canhBaoDialog.findViewById(R.id.tenCanhBaoTv_dialog);
+                TextView canhBaoTv = canhBaoDialog.findViewById(R.id.canhBaoTv_dialog);
+                tenCanhBaoTv.setText("Cảnh báo xoá !!!");
+                canhBaoTv.setText("Bạn chắc chưa ?");
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("Xoá",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if (db == null) {
+                                            Toast.makeText(parentContext, "Mất kết nối đến cơ sở dữ liệu !", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            if (CongTrinhDAO.xoaCongTrinh(data.get(position).getMaCongTrinh(), db.getWritableDatabase()) == 0) {
+                                                Toast.makeText(parentContext, "Xoá thành công !", Toast.LENGTH_SHORT).show();
+                                                data.remove(position);
+                                                notifyDataSetChanged();
+                                            } else
+                                                Toast.makeText(parentContext, "Xoá thất bại !", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                })
+                        .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
+                alertDialog.show();//show diaglog
             }
         });
         return convertView;

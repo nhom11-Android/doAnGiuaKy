@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 };
                 Handler h = new Handler();
-                h.postDelayed(r, 3000);
+                h.postDelayed(r, 1000);
                 xoay= AnimationUtils.loadAnimation(getApplicationContext(), R.anim.xoay);
                 logoImgView.startAnimation(xoay);
 //                overridePendingTransition(android.R.anim.cycle_interpolator, android.R.anim.cycle_interpolator);

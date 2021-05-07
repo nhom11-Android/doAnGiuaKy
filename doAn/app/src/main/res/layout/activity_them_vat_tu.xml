@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="507dp"
         android:layout_margin="20dp"
-        android:background="#4B9A4E"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingTop="20dp"
@@ -21,13 +20,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tên vật tư" />
+                android:text="Tên vật tư"
+                android:textSize="17sp"/>
 
             <EditText
                 android:id="@+id/edtTenVatTu_themVatTu"
@@ -35,18 +37,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textSize="17sp"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="17sp"
                 android:text="Giá vật tư:" />
 
             <EditText
@@ -55,29 +60,33 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textSize="17sp"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đơn vị tính:" />
+                android:text="Đơn vị tính:"
+                android:textSize="17sp"/>
 
             <Spinner
                 android:id="@+id/spDonVi_themVatTu"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:textSize="17sp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"/>
             <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/add_circle_outline_vector"
                 android:backgroundTint="#00FFFFFF"
                 android:onClick="themLoaiDonViTinh"/>
