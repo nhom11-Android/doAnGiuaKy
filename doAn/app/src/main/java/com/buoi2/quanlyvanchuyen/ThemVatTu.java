@@ -145,7 +145,7 @@ public class ThemVatTu extends AppCompatActivity {
 
         CSDLVanChuyen database = new CSDLVanChuyen(getBaseContext());
         SQLiteDatabase db = database.getReadableDatabase();
-        ArrayList<VatTu> ds = VatTuDAO.layDanhSachVatTu(db);
+        ArrayList<VatTu> ds = VatTuDAO.danhSachVatTu(db);
         //Kiểm tra vật tư đã có trong danh sách chưa
         for(VatTu v : ds){
             if(tenVatTu.equals(v.getTenVatTu())){
