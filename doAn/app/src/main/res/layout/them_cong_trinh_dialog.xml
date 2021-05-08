@@ -17,13 +17,15 @@
             android:background="@drawable/outline_button"
             android:gravity="center"
             android:padding="30dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mã công trình"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <EditText
@@ -31,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 android:tooltipText="Mã công trình" />
 
 
@@ -39,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="Tên công trình"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <EditText
@@ -46,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 android:tooltipText="Tên công trình" />
 
             <TextView
@@ -53,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="Địa chỉ công trình"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <EditText
@@ -60,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 android:tooltipText="Địa chỉ công trình" />
         </LinearLayout>
 

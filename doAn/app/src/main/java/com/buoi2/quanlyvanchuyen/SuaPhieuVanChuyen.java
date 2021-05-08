@@ -41,6 +41,7 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
     ImageButton themVatTuBtn;
     ArrayList<ChiTietPhieuVanChuyen> danhSachChiTiet;
     CSDLVanChuyen database = new CSDLVanChuyen(this);
+    ChiTietPhieuVanChuyenAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,12 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         setControl();
         setEvent();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("renew", "onRestart: ");
     }
 
     private void setControl() {
@@ -76,7 +83,7 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         danhSachChiTiet = ChiTietPhieuVanChuyenDAO.danhSachVatTuTheoPhieuVanChuyen(
                 phieuVanChuyen.getMaPhieuVanChuyen(),
                 database.getReadableDatabase());
-        ChiTietPhieuVanChuyenAdapter adapter =
+        adapter =
                 new ChiTietPhieuVanChuyenAdapter(
                         this,
                         R.layout.danh_sach_chi_tiet_pvc_custom_listview,
@@ -106,8 +113,6 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         Intent intent = new Intent(this,ThemVatTuPhieuVanChuyen.class);
         intent.putExtra("maPhieuVanChuyen",String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen()));
         startActivity(intent);
-        // reload
-//        this.
     }
 
     public void inChiTietPhieuVanChuyen(View view) {
@@ -116,6 +121,16 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         intent.putExtra("maPhieuVanChuyen",String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen()));
         intent.putExtra("ngayVanChuyen",phieuVanChuyen.getNgayVanChuyen());
         startActivity(intent);
+    }
+
+    public void lamMoiDanhSachVatTuCTP(View view) {
+        danhSachChiTiet = ChiTietPhieuVanChuyenDAO.danhSachVatTuTheoPhieuVanChuyen(
+                phieuVanChuyen.getMaPhieuVanChuyen(),
+                database.getReadableDatabase());
+        adapter = (ChiTietPhieuVanChuyenAdapter) danhSachVatTuLv.getAdapter();
+
+        adapter.data = danhSachChiTiet;
+        adapter.notifyDataSetChanged();
     }
 
 

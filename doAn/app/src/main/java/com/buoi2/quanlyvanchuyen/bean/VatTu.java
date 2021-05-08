@@ -63,6 +63,6 @@ public class VatTu {
     @NonNull
     @Override
     public String toString() {
-        return this.maVatTu  + " " +this.getTenVatTu() ;
+        return "(" + this.maVatTu  + ") " +this.getTenVatTu() ;
     }
 }

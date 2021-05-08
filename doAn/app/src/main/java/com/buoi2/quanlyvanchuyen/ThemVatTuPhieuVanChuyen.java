@@ -74,13 +74,26 @@ public class ThemVatTuPhieuVanChuyen extends AppCompatActivity {
     }
 
     public void themVatTuVaoPhieu(View view) {
-        int soLuong = Integer.parseInt(soLuongEdt.getText().toString());
-        int cuLy = Integer.parseInt(cuLyEdt.getText().toString());
-        VatTu vatTuThem = (VatTu) danhSachVatTuSpn.getItemAtPosition(danhSachVatTuSpn.getSelectedItemPosition());
-        ChiTietPhieuVanChuyen chiTietPhieuVanChuyen = new ChiTietPhieuVanChuyen(maPhieuVanChuyen,vatTuThem.getMaVatTu(),soLuong,cuLy);
-        if(ChiTietPhieuVanChuyenDAO.themCTPVC(chiTietPhieuVanChuyen,database.getWritableDatabase())==0){
-            Toast.makeText(this, "Thêm thành công !", Toast.LENGTH_SHORT).show();
-        };
+        String s = soLuongEdt.getText().toString();
+        String s1 = cuLyEdt.getText().toString();
+        System.out.println("so luong: " + s);
+        System.out.println("so luong: " + s1);
+        if(s.isEmpty() || s1.isEmpty()){
+            Toast.makeText(this, "Hãy nhập đầy đủ thông tin !", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            int soLuong = Integer.parseInt(s);
+            int cuLy = Integer.parseInt(s1);
+            VatTu vatTuThem = (VatTu) danhSachVatTuSpn.getItemAtPosition(danhSachVatTuSpn.getSelectedItemPosition());
+            ChiTietPhieuVanChuyen chiTietPhieuVanChuyen = new ChiTietPhieuVanChuyen(maPhieuVanChuyen,vatTuThem.getMaVatTu(),soLuong,cuLy);
+
+            System.out.println(cuLy);
+            if(ChiTietPhieuVanChuyenDAO.themCTPVC(chiTietPhieuVanChuyen,database.getWritableDatabase())==0){
+                Toast.makeText(this, "Thêm thành công !", Toast.LENGTH_SHORT).show();
+            };
+
+        }
+
         //clear các trường để nhập tiếp
         danhSachVatTuSpn.setSelection(0);
         soLuongEdt.setText("");
