@@ -60,15 +60,21 @@
     <ImageButton
         android:id="@+id/inChiTietPhieuBtn_SPVC"
         android:src="@drawable/print_vector"
-        android:layout_column="0"
+        android:layout_column="1"
         android:onClick="inChiTietPhieuVanChuyen"
         android:layout_row="3"
         />
     <ImageButton
+        android:id="@+id/lam_moiBtn_SPVC"
+        android:layout_row="3"
+        android:src="@drawable/lam_moi_vector"
+        android:onClick="lamMoiDanhSachVatTuCTP"
+        />
+    <ImageButton
         android:id="@+id/themVatTu_SPVC"
         android:layout_row="3"
-        android:layout_column="3"
-        android:src="@drawable/add_vector"
+
+        android:src="@drawable/add_vector_yellow"
         android:onClick="themVatTuChiTietPhieu"
         />
 
