@@ -5,41 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ThemVatTuPhieuVanChuyen"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chọn vật tư muốn thêm" />
+        android:text="Chọn vật tư muốn thêm"
+        android:textSize="17sp"/>
 
     <Spinner
         android:id="@+id/danhSachVatTuSpn_TVTCTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nhập só lượng:" />
+        android:text="Nhập só lượng:"
+        android:textSize="17sp"/>
 
     <EditText
         android:id="@+id/soLuongEdt_TVTCTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textSize="17sp"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nhập cư ly vận chuyển:" />
+        android:text="Nhập cư ly vận chuyển:"
+        android:textSize="17sp"/>
 
     <EditText
         android:id="@+id/cuLyEdt_TVTCTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textSize="17sp"
         android:inputType="number" />
 <Button
     android:id="@+id/themBtn_TVTCTP"

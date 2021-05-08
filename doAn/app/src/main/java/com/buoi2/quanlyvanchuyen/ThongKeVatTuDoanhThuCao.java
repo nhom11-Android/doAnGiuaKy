@@ -102,7 +102,7 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
     private int setTableLayout(String maVatTu, int tongSoLuong){
         CSDLVanChuyen database = new CSDLVanChuyen(this);
         SQLiteDatabase db = database.getReadableDatabase();
-        String sql = "SELECT * FROM VATTU WHERE maVatTu=" + maVatTu;
+        String sql = "SELECT * FROM VATTU WHERE maVatTu='" + maVatTu+"'";
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToNext()){
             TableRow tableRow = taoTableRow(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), tongSoLuong );

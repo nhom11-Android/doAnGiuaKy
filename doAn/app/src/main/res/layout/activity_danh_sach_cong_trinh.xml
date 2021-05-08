@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDF9F9"
     android:orientation="vertical"
-    tools:context=".DanhSachCongTrinh">
+    tools:context=".DanhSachCongTrinh"
+    >
     <ListView
         android:id="@+id/danhSachCongTrinhLv_DSCT"
         android:layout_width="match_parent"

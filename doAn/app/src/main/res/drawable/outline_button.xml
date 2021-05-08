@@ -8,10 +8,10 @@
 <!--                android:endColor="#f58800"-->
 <!--                android:type="radial" />-->
             <corners android:radius="20sp"/>
-            <solid android:color="#FFFFFF"/>
-            <stroke
-                android:width="2dp"
-                />
+            <solid android:color="#9FE4E4E4"/>
+<!--            <stroke-->
+<!--                android:width="2dp"-->
+<!--                />-->
         </shape>
     </item>
 </selector>

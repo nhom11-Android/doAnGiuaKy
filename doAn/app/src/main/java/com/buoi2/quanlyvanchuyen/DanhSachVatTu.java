@@ -3,6 +3,8 @@ package com.buoi2.quanlyvanchuyen;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,6 +39,7 @@ public class DanhSachVatTu extends AppCompatActivity {
     TableRow tr, tr0;
     TextView maVatTu, tenVatTu, donViTinh, gia;
     int chonHang = 0; //  chonHang id của hàng đã chọn trong table.
+    int index_table_row=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,8 +132,17 @@ public class DanhSachVatTu extends AppCompatActivity {
         tr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //đặt row ban nãy thành white
+                if(index_table_row != 0){
+                    TableRow childAt = (TableRow) tableLayout.getChildAt(index_table_row);
+                    childAt.setBackgroundColor(Color.WHITE);
+                }
                 chonHang = view.getId();
                 System.out.println("Chọn row: " + chonHang);
+                tableLayout.setBackgroundColor(Color.WHITE);
+                index_table_row =tableLayout.indexOfChild(view);
+                TableRow childAt = (TableRow) tableLayout.getChildAt(index_table_row);
+                childAt.setBackgroundColor(Color.YELLOW);
             }
         });
         System.out.println(tr.getId());

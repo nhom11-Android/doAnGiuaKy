@@ -5,73 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    >
+    android:padding="20dp">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/outline_button"
             android:gravity="center"
+            android:padding="30dp"
             android:orientation="vertical">
-            <LinearLayout
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã công trình"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/maCongTrinh_TCTdialog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/outline_button"
-                android:paddingHorizontal="20dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mã công trình"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    />
-                <EditText
-                    android:id="@+id/maCongTrinh_TCTdialog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:tooltipText="Mã công trình"
-                    android:textSize="25sp"
-                    />
-            </LinearLayout>
+                android:textSize="25sp"
+                android:tooltipText="Mã công trình" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên công trình"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
+
             <EditText
                 android:id="@+id/tenCongTrinh_TCTdialog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tooltipText="Tên công trình"
                 android:textSize="25sp"
-                />
+                android:tooltipText="Tên công trình" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Địa chỉ công trình"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/diaChiCongTrinh_TCTdialog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:tooltipText="Địa chỉ công trình"
                 android:textSize="25sp"
-                />
+                android:tooltipText="Địa chỉ công trình" />
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </LinearLayout>
