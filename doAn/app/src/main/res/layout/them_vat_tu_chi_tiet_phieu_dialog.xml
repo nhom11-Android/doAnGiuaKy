@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nhập cư ly vận chuyển:" />
+        android:text="Nhập cư ly vận chuyển (km):" />
 
     <EditText
         android:id="@+id/cuLyEdt_TVTCTPdialog"

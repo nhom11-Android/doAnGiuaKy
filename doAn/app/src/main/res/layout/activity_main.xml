@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#F3F6A0">
+    android:background="@drawable/bg_menu">
 
     <ImageView
         android:id="@+id/logoImgView"

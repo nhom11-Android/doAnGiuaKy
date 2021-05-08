@@ -59,7 +59,7 @@ public class InCongTrinh extends AppCompatActivity {
         maCongTrinhTv.setText(maCongTrinh);
         tenCongTrinhTv.setText(tenCongTrinh);
         diaChiCongTrinhTv.setText(diaChiCongTrinh);
-        tongSoPVCTv.setText(String.valueOf(danhSachPhieuVanChuyen.size()));
+        tongSoPVCTv.setText(String.valueOf(danhSachPhieuVanChuyen.size()/2));
         for(int i=0;i<danhSachPhieuVanChuyen.size();i+=2){
             TableRow  tableRow = new TableRow(this);
             TextView maPhieu = new TextView(this);maPhieu.setText(danhSachPhieuVanChuyen.get(i));

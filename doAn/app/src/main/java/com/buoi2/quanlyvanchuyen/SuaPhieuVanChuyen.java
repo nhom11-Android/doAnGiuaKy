@@ -107,6 +107,7 @@ public class SuaPhieuVanChuyen extends AppCompatActivity {
         intent.putExtra("maPhieuVanChuyen",String.valueOf(phieuVanChuyen.getMaPhieuVanChuyen()));
         startActivity(intent);
         // reload
+//        this.
     }
 
     public void inChiTietPhieuVanChuyen(View view) {

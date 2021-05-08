@@ -26,6 +26,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
+import myHelp.MySuperFunc;
+
 public class ThemVatTu extends AppCompatActivity {
     Button themVatTuBtn;
     EditText tenVatTuEdt, giaVatTuEdt;
@@ -151,11 +153,13 @@ public class ThemVatTu extends AppCompatActivity {
             if(tenVatTu.equals(v.getTenVatTu())){
                 Toast.makeText(this, "Vật tư \"" + tenVatTu + "\" đã có.", Toast.LENGTH_LONG).show();
                 return -1;
-
             }
         }
         //Thêm vật tư mới
-        VatTu vatTu = new VatTu(String.valueOf(ds.size() + 1), tenVatTu, donViTinh, giaVatTu);
+        // khởi tạo mã vật tư
+        String mvt = MySuperFunc.generateCodeRamdom();
+//        VatTu vatTu = new VatTu(String.valueOf(ds.size() + 1), tenVatTu, donViTinh, giaVatTu);
+        VatTu vatTu = new VatTu(mvt , tenVatTu, donViTinh, giaVatTu);
         int kiemTra = VatTuDAO.themVatTu(vatTu, database.getWritableDatabase());
         if(kiemTra == -1){
             Toast.makeText(this, "Lỗi! Vui lòng thử lại sau.", Toast.LENGTH_LONG).show();
