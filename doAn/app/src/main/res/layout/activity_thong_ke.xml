@@ -20,7 +20,7 @@
         android:id="@+id/vatTuDoanhThuCaoTv_ThongKe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vật tư có doanh thu cao"
+        android:text="Doanh Thu Vật Tư"
         android:textColor="@color/black"
         android:textSize="17dp"
         android:background="@drawable/border"

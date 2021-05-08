@@ -17,6 +17,8 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Map;
 
+import myHelp.MySuperFunc;
+
 public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
     TableLayout tableLayout;
     TableRow tableRow;
@@ -42,7 +44,7 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
 
     private void setActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Thống Kê Vật Tư Có Doanh Thu Cao");
+        actionBar.setTitle("Thống Kê Doanh Thu Vật Tư");
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
@@ -54,7 +56,7 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
         tableRow = findViewById(R.id.tableRow0_ThongKeVTDTC);
     }
 
-    private TableRow taoTableRow(String maVatTu, String tenVatTu, String donViTinh, int gia, int soLuong ){
+    private TableRow taoTableRow(String maVatTu, String tenVatTu, String donViTinh, int gia, int tong ){
         TableRow tableRow = new TableRow(this);
         TextView maVatTuTv = new TextView(this);
         TextView tenVatTuTv = new TextView(this);
@@ -62,7 +64,7 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
         TextView giaTv = new TextView(this);
         TextView soLuongTv = new TextView(this);
         TextView tongTv = new TextView(this);
-        Long tong = Long.valueOf(gia*soLuong);
+        int soLuong = (int) (tong/gia);
         // tạo Textview maVatTuTv
         maVatTuTv.setText(maVatTu);
         maVatTuTv.setGravity(1);
@@ -99,13 +101,37 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
         return tableRow;
     }
 
-    private int setTableLayout(String maVatTu, int tongSoLuong){
+    private Map<String,Integer> tinhThanhTien(Map<String,Integer> map){
+        Map<String, Integer> kq = new HashMap<String, Integer>();
+        try{
+            for (Map.Entry<String, Integer> e : map.entrySet()){
+                String maVatTu = e.getKey();
+                int gia = 0;
+                int tong = 0;
+                CSDLVanChuyen database = new CSDLVanChuyen(this);
+                SQLiteDatabase db = database.getReadableDatabase();
+                String sql = "SELECT * FROM VATTU WHERE maVatTu='" + maVatTu+"'";
+                Cursor cursor = db.rawQuery(sql, null);
+                if(cursor.moveToNext()){
+                    gia = cursor.getInt(3);
+                    tong = gia*e.getValue();
+                    kq.put(maVatTu, tong);
+                }
+            }
+            return kq;
+        }
+        catch(Exception e){
+            return kq;
+        }
+    }
+
+    private int setTableLayout(String maVatTu, int thanhTien){
         CSDLVanChuyen database = new CSDLVanChuyen(this);
         SQLiteDatabase db = database.getReadableDatabase();
         String sql = "SELECT * FROM VATTU WHERE maVatTu='" + maVatTu+"'";
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToNext()){
-            TableRow tableRow = taoTableRow(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), tongSoLuong );
+            TableRow tableRow = taoTableRow(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), thanhTien );
             tableLayout.addView(tableRow);
         }
         return 0;
@@ -119,7 +145,6 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
         CSDLVanChuyen database = new CSDLVanChuyen(this);
         SQLiteDatabase db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-
         Map<String, Integer> kq = new HashMap<String, Integer>();
         String maVatTu ="";
         int count;
@@ -142,8 +167,9 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
             }while(cursor.moveToNext());
         }
         db.close();
-
-        for (Map.Entry<String, Integer> e : kq.entrySet()){
+        Map<String, Integer> unsortedMap = tinhThanhTien(kq);
+        Map<String, Integer> sortedMap = MySuperFunc.sortMap(unsortedMap);
+        for (Map.Entry<String, Integer> e : sortedMap.entrySet()){
             System.out.println(e.getKey() + " " + e.getValue());
             setTableLayout(e.getKey(), e.getValue());
         }
