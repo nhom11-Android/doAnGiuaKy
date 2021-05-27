@@ -19,7 +19,7 @@ public class LoaiDonViTinhDAO {
         try {
             ContentValues values = new ContentValues();
             values.put("tenDonViTinh", donViTinh.getTenDonViTinh());
-            db.insert(donViTinh.tenBang, null, values);
+            db.insert(LoaiDonViTinh.tenBang, null, values);
             db.close();
             Log.d("insert don vi tinh", "themmDonViTinh: ");
             return 0;

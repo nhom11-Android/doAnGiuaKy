@@ -40,7 +40,7 @@ public class CongTrinhDAO {
             String xoaQuery = String.format("DELETE from %s where %s='%s'",
                     CongTrinh.tenBang,
                     CongTrinh.cotMaCongTrinh,
-                    String.valueOf(maCongTrinh));
+                    maCongTrinh);
             db.execSQL(xoaQuery);
             db.close();
             return 0;
@@ -88,8 +88,7 @@ public class CongTrinhDAO {
                 null
         );
         db.close();
-        if(truyVanCongTrinh.moveToNext()) return true;
-        else return false;
+        return truyVanCongTrinh.moveToNext();
     }
 
     /**

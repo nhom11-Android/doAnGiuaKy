@@ -113,5 +113,5 @@ public class ChiTietPhieuVanChuyenDAO {
             danhSachVatTuTheoPVC.add(temp);
         }
         return danhSachVatTuTheoPVC;
-    };
+    }
 }

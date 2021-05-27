@@ -90,7 +90,7 @@ public class ThemVatTuPhieuVanChuyen extends AppCompatActivity {
             System.out.println(cuLy);
             if(ChiTietPhieuVanChuyenDAO.themCTPVC(chiTietPhieuVanChuyen,database.getWritableDatabase())==0){
                 Toast.makeText(this, "Thêm thành công !", Toast.LENGTH_SHORT).show();
-            };
+            }
 
         }
 
