@@ -20,16 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ThongKeDoanhThuTheoThang">
+
+        </activity>
         <activity android:name=".ThongCongTrinh2VatTu" />
         <activity android:name=".TestOnly" />
-        <activity android:name=".ThemVatTuPhieuVanChuyen" />
-        <activity android:name=".DanhSachVatTu" />
-        <activity android:name=".MainActivity">
-
-        <activity android:name=".ThongKeDoanhThuTheoThang"/>
-
-        <activity android:name=".ThongCongTrinh2VatTu" />
-        <activity android:name=".TestOnly"></activity>
         <activity android:name=".ThemVatTuPhieuVanChuyen" />
         <activity android:name=".DanhSachVatTu" />
 

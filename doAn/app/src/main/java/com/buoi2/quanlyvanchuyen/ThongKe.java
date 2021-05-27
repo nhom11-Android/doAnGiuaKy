@@ -72,4 +72,9 @@ public class ThongKe extends AppCompatActivity {
         Intent intent = new Intent(this, ThongCongTrinh2VatTu.class);
         startActivity(intent);
     }
+
+    public void callDoanhThuTheoThang(View view) {
+        Intent intent = new Intent(this, ThongKeDoanhThuTheoThang.class);
+        startActivity(intent);
+    }
 }
