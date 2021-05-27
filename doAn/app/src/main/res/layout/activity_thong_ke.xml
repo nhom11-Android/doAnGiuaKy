@@ -56,6 +56,16 @@
         android:textSize="17dp"
         android:padding="5dp"
         android:onClick="callThongKePhieuVanChuyen"/>
+    <TextView
+        android:id="@+id/doanhThuTheoThang_ThongKe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Doanh thu theo tháng"
+        android:background="@drawable/border"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:padding="5dp"
+        android:onClick="callDoanhThuTheoThang"/>
 
 
 
