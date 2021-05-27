@@ -63,11 +63,6 @@ public class Menu extends AppCompatActivity {
         btnXem_VT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(btnXem_VT.isSelected()==true){
-//                    btnXem_VT.setSelected(false);
-//                }else if(btnXem_VT.isSelected()==false){
-//                    btnXem_VT.setSelected(true);
-//                }
                 Intent intent= new Intent(Menu.this, DanhSachVatTu.class);
                 startActivity(intent);
             }
@@ -75,11 +70,6 @@ public class Menu extends AppCompatActivity {
         btnXem_TK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(btnXem_TK.isSelected()==true){
-//                    btnXem_TK.setSelected(false);
-//                }else if(btnXem_TK.isSelected()==false){
-//                    btnXem_TK.setSelected(true);
-//                }
                 Intent intent= new Intent(Menu.this, ThongKe.class);
                 startActivity(intent);
             }
@@ -87,8 +77,6 @@ public class Menu extends AppCompatActivity {
         btnThoat_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Menu.this.finishAffinity();
-//                System.exit(0);
                 thoat_dialog.show();
             }
         });
