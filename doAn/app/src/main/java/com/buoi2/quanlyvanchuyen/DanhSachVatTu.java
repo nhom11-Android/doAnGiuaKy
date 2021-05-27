@@ -15,9 +15,11 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -28,7 +30,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.buoi2.quanlyvanchuyen.DAO.CongTrinhDAO;
 import com.buoi2.quanlyvanchuyen.DAO.VatTuDAO;
+import com.buoi2.quanlyvanchuyen.bean.CongTrinh;
 import com.buoi2.quanlyvanchuyen.bean.VatTu;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -36,32 +40,47 @@ import java.util.ArrayList;
 
 
 public class DanhSachVatTu extends AppCompatActivity {
-    TableLayout tableLayout;
-    TableRow tr, tr0;
-    TextView maVatTu, tenVatTu, donViTinh, gia;
-    int chonHang = 0; //  chonHang id của hàng đã chọn trong table.
-    int index_table_row=0;
+    ListView danhSachVatTuLv;
+    ArrayList<VatTu> data;
+    private VatTuAdapter adapter;
+    CSDLVanChuyen database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_sach_vat_tu);
-        setActionBar();
-        getId();
-        getDanhSachVatTu();
+        setControl();
+        setEvent();
+
     }
 
-    private void getId() {
-        /**
-         *   Ánh xạ các View
-         */
-        tableLayout = findViewById(R.id.tablelayout_DSVT);
-        tr0 = findViewById(R.id.tableRow0_DSVT);
-    }
-
-    private void setActionBar() {
+    private void setControl() {
+        danhSachVatTuLv = findViewById(R.id.danhSachVatTuLv_DSVT);
+        // cài đặt tiêu đề cho action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Danh Sách Vật Tư");
         actionBar.setDisplayHomeAsUpEnabled(true);
+        // khai báo csdl
+        database = new CSDLVanChuyen(this);
+        data = loadData();// load dữ liệu lên arraylist
+    }
+
+    private void setEvent() {
+        // set adapter lên listview
+        VatTuAdapter adapter = new VatTuAdapter(this, R.layout.cong_trinh_custom_listview, data);
+        this.adapter = adapter;
+        adapter.setDb(database); //set database cho adapter
+        danhSachVatTuLv.setAdapter(adapter);
+        danhSachVatTuLv.setClickable(true);
+        //set onclick listener cho listview
+        danhSachVatTuLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                VatTu vatTu = data.get(position);
+                Toast.makeText(DanhSachVatTu.this, "Bạn chọn " + vatTu.getTenVatTu(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -79,9 +98,8 @@ public class DanhSachVatTu extends AppCompatActivity {
                 return true;
             case R.id.timKiem_ATB:
                 Toast.makeText(this, "Tìm kiếm", Toast.LENGTH_SHORT).show();
-                callTimKiemDialog();
+                timKiemVatTu();
                 break;
-
             case R.id.them_ATB:
                 Intent intent = new Intent(this, ThemVatTu.class);
                 startActivity(intent);
@@ -89,264 +107,87 @@ public class DanhSachVatTu extends AppCompatActivity {
 
             case R.id.lamMoi_ATB:
                 Toast.makeText(this, "Làm mới", Toast.LENGTH_SHORT).show();
-                getDanhSachVatTu();
+                lamMoiDanhSach();
                 break;
             default:break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private TableRow taoTableRow(VatTu vatTu){
+    private ArrayList<VatTu> loadData() {
         /**
-         *   Tạo View TableRow
-         *   @param vatTu đối tượng cần tạo TableRow.
-         *   @return tr(TableRow) nếu thành công, -1 nếu thất bại
+         * load dữ liệu từ database
+         *
+         * @return arrayList công trình
          */
-        tr = new TableRow(this);
-        maVatTu = new TextView(this);
-        tenVatTu = new TextView(this);
-        donViTinh = new TextView(this);
-        gia = new TextView(this);
-
-        maVatTu.setText(vatTu.getMaVatTu());
-        maVatTu.setGravity(1);
-        maVatTu.setTextSize(17);
-        tenVatTu.setText(vatTu.getTenVatTu());
-        tenVatTu.setGravity(1);
-        tenVatTu.setTextSize(17);
-        donViTinh.setText(vatTu.getDonViTinh());
-        donViTinh.setGravity(1);
-        donViTinh.setTextSize(17);
-        gia.setText(String.valueOf(vatTu.getGia()));
-        gia.setGravity(1);
-        gia.setTextSize(17);
-
-        tr.addView(maVatTu);
-        tr.addView(tenVatTu);
-        tr.addView(donViTinh);
-        tr.addView(gia);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            tr.setId(View.generateViewId());
-        }
-        tr.setClickable(true);
-        tr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //đặt row ban nãy thành white
-                if(index_table_row != 0){
-                    TableRow childAt = (TableRow) tableLayout.getChildAt(index_table_row);
-                    childAt.setBackgroundColor(Color.WHITE);
-                }
-                chonHang = view.getId();
-                System.out.println("Chọn row: " + chonHang);
-                tableLayout.setBackgroundColor(Color.WHITE);
-                index_table_row =tableLayout.indexOfChild(view);
-                TableRow childAt = (TableRow) tableLayout.getChildAt(index_table_row);
-                childAt.setBackgroundColor(Color.YELLOW);
-            }
-        });
-        System.out.println(tr.getId());
-        return tr;
+        ArrayList<VatTu> danhSachVatTu = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
+        return danhSachVatTu;
     }
 
-    private int getDanhSachVatTu(){
+    private int lamMoiDanhSach() {
         /**
-         *   Lấy danh sách vật tư
-         *   @return 0 nếu thành công, -1 nếu thất bại
-         */
-        tableLayout.removeAllViews();
-        tableLayout.addView(tr0);
-        CSDLVanChuyen database = new CSDLVanChuyen(this);
-        ArrayList<VatTu> list = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
-        System.out.println(list.size());
-        if(list != null) {
-            for (VatTu v : list) {
-                tr = taoTableRow(v);
-                tableLayout.addView(tr);
-            }
-        }
-        else{
-            System.out.println("Danh sách rỗng");
-            return -1;
-        }
-        return 0;
-    }
-
-    public int xuLyXoaVatTu(View view) {
-        /**
-         *   Hàm xử lý khi nhấn nút Xoá. Hiển thị Dialog hỏi người dùng khi xoá vật tư
-         *   @return 0 nếu thành công, -1 nếu chưa chọn vật tư
-         */
-        if (chonHang == 0){
-            Toast.makeText(this, "Chưa chọn vật tư.", Toast.LENGTH_LONG).show();
-            return -1;
-        }
-
-        TableRow tr1 = findViewById(chonHang);
-        TextView maVatTuTv = (TextView) tr1.getChildAt(0);
-        String maVatTu = maVatTuTv.getText().toString();
-        TextView tenVatTuTv = (TextView) tr1.getChildAt(1);
-        String tenVatTu = tenVatTuTv.getText().toString();
-
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View canhBaoDialog = layoutInflater.inflate(R.layout.canh_bao_dialog, null);
-        MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this);
-        alertDialogBuilder.setView(canhBaoDialog);
-        TextView tenCanhBaoTv = canhBaoDialog.findViewById(R.id.tenCanhBaoTv_dialog);
-        TextView canhBaoTv = canhBaoDialog.findViewById(R.id.canhBaoTv_dialog);
-        tenCanhBaoTv.setText("Xoá?");
-        canhBaoTv.setText("Bạn muốn xoá vật tư " + tenVatTu + "?");
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("Xoá",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                xoaVatTu(maVatTu);
-                                chonHang = 0;
-                            }
-                        })
-                .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-        AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
-        alertDialog.show();//show diaglog
-        return 0;
-    }
-
-    public int xoaVatTu(String maVatTu) {
-        /**
-         *   Hàm xử lý khi nhấn nút Xoá.
-         *   @param chonHang id của hàng đã chọn trong table.
-         *   @return 0 nếu thành công, -1 nếu thất bại
-         */
-        CSDLVanChuyen database = new CSDLVanChuyen(this);
-        int kiemTra = VatTuDAO.xoaVatTu(maVatTu, database.getWritableDatabase());
-        if(kiemTra == - 1){
-            Toast.makeText(DanhSachVatTu.this, "Lỗi! Vui lòng thử lại sau.", Toast.LENGTH_LONG).show();
-            return -1;
-        }
-        else{
-            Toast.makeText(DanhSachVatTu.this, "Xoá thành công!", Toast.LENGTH_LONG).show();
-        }
-        getDanhSachVatTu();
-        return 0;
-    }
-
-    public int suaVatTu(View view) {
-        /**
-         *   Hàm xử lý khi nhấn nút Sửa.
-         *   @param chonHang id của hàng đã chọn trong table.
-         *   @return 0 nếu thành công, -1 nếu thất bại
-         */
-        System.out.println("Sửa vật tư: " + chonHang);
-        if (chonHang != 0){
-            TableRow tr1 = findViewById(chonHang);
-            VatTu vatTu = new VatTu();
-            TextView tmp = (TextView) tr1.getChildAt(0);
-            String maVatTu = tmp.getText().toString();
-            tmp = (TextView) tr1.getChildAt(1);
-            String tenVatTu = tmp.getText().toString();
-            tmp = (TextView) tr1.getChildAt(2);
-            String donViTinh = tmp.getText().toString();
-            tmp = (TextView) tr1.getChildAt(3);
-            int giaVatTu = Integer.parseInt(tmp.getText().toString());
-
-            callActivitySuaVatTu(maVatTu, tenVatTu, donViTinh, giaVatTu);
-            getDanhSachVatTu();
-            return 0;
-        }
-        else{
-            Toast.makeText(this, "Chưa chọn vật tư.", Toast.LENGTH_LONG).show();
-            return -1;
-        }
-    }
-
-    private int callActivitySuaVatTu(String maVatTu, String tenVatTu, String donViTinh, int giaVatTu){
-        /**
-         *   gọi activity SuaVatTu
-         *   @param maVatTu
-         *   @param tenVatTu
-         *   @param donViTinh
-         *   @param giaVatTu
-         *   @return 0 nếu thành công, -1 nếu thất bại
+         * làm mới danh sách
+         * - load lại database từ csdl lên listview
+         *
+         * @return 0 nếu thành công, -1 nếu thất bại
          */
         try {
-            Intent intent = new Intent(this, SuaVatTu.class);
-            intent.putExtra("maVatTu", maVatTu);
-            intent.putExtra("tenVatTu", tenVatTu);
-            intent.putExtra("donViTinh", donViTinh);
-            intent.putExtra("giaVatTu", giaVatTu);
-            startActivity(intent);
+            data = loadData();
+            adapter.data = data;
+            adapter.notifyDataSetChanged();
             return 0;
-        }
-        catch (Exception e) {
-            Toast.makeText(this, "Lỗi! Vui lòng thử lại sau.", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
             return -1;
         }
     }
 
-    private int callTimKiemDialog(){
-        /**
-         *   Gọi Dialog tìm kiếm
-         *   @return 0 nếu thành công
-         */
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View timKiemDialog = layoutInflater.inflate(R.layout.tim_kiem_dialog, null);
-        MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this);
-        alertDialogBuilder.setView(timKiemDialog);
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("Tìm kiếm",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                EditText timKiemDialogEdt = timKiemDialog.findViewById(R.id.timKiemEdt_dialog);
-                                String str = timKiemDialogEdt.getText().toString();
-                                timKiemVatTu(str);
-                            }
-                        })
-                .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-        AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
-        alertDialog.show();//show diaglog
-        return 0;
-    }
-
-    private int timKiemVatTu(String str){
+    private int timKiemVatTu() {
         /**
          *   Tìm kiếm vật tư
-         *   @param str chuỗi cần tìm kiếm
          *   @return 0 nếu thành công, -1 nếu thất bại
          */
-        int count = tableLayout.getChildCount();
-        int i = 1;
-        TableRow tr1;
         try {
-            while (i < count){
-                tr1 = (TableRow) tableLayout.getChildAt(i);
-                TextView tmp = (TextView) tr1.getChildAt(1);
-                String tenVatTu = tmp.getText().toString();
-                System.out.println("So sánh với: " + tenVatTu);
-                if (!tenVatTu.contains(str)) {
-                    tableLayout.removeViewAt(i);
-                }
-                else{
-                    i++;
-                }
-            }
+            LayoutInflater layoutInflater = LayoutInflater.from(this);
+            View timKiemVatTuDialog = layoutInflater.inflate(R.layout.tim_kiem_dialog, null); // tìm dialog view layout từ inflater
+            MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this); // tạo dialog builder : lớp hỗ trợ xây dựng dialog
+            alertDialogBuilder.setView(timKiemVatTuDialog); // set view tìm được cho dialog
+            EditText timKiemVatTuEdt = (EditText) timKiemVatTuDialog.findViewById(R.id.timKiemEdt_dialog); // lấy control các trường đã tạo trên dialog
+            alertDialogBuilder
+                    .setCancelable(false)
+                    .setPositiveButton("Tìm", // cài đặt nút đồng ý hành động
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SQLiteDatabase db = database.getWritableDatabase();
+                                    String tenCongTrinhcantim = timKiemVatTuEdt.getText().toString().trim().toUpperCase();
+                                    if (tenCongTrinhcantim.isEmpty() == false) {
+                                        //todo: xử lý tìm kiếm, có cần chuẩn hoá input tên công trình hay không?
+                                        for (int i = 0; i < data.size(); i++) {
+                                            if (data.get(i).getTenVatTu().toUpperCase().equals(tenCongTrinhcantim) == false) {
+                                                System.out.println(tenCongTrinhcantim);
+                                                System.out.println(data.get(i).getTenVatTu());
+                                                data.remove(i);//remove những đối tượng không thoả tìm kiếm
+                                                i--;
+                                                adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                                Toast.makeText(DanhSachVatTu.this, "Tìm kiếm thành công !", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                        System.out.println("data size: " + data.size());
+                                    }
+                                }
+                            })
+                    .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create(); // tạo dialog từ dialog builder
+            alertDialog.show();//show diaglo
             return 0;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return -1;
         }
     }
