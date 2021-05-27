@@ -54,6 +54,11 @@ public class MySuperFunc {
         Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
         return bitmap;
     }
+
+    public static boolean checkNumber(String str){
+        String regex = "^\\d+$";
+        return  str.matches(regex);
+    }
 }
 class RandomString {
 

@@ -91,13 +91,18 @@ public class VatTuAdapter extends ArrayAdapter<VatTu> {
                                             Toast.makeText(parentContext, "Mất kết nối đến cơ sở dữ liệu !", Toast.LENGTH_SHORT).show();
                                         } else {
                                             VatTu vatTuCapNhat = new VatTu(vatTu.getMaVatTu(), vatTu.getTenVatTu(), vatTu.getDonViTinh(), vatTu.getGia(), vatTu.getAnh());
-                                            vatTuCapNhat.setGia(Integer.parseInt(giaEdt.getText().toString()));
-                                            if (VatTuDAO.capNhatVatTu(vatTuCapNhat, database.getWritableDatabase()) > 0) {
-                                                Toast.makeText(parentContext, "Cập nhật thành công !", Toast.LENGTH_SHORT).show();
-                                                vatTu.setGia(vatTuCapNhat.getGia());
-                                                notifyDataSetChanged();
-                                            } else
-                                                Toast.makeText(parentContext, "Cập nhật thất bại !", Toast.LENGTH_SHORT).show();
+                                            String tmp = giaEdt.getText().toString();
+                                            if (MySuperFunc.checkNumber(tmp)){
+                                                vatTuCapNhat.setGia(Integer.parseInt(tmp));
+                                                if (VatTuDAO.capNhatVatTu(vatTuCapNhat, database.getWritableDatabase()) > 0) {
+                                                    Toast.makeText(parentContext, "Cập nhật thành công !", Toast.LENGTH_SHORT).show();
+                                                    vatTu.setGia(vatTuCapNhat.getGia());
+                                                    notifyDataSetChanged();
+                                                } else
+                                                    Toast.makeText(parentContext, "Cập nhật thất bại !", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                                Toast.makeText(parentContext, "Giá vật tư không phù hợp !", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 })

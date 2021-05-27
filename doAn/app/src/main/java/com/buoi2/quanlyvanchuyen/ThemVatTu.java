@@ -162,7 +162,13 @@ public class ThemVatTu extends AppCompatActivity {
             msg += "\n  - Không để trống giá vật tư.";
         }
         else{
-            giaVatTu = Integer.parseInt(tmp);
+            if(MySuperFunc.checkNumber(tmp)){
+                giaVatTu = Integer.parseInt(tmp);
+            }
+            else{
+                check = false;
+                msg += "\n  - Giá vật tư chỉ gồm các số và không có khoảng trắng";
+            }
         }
         //Kiểm tra donViTinh
         String donViTinh = "";

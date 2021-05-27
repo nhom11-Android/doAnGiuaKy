@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="537dp"
+        android:layout_height="540dp"
         android:layout_margin="20dp"
         android:orientation="vertical"
         android:paddingLeft="10dp"
@@ -105,7 +105,8 @@
             android:id="@+id/targetImageIv"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border"/>
 
         <Button
             android:id="@+id/UploadBtn"
