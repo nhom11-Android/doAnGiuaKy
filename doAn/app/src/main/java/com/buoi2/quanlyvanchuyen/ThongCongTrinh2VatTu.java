@@ -202,7 +202,7 @@ public class ThongCongTrinh2VatTu extends AppCompatActivity {
         try {
             String sql = "SELECT DISTINCT c.maCongTrinh, c.tenCongTrinh, ct.maVattu "
                     + "FROM PHIEUVANCHUYEN p, CHITIETPVC ct, CONGTRINH c "
-                    + "WHERE p.maPhieuVanChuyen=ct.maPhieuVanChuyen AND p.maCongTrinh=c.maCongTrinh AND (ct.maVatTu=" + vatTu1.getMaVatTu() + " OR ct.maVatTu=" + vatTu2.getMaVatTu() + ") "
+                    + "WHERE p.maPhieuVanChuyen=ct.maPhieuVanChuyen AND p.maCongTrinh=c.maCongTrinh AND (ct.maVatTu='" + vatTu1.getMaVatTu() + "' OR ct.maVatTu='" + vatTu2.getMaVatTu() + "') "
                     + "ORDER BY c.maCongTrinh";
             CSDLVanChuyen database = new CSDLVanChuyen(this);
             SQLiteDatabase db = database.getReadableDatabase();
