@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:gravity="center|top"
     tools:context=".ThongKeCongTrinh">
-
     <TableLayout
         android:id="@+id/tableLayout1_ThongKeCT"
         android:layout_width="250dp"
@@ -51,6 +50,12 @@
         android:layout_marginBottom="10dp"
         android:text="Kết quả"
         android:onClick="thongKeCT"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
     <TableLayout
         android:id="@+id/tableLayout2_ThongKeCT"
         android:layout_width="match_parent"
@@ -124,4 +129,5 @@
         </TableRow>
 
     </TableLayout>
+    </HorizontalScrollView>
 </LinearLayout>

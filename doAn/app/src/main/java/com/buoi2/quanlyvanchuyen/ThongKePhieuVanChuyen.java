@@ -158,7 +158,7 @@ public class ThongKePhieuVanChuyen extends AppCompatActivity {
         try {
             String sql = "SELECT p.maPhieuVanChuyen, p.ngayVanChuyen, c.maVatTu "
                     + "FROM PHIEUVANCHUYEN p, CHITIETPVC c "
-                    + "WHERE p.maPhieuVanChuyen=c.maPhieuVanChuyen AND c.maVatTu=" + vatTu.getMaVatTu()
+                    + "WHERE p.maPhieuVanChuyen=c.maPhieuVanChuyen AND c.maVatTu='" + vatTu.getMaVatTu()+"'"
                     + " ORDER BY p.maPhieuVanChuyen";
             CSDLVanChuyen database = new CSDLVanChuyen(this);
             SQLiteDatabase db = database.getReadableDatabase();

@@ -121,14 +121,15 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     SQLiteDatabase db = database.getWritableDatabase();
-                                    String tenCongTrinhcantim = timKiemCongTrinhEdt.getText().toString().trim();
+                                    String tenCongTrinhcantim = timKiemCongTrinhEdt.getText().toString().trim().toUpperCase();
                                     if (tenCongTrinhcantim.isEmpty() == false) {
                                         //todo: xử lý tìm kiếm, có cần chuẩn hoá input tên công trình hay không?
                                         for (int i = 0; i < data.size(); i++) {
-                                            if (data.get(i).getTenCongTrinh().equals(tenCongTrinhcantim) == false) {
+                                            if (data.get(i).getTenCongTrinh().toUpperCase().equals(tenCongTrinhcantim) == false) {
                                                 System.out.println(tenCongTrinhcantim);
                                                 System.out.println(data.get(i).getTenCongTrinh());
                                                 data.remove(i);//remove những đối tượng không thoả tìm kiếm
+                                                i--;
                                                 adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
                                                 Toast.makeText(DanhSachCongTrinh.this, "Tìm kiếm thành công !", Toast.LENGTH_SHORT).show();
                                             }
@@ -187,8 +188,10 @@ public class DanhSachCongTrinh extends AppCompatActivity {
                                     } else {
                                         CongTrinh temp = new CongTrinh(ten, dc);
                                         if (CongTrinhDAO.themCongTrinh(temp, db) == 0) { // thêm vào csdl thành công
-                                            data.add(temp); //thêm user mới vào listview
-                                            adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+
+//                                            data.add(temp); //thêm user mới vào listview
+//                                            adapter.notifyDataSetChanged(); // thôg báo thay đổi dữ liệu
+                                            lamMoiDanhSach();
                                             Toast.makeText(getApplicationContext(), "Thêm công trình thành công ! Bấm Làm mới nếu chưa xuất hiện trên màn hình !", Toast.LENGTH_SHORT).show();
                                         } else
                                             Toast.makeText(getApplicationContext(), "Thêm công trình không thành công! Báo cáo lỗi cho nhà sản xuất để giải quyết!", Toast.LENGTH_SHORT).show();

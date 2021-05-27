@@ -99,5 +99,29 @@ public class PhieuVanChuyenDAO {
         }
         return phieuVanChuyens;
     };
+    public static ArrayList<String> getAllPVC(SQLiteDatabase db){
+        String[] projection = { // những cột muốn lấy
+                PhieuVanChuyen.cotMaPhieuVanChuyen,
+                PhieuVanChuyen.cotNgayVanChuyen
+        } ;
 
+        Cursor cursor = db.query(
+                PhieuVanChuyen.tenBang,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        ArrayList<String> pvc = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            //lấy dữ liệu từ cursor
+            int mp = cursor.getInt(cursor.getColumnIndex(PhieuVanChuyen.cotMaPhieuVanChuyen));
+            String nvc = cursor.getString(cursor.getColumnIndex(PhieuVanChuyen.cotNgayVanChuyen));
+            pvc.add(String.valueOf(mp));
+            pvc.add(nvc);
+        }
+        return pvc;
+    };
 }
