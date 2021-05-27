@@ -66,7 +66,8 @@ public class ChiTietCongTrinh extends AppCompatActivity {
     }
     private ArrayList<PhieuVanChuyen> loadDanhSachPhieuVanChuyen(){
         return PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(),maCongTrinhIntent);
-    };
+    }
+
     private void setControl() {
         maCongTrinhEdt = (EditText) findViewById(R.id.maCongTrinhEdt_CTCT);
         tenCongTrinhEdt = findViewById(R.id.tenCongTrinhEdt_CTCT);
@@ -199,7 +200,7 @@ public class ChiTietCongTrinh extends AppCompatActivity {
             data.add(phieuVanChuyen);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Thêm phiếu thành công! Hãy bấm làm mới!", Toast.LENGTH_SHORT).show();
-        };
+        }
     }
 
 

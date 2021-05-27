@@ -27,15 +27,11 @@
         <activity android:name=".TestOnly" />
         <activity android:name=".ThemVatTuPhieuVanChuyen" />
         <activity android:name=".DanhSachVatTu" />
-
         <activity android:name=".Menu" />
         <activity android:name=".ThongKe" />
-
         <activity android:name=".DanhSachCongTrinh" />
-
         <activity android:name=".ChiTietCongTrinh" />
         <activity android:name=".SuaPhieuVanChuyen" />
-        <activity android:name=".SuaVatTu" />
         <activity android:name=".ThemVatTu" />
         <activity android:name=".ThongKeCongTrinh" />
         <activity android:name=".ThongKePhieuVanChuyen" />

@@ -98,7 +98,8 @@ public class PhieuVanChuyenDAO {
             phieuVanChuyens.add(temp);
         }
         return phieuVanChuyens;
-    };
+    }
+
     public static ArrayList<String> getAllPVC(SQLiteDatabase db){
         String[] projection = { // những cột muốn lấy
                 PhieuVanChuyen.cotMaPhieuVanChuyen,
@@ -123,5 +124,5 @@ public class PhieuVanChuyenDAO {
             pvc.add(nvc);
         }
         return pvc;
-    };
+    }
 }
