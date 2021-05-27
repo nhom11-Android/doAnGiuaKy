@@ -1,8 +1,15 @@
 package com.buoi2.quanlyvanchuyen;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,10 +17,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,21 +33,43 @@ import com.buoi2.quanlyvanchuyen.bean.LoaiDonViTinh;
 import com.buoi2.quanlyvanchuyen.bean.VatTu;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import myHelp.MySuperFunc;
 
 public class ThemVatTu extends AppCompatActivity {
-    Button themVatTuBtn;
+    private static final int REQUEST_CAMERA = 0;
+    private static final int SELECT_FILE = 1;
+    Button themVatTuBtn, btnSelectPhoto;
     EditText tenVatTuEdt, giaVatTuEdt;
     Spinner donViTinhSp;
+    ImageView targetImage;
     ArrayList<LoaiDonViTinh> danhSachDonViTinh;
+    String userChoosenTask = "";
+
+    String i1;
+    String img;
+    int i = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_vat_tu);
         setActionBar();
         getId();
+
+        btnSelectPhoto.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                selectImage();
+            }
+        });
     }
 
     private void setActionBar() {
@@ -73,8 +104,10 @@ public class ThemVatTu extends AppCompatActivity {
         tenVatTuEdt = findViewById(R.id.edtTenVatTu_themVatTu);
         giaVatTuEdt = findViewById(R.id.edtGiaVatTu_themVatTu);
         donViTinhSp = findViewById(R.id.spDonVi_themVatTu);
+        btnSelectPhoto= findViewById(R.id.UploadBtn);
         setDanhSachDonViTinh();
         donViTinhSp.setAdapter(taoArraySpinner());
+        targetImage = findViewById(R.id.targetImageIv);
     }
 
     private int lamMoi(){
@@ -133,13 +166,25 @@ public class ThemVatTu extends AppCompatActivity {
         }
         //Kiểm tra donViTinh
         String donViTinh = "";
-        System.out.println(donViTinhSp.getSelectedItemPosition());
         int pos = donViTinhSp.getSelectedItemPosition();
         if(pos == 0 | pos >= donViTinhSp.getCount()){
             check = false;
             msg += "\n  - Chọn đơn vị tính.";
         }
-        donViTinh += donViTinhSp.getItemAtPosition(pos);
+        else{
+            donViTinh += donViTinhSp.getItemAtPosition(pos);
+        }
+        //Kiểm tra View ảnh vật tư
+        byte[] anh = null;
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) targetImage.getDrawable();
+        if (bitmapDrawable == null){
+            check = false;
+            msg += "\n  - Chọn ảnh vật tư.";
+        }
+        else{
+            anh = MySuperFunc.getBitmapAsByteArray(bitmapDrawable.getBitmap());
+        }
+
         if (!check){
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
             return -1;
@@ -158,8 +203,7 @@ public class ThemVatTu extends AppCompatActivity {
         //Thêm vật tư mới
         // khởi tạo mã vật tư
         String mvt = MySuperFunc.generateCodeRamdom();
-//        VatTu vatTu = new VatTu(String.valueOf(ds.size() + 1), tenVatTu, donViTinh, giaVatTu);
-        VatTu vatTu = new VatTu(mvt , tenVatTu, donViTinh, giaVatTu);
+        VatTu vatTu = new VatTu(mvt , tenVatTu, donViTinh, giaVatTu, anh);
         int kiemTra = VatTuDAO.themVatTu(vatTu, database.getWritableDatabase());
         if(kiemTra == -1){
             Toast.makeText(this, "Lỗi! Vui lòng thử lại sau.", Toast.LENGTH_LONG).show();
@@ -167,8 +211,8 @@ public class ThemVatTu extends AppCompatActivity {
         }
         else{
             thoatActivity();
+            return 0;
         }
-        return 0;
     }
 
     public void huyThemVatTu(View view) {
@@ -212,7 +256,6 @@ public class ThemVatTu extends AppCompatActivity {
                                 else{
                                     Toast.makeText(getApplicationContext(), "Loại đơn vị tính đã có", Toast.LENGTH_LONG).show();
                                 }
-
                             }
                         })
                 .setNegativeButton("Huỷ", // cài đặt nút huỷ hành đọng
@@ -234,5 +277,105 @@ public class ThemVatTu extends AppCompatActivity {
             }
         }
         return 0;
+    }
+
+
+    private void selectImage(){
+        final CharSequence[] items = { "Take Photo", "Choose from Library",
+                "Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(ThemVatTu.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                boolean result=Utility.checkPermission(ThemVatTu.this);
+                if (items[item].equals("Take Photo")) {
+                    userChoosenTask="Take Photo";
+                    if(result)
+                        cameraIntent();
+                } else if (items[item].equals("Choose from Library")) {
+                    userChoosenTask="Choose from Library";
+                    if(result)
+                        galleryIntent();
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    private void cameraIntent(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, REQUEST_CAMERA);
+    }
+
+    private void galleryIntent(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
+    }
+
+
+    public void onRequestPermissionResult(int requestCode, String[] permission, int[] grantResults){
+        switch(requestCode){
+            case Utility.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                   if(userChoosenTask.equals("Take Photo"))
+                       cameraIntent();
+                   else if(userChoosenTask.equals("Choose from Library"));
+                }
+                else{
+                    // code for deny
+                }
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == Activity.RESULT_OK){
+            if (requestCode == SELECT_FILE) {
+                System.out.println("Select file");
+                onSelectFromGalleryResult(data);
+            }
+            else if (requestCode == REQUEST_CAMERA)
+                onCaptureImageResult(data);
+        }
+    }
+
+    private void onCaptureImageResult(Intent data) {
+        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+        File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
+        FileOutputStream fo;
+        try {
+            destination.createNewFile();
+            fo = new FileOutputStream(destination);
+            fo.write(bytes.toByteArray());
+            fo.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        targetImage.setImageBitmap(thumbnail);
+    }
+
+    @SuppressWarnings("deprecation")
+    private void onSelectFromGalleryResult(Intent data) {
+        Bitmap bm = null;
+        if (data != null){
+            try{
+                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        targetImage.setImageBitmap(bm);
     }
 }

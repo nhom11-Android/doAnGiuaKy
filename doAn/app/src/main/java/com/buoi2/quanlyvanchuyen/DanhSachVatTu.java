@@ -3,6 +3,7 @@ package com.buoi2.quanlyvanchuyen;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -47,7 +48,6 @@ public class DanhSachVatTu extends AppCompatActivity {
         setActionBar();
         getId();
         getDanhSachVatTu();
-        Toast.makeText(this, "DSVT", Toast.LENGTH_SHORT).show();
     }
 
     private void getId() {
@@ -156,18 +156,11 @@ public class DanhSachVatTu extends AppCompatActivity {
          */
         tableLayout.removeAllViews();
         tableLayout.addView(tr0);
-        System.out.println("DSVT");
         CSDLVanChuyen database = new CSDLVanChuyen(this);
         ArrayList<VatTu> list = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
         System.out.println(list.size());
         if(list != null) {
             for (VatTu v : list) {
-                System.out.println("/n=========================================== ");
-                System.out.println(v.getMaVatTu());
-                System.out.println(v.getTenVatTu());
-                System.out.println(v.getDonViTinh());
-                System.out.println(v.getGia());
-
                 tr = taoTableRow(v);
                 tableLayout.addView(tr);
             }

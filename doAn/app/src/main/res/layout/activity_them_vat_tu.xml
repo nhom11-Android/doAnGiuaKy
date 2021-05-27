@@ -7,10 +7,9 @@
     android:orientation="vertical"
     tools:context=".ThemVatTu">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="507dp"
+        android:layout_height="537dp"
         android:layout_margin="20dp"
         android:orientation="vertical"
         android:paddingLeft="10dp"
@@ -20,78 +19,104 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:gravity="left">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tên vật tư"
-                android:textSize="17sp"/>
+                android:padding="5dp"
+                android:text="Tên vật tư: "
+                android:textSize="21sp"/>
 
             <EditText
                 android:id="@+id/edtTenVatTu_themVatTu"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:gravity="left">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="17sp"
+                android:padding="5dp"
+                android:textSize="21sp"
                 android:text="Giá vật tư:" />
 
             <EditText
                 android:id="@+id/edtGiaVatTu_themVatTu"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:gravity="left">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đơn vị tính:"
-                android:textSize="17sp"/>
-
-            <Spinner
-                android:id="@+id/spDonVi_themVatTu"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:textSize="17sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
-            <ImageButton
-                android:layout_width="wrap_content"
+                android:textSize="21sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/add_circle_outline_vector"
-                android:backgroundTint="#00FFFFFF"
-                android:onClick="themLoaiDonViTinh"/>
+                android:orientation="horizontal"
+                android:gravity="left">
+                <Spinner
+                    android:id="@+id/spDonVi_themVatTu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:textSize="21dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="5dp"
+                    android:background="@drawable/border"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_circle_outline_vector"
+                    android:backgroundTint="#00FFFFFF"
+                    android:onClick="themLoaiDonViTinh"/>
 
+            </LinearLayout>
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/targetImageIv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/UploadBtn"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Upload"
+            android:textStyle="bold"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -112,8 +137,8 @@
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:text="Huỷ"
+            android:textSize="19dp"
             android:textColor="@color/black"
-            app:backgroundTint="#EAE2A2"
             android:onClick="huyThemVatTu"/>
 
         <Button
@@ -124,9 +149,8 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:text="Thêm"
+            android:textSize="19dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            app:backgroundTint="#EAE2A2"
             android:onClick="xuLyThemVatTu"/>
     </LinearLayout>
 </LinearLayout>

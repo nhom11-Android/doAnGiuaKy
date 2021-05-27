@@ -69,7 +69,6 @@ public class SuaVatTu extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void huyCapNhatVatTu(View view) {
         thoatActivity();
     }
@@ -84,7 +83,7 @@ public class SuaVatTu extends AppCompatActivity {
         }
         giaVatTu = Integer.parseInt(tmp);
         CSDLVanChuyen database = new CSDLVanChuyen(this);
-        VatTu vatTu_capNhat = new VatTu(vatTu.getMaVatTu(), vatTu.getTenVatTu(), vatTu.getDonViTinh(), giaVatTu);
+        VatTu vatTu_capNhat = new VatTu(vatTu.getMaVatTu(), vatTu.getTenVatTu(), vatTu.getDonViTinh(), giaVatTu, vatTu.getAnh());
         int kiemTra = VatTuDAO.capNhatVatTu(vatTu_capNhat,database.getReadableDatabase());
         if(kiemTra == -1){
             Toast.makeText(this, "Lỗi! Vui lòng thử lại sau.", Toast.LENGTH_LONG).show();
