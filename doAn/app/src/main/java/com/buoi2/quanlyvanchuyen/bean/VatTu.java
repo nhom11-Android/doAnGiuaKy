@@ -8,32 +8,27 @@ public class VatTu {
     public static final String cotTenVatTu = "tenVatTu";
     public static final String cotGia = "gia";
     public static final String cotDonViTinh = "donViTinh";
+    public static final String cotAnh = "anh";
     String maVatTu;
     String tenVatTu;
     int gia;
     String donViTinh;
-
-    public String getDonViTinh() {
-        return donViTinh;
-    }
-
-    public void setDonViTinh(String donViTinh) {
-        this.donViTinh = donViTinh;
-    }
+    byte[] anh;
 
     public VatTu(){
         this.maVatTu = "";
         this.tenVatTu = "";
         this.donViTinh = "";
         this.gia = 0;
+        this.anh = null;
     }
 
-    public VatTu(String maVatTu, String tenVatTu, String donViTinh, int gia) {
+    public VatTu(String maVatTu, String tenVatTu, String donViTinh, int gia, byte[] anh) {
         this.maVatTu = maVatTu;
         this.tenVatTu = tenVatTu;
         this.donViTinh = donViTinh;
         this.gia = gia;
-        this.donViTinh = donViTinh;
+        this.anh = anh;
     }
 
     public String getMaVatTu() {
@@ -58,6 +53,22 @@ public class VatTu {
 
     public void setGia(int gia) {
         this.gia = gia;
+    }
+
+    public String getDonViTinh() {
+        return donViTinh;
+    }
+
+    public void setDonViTinh(String donViTinh) {
+        this.donViTinh = donViTinh;
+    }
+
+    public byte[] getAnh() {
+        return anh;
+    }
+
+    public void setAnh(byte[] anh) {
+        this.anh = anh;
     }
 
     @NonNull

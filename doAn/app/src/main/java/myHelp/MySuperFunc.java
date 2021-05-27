@@ -1,5 +1,9 @@
 package myHelp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.ByteArrayOutputStream;
 import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -38,6 +42,17 @@ public class MySuperFunc {
     public static Map<String,Integer> sortMap(Map<String,Integer> unsortedMap){
         SortMap sortedMap =new SortMap(unsortedMap);
         return SortMap.sortByValue();
+    }
+
+    public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
+    }
+
+    public static Bitmap getByteArrayAsBitmap(byte[] data){
+        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+        return bitmap;
     }
 }
 class RandomString {
@@ -125,8 +140,8 @@ class RandomString {
 class SortMap{
     private static Map<String, Integer> unsortMap;
     public SortMap(Map<String,Integer> map){
-        this.unsortMap = new HashMap<>();
-        this.unsortMap.putAll(map);
+        unsortMap = new HashMap<>();
+        unsortMap.putAll(map);
     }
     public static Map<String, Integer> sortByValue() {
 
@@ -151,3 +166,5 @@ class SortMap{
         return sortedMap;
     }
 }
+
+

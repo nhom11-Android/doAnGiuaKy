@@ -68,7 +68,7 @@ public class ChiTietCongTrinh extends AppCompatActivity {
         return PhieuVanChuyenDAO.danhSachPhieuVanChuyenTheoCongTrinh(database.getReadableDatabase(),maCongTrinhIntent);
     };
     private void setControl() {
-        maCongTrinhEdt = findViewById(R.id.maCongTrinhEdt_CTCT);
+        maCongTrinhEdt = (EditText) findViewById(R.id.maCongTrinhEdt_CTCT);
         tenCongTrinhEdt = findViewById(R.id.tenCongTrinhEdt_CTCT);
         diaChiCongTrinhEdt = findViewById(R.id.diaChiCongTrinhEdt_CTCT);
         suaChiTietBtn = findViewById(R.id.suaChiTietCongTrinhBtn_CTCT);
@@ -117,24 +117,27 @@ public class ChiTietCongTrinh extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
-                Toast.makeText(this, "quay trở lại 2", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.timKiem_ATB:
                 timPhieuVanChuyen();
                 break;
             case R.id.them_ATB:
                 themPhieuVanChuyen();
+                lamMoi();
                 break;
             case R.id.lamMoi_ATB:
-                data = loadDanhSachPhieuVanChuyen();
-                adapter.data =data;
-                adapter.notifyDataSetChanged();
+                lamMoi();
                 Toast.makeText(this, "Làm mới thành công!", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private void lamMoi() {
+        data = loadDanhSachPhieuVanChuyen();
+        adapter.data = data;
+        adapter.notifyDataSetChanged();
+    }
     private int timPhieuVanChuyen() {
         try {
             LayoutInflater layoutInflater = LayoutInflater.from(this);

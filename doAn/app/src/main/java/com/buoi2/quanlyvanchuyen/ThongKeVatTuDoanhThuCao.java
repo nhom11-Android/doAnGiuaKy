@@ -64,7 +64,7 @@ public class ThongKeVatTuDoanhThuCao extends AppCompatActivity {
         TextView giaTv = new TextView(this);
         TextView soLuongTv = new TextView(this);
         TextView tongTv = new TextView(this);
-        int soLuong = (int) (tong/gia);
+        int soLuong = (int) tong/gia;
         // tạo Textview maVatTuTv
         maVatTuTv.setText(maVatTu);
         maVatTuTv.setGravity(1);
