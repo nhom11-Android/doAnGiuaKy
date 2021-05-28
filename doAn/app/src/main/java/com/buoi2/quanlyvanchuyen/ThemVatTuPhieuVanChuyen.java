@@ -46,7 +46,7 @@ public class ThemVatTuPhieuVanChuyen extends AppCompatActivity {
 
     private void setEvent() {
         danhSachVatTu = VatTuDAO.danhSachVatTu(database.getReadableDatabase());
-        ArrayAdapter<VatTu> adapter = new ArrayAdapter<VatTu>(this, android.R.layout.simple_spinner_dropdown_item, danhSachVatTu);
+        VatTuSpinnerCustomAdapter adapter = new VatTuSpinnerCustomAdapter(this, android.R.layout.simple_list_item_1, danhSachVatTu);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         danhSachVatTuSpn.setAdapter(adapter);
     }
