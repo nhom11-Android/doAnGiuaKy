@@ -61,7 +61,7 @@ public class VatTuAdapter extends ArrayAdapter<VatTu> {
         TextView donViTinhTv = convertView.findViewById(R.id.donViTinhTv_VTLV);
         TextView giaTv = convertView.findViewById(R.id.giaTv_VTLV);
         ImageButton suaVatTu = convertView.findViewById(R.id.suaBtn_VTLV);
-        ImageButton xoaBtn = convertView.findViewById(R.id.xoaBtn_VTLV);
+        ImageButton xoaVatTuBtn = convertView.findViewById(R.id.xoaBtn_VTLV);
 
         // gán data lên view
         VatTu vatTu = data.get(position);
@@ -117,7 +117,7 @@ public class VatTuAdapter extends ArrayAdapter<VatTu> {
                 alertDialog.show();//show diaglog
             }
         });
-        xoaBtn.setOnClickListener(new View.OnClickListener() {
+        xoaVatTuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LayoutInflater layoutInflater = LayoutInflater.from(parentContext);
